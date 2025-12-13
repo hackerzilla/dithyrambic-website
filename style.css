@@ -1,8 +1,27 @@
 body {
-  padding-left: 5rem;
-  padding-right: 5rem;
+  padding-left: 10%;
+  padding-right: 10% ;
   padding-top: 1rem;
   padding-bottom: 1rem;
+  background-color: #c77ffc;
+  justify-content: center;
+  align-items: center;
+}
+a {
+    color: #73d02f;
+}
+a:visited {
+    color: #3f6c19;
+}
+a:hover {
+    color: #d8dd22;
+}
+a:active {
+    color: #eab315;
+}
+::selection {
+    background-color: #eab315;
+    color: grey;
 }
 .navbar {
     padding: 5px 5px 5px 5px;
