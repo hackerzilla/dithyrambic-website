@@ -7,11 +7,13 @@ body {
   justify-content: center;
   align-items: center;
 }
+p {
+}
 a {
     color: #73d02f;
 }
 a:visited {
-    color: #3f6c19;
+    color: #73d02f;
 }
 a:hover {
     color: #d8dd22;
@@ -22,6 +24,9 @@ a:active {
 ::selection {
     background-color: #eab315;
     color: grey;
+}
+img {
+  
 }
 .navbar {
     padding: 5px 5px 5px 5px;
@@ -45,4 +50,18 @@ a:active {
 .logo {
     width: 4rem;
     height: auto;
+}
+.projects {
+}
+.projects p {
+    text-indent: 3rem;
+}
+.image-gallery {
+    text-align: center;
+}
+.gallery-image {
+    max-width: 80%;
+    text-align: center;
+    margin: auto;
+    border: .7rem solid rgb(12, 14, 16); 
 }
