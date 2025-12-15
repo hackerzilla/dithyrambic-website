@@ -1,6 +1,6 @@
 body {
-  padding-left: 10%;
-  padding-right: 10% ;
+  padding-left: 15%;
+  padding-right: 15% ;
   padding-top: 1rem;
   padding-bottom: 1rem;
   background-color: #c77ffc;
@@ -51,17 +51,33 @@ img {
     width: 4rem;
     height: auto;
 }
-.projects {
+.landing-page{
+    text-align: center;
 }
-.projects p {
-    text-indent: 3rem;
+.landing-page p {
+    text-indent: 0rem;
 }
 .image-gallery {
     text-align: center;
 }
 .gallery-image {
-    max-width: 80%;
+    max-width: 40rem;
     text-align: center;
     margin: auto;
     border: .7rem solid rgb(12, 14, 16); 
+}
+.games {
+    align-items: center;
+    text-align: center;
+}
+.landing-page p {
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    text-align: left
+}
+h1 {
+    text-align: left;
+    padding-left: 0%
 }
