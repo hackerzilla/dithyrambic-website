@@ -6,6 +6,8 @@ body {
   background-color: #c77ffc;
   justify-content: center;
   align-items: center;
+  max-width: 40rem;
+  margin: auto;
 }
 p {
 }
