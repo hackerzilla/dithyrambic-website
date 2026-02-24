@@ -1,0 +1,694 @@
+<style>
+    body {
+        background-color: #171628;
+    }
+    #cloud1 {
+        width: 100%;
+        height: 100%; 
+        background-image: url('images/Clouds 3/1.png');
+        /* background-repeat: repeat-x; */
+        background-size: auto 100%;
+        image-rendering: pixelated; /* keeps the pixel art crispy */
+        transform: scaleY(-1);
+        position: absolute;
+        z-index: -10;
+        top: 0;
+        left: 0;
+    }
+    #cloud2 {
+        width: 100%;
+        height: 100%; 
+        background-image: url('images/Clouds 3/3.png');
+        /* background-repeat: repeat-x; */
+        background-size: auto 100%;
+        image-rendering: pixelated; /* keeps the pixel art crispy */
+        transform: scaleY(-1);
+        position: absolute;
+        z-index: -9;
+        top: 0;
+        left: 0;
+    }
+    #cloud3 {
+        width: 100%;
+        height: 100%; 
+        background-image: url('images/Clouds 3/4.png');
+        /* background-repeat: repeat-x; */
+        background-size: auto 100%;
+        image-rendering: pixelated; /* keeps the pixel art crispy */
+        transform: scaleY(-1);
+        position: absolute;
+        z-index: -8;
+        top: 0;
+        left: 0;
+    }
+    #cloud4 {
+        width: 100%;
+        height: 100%; 
+        background-image: url('images/Clouds 3/2.png');
+        /* background-repeat: repeat-x; */
+        background-size: auto 100%;
+        image-rendering: pixelated; /* keeps the pixel art crispy */
+        transform: scaleY(-1);
+        position: absolute;
+        z-index: -8;
+        top: 0;
+        left: 0;
+    }
+    #cs-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        color: #25ac00;
+        font-family: "Hornet Display", system-ui;
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+    #cs-header .cs-title {
+        font-size: 10rem;
+        margin: 0;
+    }
+    #cs-header .cs-subtitle {
+        font-size: 5rem;
+    }
+    #cs-hero {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 2rem;
+    }
+    #cs-hero .cs-left {
+        display: flex;
+        flex-direction: column;
+        margin-left: 25ch;
+        width:  364px;
+        height:  364px;
+    }
+    #cs-hero .cs-right {
+        align-content: center;
+        cursor: grab;
+        margin-right: 25ch;
+        width:  364px;
+        height:  364px;
+    }
+    .mfd-display {
+        --green: #33ff33;
+        width:  364px;
+        height:  364px;
+        background: #050505;
+        border: 2px solid var(--green);
+        box-shadow: 
+            inset 0 0 30px rgba(0, 255, 0, 0.05),
+            0 0 2px var(--green);
+        position: relative;
+        color: var(--green);
+        padding: 1rem;
+        box-sizing: border-box;
+    }
+
+    /* Tick marks overlay */
+    .mfd-display::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background:
+            /* Top edge tcks */
+            repeating-linear-gradient(90deg, var(--green) 0 1px, transparent 1px 50px)
+            0 0 / 100% 6px no-repeat,
+            /* Bottom edge ticks */
+            repeating-linear-gradient(90deg, var(--green) 0 1px, transparent 1px 50px)
+            0 100% / 100% 6px no-repeat,
+            /* Left edge ticks */
+            repeating-linear-gradient(0deg, var(--green) 0 1px, transparent 1px 50px)
+            0 0 / 6px 100% no-repeat,
+            /* Right edge ticks */
+            repeating-linear-gradient(0deg, var(--green) 0 1px, transparent 1px 50px)
+            100% 0 / 6px 100% no-repeat;
+    }
+
+    /* Center crosshair lines */
+    /* .mfd-display::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background:
+            linear-gradient(0deg, transparent calc(50% - 0.5px), var(--green) calc(50% - 0.5px), var(--green) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+            linear-gradient(90deg, transparent calc(50% - 0.5px), var(--green) calc(50% - 0.5px), var(--green) calc(50% + 0.5px), transparent calc(50% + 0.5px));
+    } */
+    #cs-hero .cs-title {
+        display: flex;
+        color: #25ac00;
+        font-size: 10rem;
+        font-family: "Hornet Display", system-ui;
+        margin-bottom: 0;
+    }
+    #cs-hero .cs-text {
+        font-family: "Hornet Display", system-ui;
+        font-size: 2rem;
+        color: #25ac00;
+        font-weight: bold;
+        border-bottom: 2px #25ac00 solid;
+        margin-bottom: 0;
+        text-align: center;
+    }
+    #cs-hero ul {
+        color: #25ac00;
+        font-family: "Hornet Display", system-ui;
+        padding-left: 1rem;
+        margin-bottom: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    #cs-hero li {
+        padding-left: 1rem;
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+    #cs-hero li::marker {
+        /* gem */
+        content: "\f3a5";
+        /* chevron */
+        /* content: "\f054"; */
+        font-family: "Font Awesome 5 Free";
+        font-weight: normal;
+    }
+    .cs-button {
+        margin-top: 2rem;
+        color: #25ac00;
+        background-color: black;
+        border-radius: 5%;
+        max-width: fit-content;
+        border: 5px black solid;
+        text-decoration: none;
+        font-family: "Hornet Display", system-ui;
+        font-size: 2rem;
+        font-weight: bold;
+        padding: 10px;
+        position: relative;
+        display: inline-block;
+    }
+
+    .cs-button::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: -5px;
+        width: 6px;
+        height: 0;
+        border-top: 5px solid #25ac00;
+        pointer-events: none;
+        transition: width 0.3s ease;
+    }
+
+    .cs-button::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -5px;
+        width: 6px;
+        height: 0;
+        border-bottom: 5px solid #25ac00;
+        pointer-events: none;
+        transition: width 0.3s ease;
+    }
+
+    .cs-button:hover::before,
+    .cs-button:hover::after {
+        width: 100%;
+    }
+    .cs-button, dialog {
+        will-change: transform, opacity;
+    }
+    dialog::backdrop {
+        background-color: rgba(0, 0, 0, 0.4);
+        background-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    }
+
+    #cs-email form {
+        display: flex;
+        flex-direction: column;
+    }
+    #cs-email input {
+        background: black;
+        color: #25ac00; 
+        font-family: "Hornet Display", system-ui;
+        border: 1px solid #25ac00;
+        padding: 10px;
+        outline: none;
+        text-transform: uppercase;
+        margin-top: 20%;
+        font-weight: bold;
+        font-size: 1.5rem;
+        
+        caret-color: #25ac00; 
+        box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+    }
+
+    #cs-email input:focus {
+        box-shadow: 0 0 25px rgba(0, 255, 65, 0.5);
+        animation: blink-cursor 1s infinite step-end;
+    }
+    #cs-construction {
+        display: flex;
+        justify-content: center;
+    }
+    #cs-center {
+        display: flex;
+        justify-content: center;
+        margin-top: 5rem;
+        font-family: "Hornet Display", system-ui;
+    }
+    #cs-center .cs-content {
+        display: flex;
+        flex-direction: row;
+        width: calc(760px - 1rem);
+        height: auto;
+        justify-content: space-evenly;
+    }
+    #cs-center .cs-content > div {
+        flex: 1;
+    }
+    #cs-center .cs-content .cs-title {
+        text-align: center;
+    }
+    #cs-gallery {
+        width: calc(760px - 1rem);
+        margin: 5rem auto;
+        display: flex;
+        flex-direction: column;
+        gap: 5rem;
+        font-family: 'Courier New', monospace;
+        color: white;
+    }
+
+    #cs-gallery .cs-content {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+    }
+    #cs-gallery .cs-content:nth-child(even) {
+        flex-direction: row-reverse;
+    }
+
+    #cs-gallery .cs-picture img {
+        width: 100%;
+        height: auto;
+    }
+    #cs-gallery .cs-picture {
+        width: 300px;
+        height: 300px;
+        flex-shrink: 0;
+    }
+
+    #cs-gallery .cs-text {
+        flex: 1;
+    }
+    #cs-developers {
+        display: flex;
+        justify-content: center;
+        margin-top: 5rem;
+        margin-bottom: 5rem;
+        font-family: "Courier New", monospace;
+        color: white;
+        align-items: center;
+    }
+    #cs-developers .cs-content {
+        display: flex;
+        flex-direction: row;
+        width: calc(760px - 1rem);
+        height: auto;
+        justify-content: space-evenly;
+        margin-bottom: 5rem;
+    }
+    #cs-developers .cs-title {
+        margin: 0;
+    }
+    #cs-developers .cs-text {
+        margin: 0;
+    }
+</style>
+
+<head>
+
+    <!-- 3D Model Viewer -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r124/three.min.js"></script>
+    <script src="https://unpkg.com/three@0.126.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://unpkg.com/three@0.126.0/examples/js/controls/OrbitControls.js"></script>
+
+    <!-- Google Font -->
+    <!-- Black Ops + Allerta Stencil -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=Black+Ops+One&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome 5 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+
+    <!-- Hornet Font -->
+    <style>
+    @font-face {
+    font-family: 'Hornet Display';
+    src: url('https://raw.githubusercontent.com/0x408/hornet-display/main/HornetDisplay-Regular.ttf') format('truetype');
+    }
+    </style>
+
+</head>
+<html>
+<body>
+    <div id="cloud1"></div>
+    <div id="cloud2"></div>
+    <div id="cloud3"></div>
+    <div id="cloud4"></div>
+    <div id="cs-header">
+        <h1 class="cs-title">helo</h1>
+        <h2 class="cs-subtitle">coming 2026</h2>
+    </div>
+    <div class="cs-body">
+        <div id="cs-hero">
+            <div class="cs-left mfd-display">
+                <p class="cs-text">Helo is a 2D, virtual world where you and a friend can ...</p>
+
+                <ul>
+                    <li>gather gems</li>
+                    <li>recruit soldiers</li>
+                    <li>build your PMC</li>
+                </ul>
+            </div>
+            <div class="cs-right">
+                <canvas class="webgl"></canvas>
+            </div>
+        </div>
+        <div id="cs-construction">
+            <button class="cs-button" id="open-modal-btn">ENLIST NOW</button>
+            <dialog id="cs-email" class="mfd-display">
+                <form action="https://script.google.com/macros/s/AKfycbwfZ74sugwKmxVIdaHxagAgzAa-62oNRekStrJ3MbH7kW6vkzsOWm7VjAAMNahCuWBR/exec" method="POST">
+                    <input type="email" name="email" placeholder="Enter your email" required>
+                    <button type="submit" class="cs-button">Notify me on launch!</button>
+                </form>
+            </dialog>
+        </div>
+        <div id="cs-center">
+            <div class="cs-content mfd-display">
+                <div class="cs-left">
+                    <h1 class="cs-title">Build</h1>
+                    <p class="cs-text">Build your base by mining resources and spending resources on sructures, upgrades, or recruits. Build before night falls and hostile PMCs converge on your base.</p>
+                </div>
+                <div class="cs-center">
+                    <h1 class="cs-title">Defend</h1>
+                    <p class="cs-text">Defend your remote mining operations from agitators. Hostile PMCs will use the cover of night to seige your base - defend your base, or risk mission failure.</p>
+                </div>
+                <div class="cs-right">
+                    <h1 class="cs-title">Conquer</h1>
+                    <p class="cs-text">Conquer hostile mining outposts to weaken other PMCs, then strike them down for good. Control all mining outposts and destroy all hostile PMCs to win.</p>
+                </div>
+            </div>
+        </div>
+        <div id="cs-gallery">
+            <div class="cs-content">
+                <div class="cs-picture">
+                    <canvas id="gallery-containers" style="cursor: grab;"></canvas>
+                </div>
+                <div class="cs-text">
+                    <h2>The DNA of Helo</h2>
+                    <p>
+                       Helo was born from our love of co-op helicopter combat. 
+                       As our first commercial project together, we followed the <i>Risk of Rain</i> approach: 
+                       build a tight 2D experience first, with plans to eventually expand into 3D. 
+                       We merged this aerial action with <i>Kingdom</i>-style base building, 
+                       but instead of playing a passive monarch, you provide devastating air support. 
+                       Inspired by <i>MGSV</i>, we set our game in Central Africa to reflect the gritty reality of 
+                       PMC-dominated resource conflicts.
+                    </p>
+                </div>
+            </div>
+            <div class="cs-content">
+                <div class="cs-picture">
+                    <canvas id="gallery-tent" style="cursor: grab;"></canvas>
+                </div>
+                <div class="cs-text">
+                    <h2>Roadmap</h2>
+                    <p>
+                        Helo is currently in a playable state with about 5 minutes of gameplay. 
+                        We are in the process of refining gameplay elements like pacing, AI behavior, and asset implementation. 
+                        Playtesters are vitally important in this stage of development - send us an email if you would like to playtest.
+                        <br>
+                        josh@dithyrambicgames.com <br> julian@dithyrambicgames.com
+                    </p>
+                </div>
+            </div>
+            <div class="cs-content">
+                <div class="cs-picture">
+                    <canvas id="gallery-hesco" style="cursor: grab;"></canvas>
+                </div>
+                <div class="cs-text">
+                    <h2>The Team</h2>
+                    <p>
+                        The team consists of two developers, Julian and Josh. We met over a decade ago via Dust 514 - 
+                        where we first got a taste for co-op helicopter-based gameplay.
+                        We live on opposite sides of the US, but have remained good friends. 
+                        <br>
+                        We began developing games together for fun around 2024, and have many proof of concept games, 
+                        but we are very excited and motivated to release our first commercial game together. 
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div id="cs-developers">
+            <div id="cs-construction">
+                <button class="cs-button" id="open-modal-btn">ENLIST NOW</button>
+                <dialog id="cs-email" class="mfd-display">
+                    <form action="https://script.google.com/macros/s/AKfycbwfZ74sugwKmxVIdaHxagAgzAa-62oNRekStrJ3MbH7kW6vkzsOWm7VjAAMNahCuWBR/exec" method="POST">
+                        <input type="email" name="email" placeholder="Enter your email" required>
+                        <button type="submit" class="cs-button">Notify me on launch!</button>
+                    </form>
+                </dialog>
+        </div>
+        </div>
+    </div>
+    <script>
+
+        /****************
+        *   *   *   *   *
+        3D Model Viewer
+        Reusable factory  - call createModelViewer() for each model
+        https://freefrontend.com/code/interactive-3d-workspace-diorama-2026-02-16/
+        *  *   *   *   *
+        ****************/
+
+        const viewers = []
+
+        function createModelViewer(config) {
+            const {
+                canvas: canvasRef,
+                modelUrl,
+                textureUrl = null,
+                renderSize = 64,
+                displaySize = 364,
+                cameraPos = { x: 18, y: 10, z: 20 },
+                scenePos = { x: 0, y: -2, z: 0 },
+                controls: controlsConfig = {},
+                onLoad = null,
+                onProgress = null,
+            } = config
+
+            // Resolve canvas element
+            const canvas = typeof canvasRef === 'string'
+                ? document.querySelector(canvasRef)
+                : canvasRef
+
+            if (!canvas) {
+                console.error('createModelViewer: canvas not found  -', canvasRef)
+                return null
+            }
+
+            // Scene
+            const scene = new THREE.Scene()
+
+            // Camera
+            const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 100)
+            camera.position.set(cameraPos.x, cameraPos.y, cameraPos.z)
+            scene.add(camera)
+
+            // Controls - merge defaults with user overrides
+            const ctrlDefaults = {
+                enableDamping: true,
+                enableZoom: true,
+                enablePan: false,
+                minDistance: 10,
+                maxDistance: 20,
+                minPolarAngle: Math.PI / 4,
+                maxPolarAngle: Math.PI / 1.25,
+                minAzimuthAngle: -Math.PI / 1.25,
+                maxAzimuthAngle: Math.PI / 1,
+            }
+            const ctrlOpts = { ...ctrlDefaults, ...controlsConfig }
+            const controls = new THREE.OrbitControls(camera, canvas)
+            Object.keys(ctrlOpts).forEach(key => { controls[key] = ctrlOpts[key] })
+
+            // Renderer
+            const renderer = new THREE.WebGLRenderer({
+                canvas,
+                antialias: false,
+                alpha: true,
+            })
+            renderer.setSize(renderSize, renderSize)
+            renderer.setPixelRatio(1)
+            renderer.outputEncoding = THREE.sRGBEncoding
+            canvas.style.width = displaySize + 'px'
+            canvas.style.height = displaySize + 'px'
+            canvas.style.imageRendering = 'pixelated'
+
+            // Material  - baked texture or default lit
+            let material = null
+            if (textureUrl) {
+                const tex = new THREE.TextureLoader().load(textureUrl)
+                tex.flipY = false
+                tex.encoding = THREE.sRGBEncoding
+                material = new THREE.MeshBasicMaterial({ map: tex, side: THREE.DoubleSide })
+            }
+
+            // Lights (added regardless  - only visible on non-MeshBasic materials)
+            const ambient = new THREE.AmbientLight(0xffffff, 0.5)
+            scene.add(ambient)
+            const directional = new THREE.DirectionalLight(0xffffff, 1)
+            directional.position.set(5, 10, 5)
+            scene.add(directional)
+
+            // Load model
+            const loader = new THREE.GLTFLoader()
+            loader.load(
+                modelUrl,
+                (gltf) => {
+                    const model = gltf.scene
+                    if (material) {
+                        model.traverse(child => { if (child.isMesh) child.material = material })
+                    }
+                    scene.position.set(scenePos.x, scenePos.y, scenePos.z)
+                    scene.add(model)
+
+                    // Debug info
+                    const box = new THREE.Box3().setFromObject(model)
+                    console.log(`[ModelViewer] loaded: ${modelUrl}`)
+                    console.log('  size:', box.getSize(new THREE.Vector3()))
+                    console.log('  center:', box.getCenter(new THREE.Vector3()))
+
+                    if (onLoad) onLoad(model, scene)
+                },
+                (xhr) => {
+                    const pct = (xhr.loaded / xhr.total * 100).toFixed(1)
+                    if (onProgress) onProgress(pct)
+                    else console.log(`[ModelViewer] ${pct}% loaded`)
+                },
+                (err) => {
+                    console.error('[ModelViewer] failed to load:', modelUrl, err)
+                }
+            )
+
+            // Build viewer handle
+            const viewer = { scene, camera, renderer, controls, canvas, destroyed: false }
+
+            // Update function called each frame
+            viewer.update = () => {
+                if (viewer.destroyed) return
+                controls.update()
+                renderer.render(scene, camera)
+            }
+
+            // Cleanup
+            viewer.destroy = () => {
+                viewer.destroyed = true
+                renderer.dispose()
+                controls.dispose()
+                const idx = viewers.indexOf(viewer)
+                if (idx !== -1) viewers.splice(idx, 1)
+            }
+
+            viewers.push(viewer)
+            return viewer
+        }
+
+        /*  - Shared animation loop  - */
+        function tick() {
+            for (let i = 0; i < viewers.length; i++) {
+                viewers[i].update()
+            }
+            requestAnimationFrame(tick)
+        }
+        tick()
+
+        /*  - Existing hero model  - */
+        createModelViewer({
+            canvas: '.webgl',
+            modelUrl: 'https://raw.githubusercontent.com/JoshuaNHardison/helo2dmodel/main/helo.glb',
+            textureUrl: 'https://rawcdn.githack.com/ricardoolivaalonso/ThreeJS-Room01/98fd8d7909308ec03a596928a394bb25ed9239f1/baked.jpg',
+        })
+
+        /*  - Gallery models  - */
+        const galleryDefaults = {
+            renderSize: 64,
+            displaySize: 300,
+            cameraPos: { x: 5, y: 4, z: 6 },
+            scenePos: { x: 0, y: -1, z: 0 },
+            controls: {
+                minDistance: 3,
+                maxDistance: 12,
+                minAzimuthAngle: -Infinity,
+                maxAzimuthAngle: Infinity,
+            },
+        }
+
+        createModelViewer({
+            ...galleryDefaults,
+            canvas: '#gallery-tent',
+            modelUrl: 'https://raw.githubusercontent.com/JoshuaNHardison/helo2dmodel/main/tent_a.glb',
+            onLoad: (model) => {
+                model.scale.set(0.8, 0.8, 0.8)
+            },
+        })
+
+        createModelViewer({
+            ...galleryDefaults,
+            canvas: '#gallery-containers',
+            modelUrl: 'https://raw.githubusercontent.com/JoshuaNHardison/helo2dmodel/main/strapped_containers.glb',
+            onLoad: (model) => {
+                model.scale.set(2, 2, 2)
+            },
+        })
+
+        createModelViewer({
+            ...galleryDefaults,
+            canvas: '#gallery-hesco',
+            modelUrl: 'https://raw.githubusercontent.com/JoshuaNHardison/helo2dmodel/main/hesco_bastion.glb',
+            onLoad: (model) => {
+                model.scale.set(2, 2, 2)
+            },
+        })
+    </script>
+    <script>
+        /****************
+        *   *   *   *   *
+           Modal Opener
+        *  *   *   *   *
+        ****************/
+        const openModalBtn = document.getElementById('open-modal-btn');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const myDialog = document.getElementById('cs-email');
+
+        // Open the modal
+        openModalBtn.addEventListener('click', () => {
+        myDialog.showModal(); // Displays the dialog as a modal and renders the backdrop
+        });
+
+        // Close the modal
+        closeModalBtn.addEventListener('click', () => {
+        myDialog.close(); // Closes the dialog
+        });
+    </script>
+</body>
+</html>
