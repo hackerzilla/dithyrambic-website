@@ -9,8 +9,10 @@ body {
   max-width: 40rem;
   margin: auto;
 }
+
 p {
 }
+
 a {
     color: #73d02f;
 }
@@ -30,6 +32,7 @@ a:active {
 img {
   
 }
+
 .navbar {
     padding: 5px 5px 5px 5px;
     border: .2rem solid black;
@@ -40,6 +43,7 @@ img {
     font-size: 2rem;
     line-height: 1rem;
 }
+
 .text-things {
     display: flex;
     justify-content: center;

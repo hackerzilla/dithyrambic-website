@@ -1,0 +1,339 @@
+#!/bin/bash
+
+#
+# CONFIG
+#
+BUILD_DIR=/app/build
+DEV_DIR=/app/devenv
+SOURCE_DIR=/app/source
+PROD_DIR=/app
+SITES_DIR=/app/source/sites
+TOOLS_DIR=/app/tools
+HTTPD_USER=www-data
+HTTPD_GROUP=www-data
+
+#
+# PRIVATE
+#
+
+function _noop {
+    echo "Not implemented yet"
+}
+
+#
+# PUBLIC
+#
+
+function ensure-docker-env {
+  if ! [ -f /.dockerenv ]; then
+    echo "Sorry, this task only runs in a docker container; abandoning task"
+    exit 1
+  fi
+}
+
+function ensure-host-env {
+  if [ -f /.dockerenv ]; then
+    echo "Sorry, this task only runs in the host environment; abandoning task"
+    exit 1
+  fi
+}
+
+################################################################################
+#
+# Final build function and associated helper functions.
+#
+################################################################################
+
+#
+# Build all sites and config files, prepare the filesystem, and wrap it all
+# up in a Debian docker image!
+#
+function run-build {
+  ensure-host-env
+
+  clean-build-filesystem
+
+  prepare-build-filesystem
+
+  #   set-build-vars
+
+  #   build-jekyll-sites
+
+  #   build-fallback-site
+
+  build-config
+
+  build-dithyrambic-site
+
+  copy-deployment-files
+}
+
+
+#
+# Zap the build directory.
+#
+# All build artifacts, including the final product, live in the top level
+# "build" directory.
+#
+function clean-build-filesystem {
+  echo ""
+  echo "**********************"
+  echo "** clean build - begin"
+  echo "**********************"
+
+  ensure-host-env
+
+  shell-command rm -rf "${BUILD_DIR}"
+
+  echo "**********************"
+  echo "** clean build - end"
+  echo "**********************"
+  echo ""
+}
+
+#
+# Prepare the build directories including permissions
+#
+function prepare-build-filesystem {
+  echo ""
+  echo "*******************************"
+  echo "** Preparing filesystem ...   *"
+  echo "*******************************"
+
+  ensure-host-env
+
+  # dithyrambic site
+  shell-command mkdir -p "${BUILD_DIR}/sites/dithyrambic_com/htdocs"
+  shell-command mkdir -p "${BUILD_DIR}/deploy"
+  shell-command mkdir -p "${BUILD_DIR}/config"
+  shell-command mkdir -p "${BUILD_DIR}/logs"
+
+  echo "**********************"
+  echo "** done!             *"
+  echo "**********************"
+  echo ""
+}
+
+function build-config {
+    echo ""
+    echo "******************************"
+    echo "** build-config begin...     *"
+    echo "******************************"
+
+    ensure-host-env
+
+    DATA="{\
+      \"HOST_DITHYRAMBIC_SITE\": \"${HOST_DITHYRAMBIC_SITE:-dithyrambic.com}\", \
+      \"PORT\": \"${PORT:-4000}\" \
+      }"
+    perl-render ${SOURCE_DIR}/config/apache2.conf ${BUILD_DIR}/config/apache2.conf "${DATA}"
+
+    echo "******************************"
+    echo "* build-config Done          *"
+    echo "******************************"
+}
+
+function build-dithyrambic-site {
+    echo ""
+    echo "**********************************"
+    echo "** Building dithyrambic site ... *"
+    echo "**********************************"
+
+    ensure-host-env
+
+    # The site is currently fully static, so we just copy everything.
+    shell-command rsync -a "${SOURCE_DIR}/sites/dithyrambic_com/htdocs/" "${BUILD_DIR}/sites/dithyrambic_com/htdocs"
+
+    echo "************************************"
+    echo "** Done building dithyrambic site. *"
+    echo "************************************"
+    echo ""
+}
+
+#
+# Deployment files need to be placed into the build, ready for use at
+# deployment time.
+#
+function copy-deployment-files {
+    echo ""
+    echo "********************************"
+    echo "** Copying deployment files... *"
+    echo "********************************"
+
+    ensure-host-env
+
+    shell-command cp ${SOURCE_DIR}/deploy/entrypoint.sh ${BUILD_DIR}/deploy
+    shell-command cp ${TOOLS_DIR}/perl/render.pl ${BUILD_DIR}/deploy
+    shell-command cp ${SOURCE_DIR}/config/mime.conf ${BUILD_DIR}/config
+
+    echo "**********************************"
+    echo "* copying deployment files done. *"
+    echo "**********************************"
+}
+
+#
+# Ensure correct ownership and permissions for all files in the build.
+#
+function finalize-build-filesystem {
+  echo ""
+  echo "**************************************"
+  echo "** Finalizing build filesystem ...   *"
+  echo "**************************************"
+
+  ensure-host-env
+
+  shell-command chown -R "${HTTPD_USER}:${HTTPD_GROUP}" ${BUILD_DIR}
+  shell-command chmod u+w ${BUILD_DIR}/logs
+
+  echo "**********************"
+  echo "** done!             *"
+  echo "**********************"
+  echo ""
+}
+
+################################################################################
+################################################################################
+
+function bash-build {
+  DIR=$PWD docker compose -f tools/build/docker-compose.yml run --rm build bash
+}
+
+function build-deploy-image {
+  ensure-host-env
+  docker build \
+    -t jj:prod .
+}
+
+function shell-deploy-image {
+  ensure-host-env
+  docker run -it --rm -p 4000:4000 --name jj-prod --entrypoint bash jj:prod
+}
+
+function run-deploy-image {
+  docker run \
+    --name jj \
+    -e PORT=${PORT:-4000} \
+    -p ${PORT:-4000}:4000 \
+    --rm \
+    jj:prod
+}
+
+function shell-into-deploy-image {
+  ensure-host-env
+  docker exec -it jj bash
+}
+
+
+
+################################################################################
+#
+# Development tools
+#
+################################################################################
+
+function watch-dev-image {
+  ensure-host-env
+  docker compose -f tools/dev/docker-compose.yml \
+    run \
+    --rm \
+    --entrypoint /app/please \
+    dev watch-sites /app/source/sites /app/build/sites
+}
+
+function watch-sites {
+  echo "I'll watch the sites real soon!"
+}
+
+
+function run-dev-image {
+  ensure-host-env
+  DIR="${PWD}" docker compose -f tools/dev/docker-compose.yml \
+    run \
+    --rm \
+    -p 80:4000 \
+    dev
+}
+
+function shell-into-dev-container {
+  ensure-host-env
+  DIR="$PWD" docker compose -f tools/dev/docker-compose.yml exec dev bash
+}
+
+################################################################################
+#
+# Perl tools
+#
+################################################################################
+
+function run-perl {
+  ensure-host-env
+  DIR=$PWD docker compose -f tools/perl/docker-compose.yml run perl "$@"
+}
+
+#
+# Runs a shell command using the perl image
+#
+# TODO: replace with a simple, tiny alpine linux.
+#
+function shell-command {
+  ensure-host-env
+
+  echo ""
+  echo "> shell-command: $@ "
+  echo ""
+
+  DIR=$PWD docker compose \
+  -f tools/perl/docker-compose.yml \
+  run \
+  --rm \
+  --entrypoint "" \
+  perl "$@"
+}
+
+function perl-hello {
+  ensure-host-env
+  DIR=$PWD docker compose \
+  -f tools/perl/docker-compose.yml \
+  run \
+  --rm \
+  -e NAME="${NAME}" \
+  perl "${TOOLS_DIR}/perl/hello.pl" "$@"
+}
+
+function perl-shell {
+  ensure-host-env
+  DIR=$PWD docker compose \
+  -f tools/perl/docker-compose.yml \
+  run \
+  --rm \
+  -e NAME="${NAME}" \
+  --entrypoint "bash" \
+  perl
+}
+
+function perl-render {
+  ensure-host-env
+  DIR=$PWD docker compose \
+  -f tools/perl/docker-compose.yml \
+  run \
+  --rm \
+  perl "${TOOLS_DIR}/perl/render.pl" "$@"
+}
+
+
+################################################################################
+################################################################################
+
+function help {
+    echo "$0 <task> <args>"
+    echo "Runs the tasks listed below."
+    echo "To find out more about them, either read the source"
+    echo "for ${0} or the docs located in 'docs/tasks.md'."
+    echo "Tasks:"
+    # Note that this omits private functions - those prefixed with an _
+    compgen -A function | grep -e '^[^_]' | cat -n
+}
+
+TIMEFORMAT="Task completed in %3lR"
+time "${@:-help}"
+
