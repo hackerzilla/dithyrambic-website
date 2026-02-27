@@ -19,10 +19,10 @@ In order to do this, you will need to be using a computer that meets the followi
 
 The build is parameterized with the help of the following build variables. Each variable has a default value for production and development. These variables are populated by please automation scripts, but can be overridden from the command line.
 
-| Variable       | Production Default | Development Default |
-| -------------- | ------------------ | ------------------- |
-| INTERNAL_PORT  | 4000               | 4000                |
-| CONTAINER_PORT | 4000               | 80                  |
+| Variable       | Local Production | Development | Production |
+| -------------- | ---------------- | ----------- | ---------- |
+| INTERNAL_PORT  | 4000             | 4000        | 4000       |
+| CONTAINER_PORT | 4000             | 80          | 4000       |
 
 The `INTERNAL_PORT` variable is used to define the port upon which the Apache2 http server listens.
 
@@ -66,7 +66,7 @@ Next we build an image with the `build-deploy-image` task. It uses the top level
 Finally we use the `run-deploy-container` task to run a container that uses the deploy image.
 
 ```
-./please run-deploy-container 
+./please run-deploy-image 
 ```
 
 This container launches the *Apache2* web server using the configuration file we created in the build step above.
@@ -75,7 +75,15 @@ We are almost ready to access the site.
 
 ### Create Host Alias
 
-In order to access the site at the  hostname `dithyrambic.game`, we need to ensure the `/etc/hosts` file is properly set up to map this hostname to your local host (127.0.0.1).
+In order to access the site at the  hostname `dithyrambic.game`, we need to ensure the `hosts` file is properly set up to map this hostname to your local host (127.0.0.1).
+
+If you are using Linux or macOS, the hosts file is located at `/etc/hosts`, and you will edit like 
+
+```
+sudo vi /etc/hosts
+```
+
+Of course, you may use your favorite editor.
 
 Ensure a line like the following exists in `/etc/hosts`.
 
@@ -88,12 +96,18 @@ Ensure a line like the following exists in `/etc/hosts`.
 To view the site, take your browser to 
 
 ```
-http://www.dithyrambic.com
+http://dithyrambic.game
 ```
 
 Note the scheme is http not https.
 
 ## Development
+
+The essentials of the development workflow is:
+
+- build the project and create the deploy image just as for deployment
+- run the image with the entire repo mounted at the `/app` directory inside the container
+- in a separate terminal, run a filesystem watcher to synchronize edited files to the build directory, and therefore becoming available in the web site inside the container.
 
 For development, we need to operate in two host terminal windows. The first 
 is used to build a dev image and run it as a container; the second is to run a
@@ -101,17 +115,25 @@ filesystem watcher on the source directory, and rebuild the site whenever there
 are changes to source files.
 
 
-### Build and Run
+### Build Sites
 
 We build and run the site almost just the same as we do for production. 
 
-The only difference is 
+So, first we build everything:
+
+```
+./please run-build
+```
+
+### Build Image
+
+When we build the image, the only difference is the usage of the `BUILD_TYPE` environment variable.
 
 ```
 BUILD_TYPE=dev ./please build-deploy-image 
 ```
 
-
+When `BUILD_TYPE` is set to "dev", the docker image will include additional tools for development.
 
 ### Build and Run
 
@@ -121,17 +143,10 @@ The dev build and run task uses the please task `run-dev`.
 ./please run-dev
 ```
 
-This task first creates a build from scratch, just as for the production build.
-
 Then it builds a dev image and runs it as a the container while mounting the local build directory into the container. 
 
 
-
-
-
-
-This allows us to edit the file locally, while a task in the container rebuilds any changed files.rebuild incrementally, and have the new contents reflected 
-inside the container. 
+This allows us to edit the file locally, while a task in the container rebuilds any changed files.rebuild incrementally, and have the new contents reflected inside the container. 
 
 Apache will be started on port 4000, and the container will map port 4000 
 internally to 80 externally.
@@ -140,27 +155,21 @@ Note that we do this in order to access the sites without having to supply the
 port. (In the production build, the external app service does this for us using
 a proxy server.)
 
+### Create Host Alias
+
+As described above, we need to ensure there is a local alias for any site to be viewed locally.
+
 ### Viewing Site
-
-In order to access the site at the default hostname `www.dithyrambic.com`, you 
-need to ensure the `/etc/hosts` file is properly set up to map this hostname
-to your local host (127.0.0.1).
-
-Ensure a line like this exists in `/etc/hosts`.
-
-```
-127.0.0.1 dithyrambic.com www.dithyrambic.com
-```
 
 To view the site, take your browser to 
 
 ```
-http://www.dithyrambic.com
+http://dithyrambic.game
 ```
 
 Note the scheme is http not https.
 
-### Source Watchier and Automated Build
+### Source Watcher and Automated Build
 
 To avoid such a rebuild every time we change files and wish to preview them
 on the running site, we need to run a filesystem watcher. The watcher will
@@ -168,3 +177,13 @@ copy any changed file to the build directory.
 
 ```
 ./please watch-dev
+```
+
+## Notes
+
+- There are no tests
+- There is only one site at present, but the project is set up to handle multiple sites; however this is not yet documented.
+
+## TODO
+
+- Add documentation for perl tools, please script, the overall architecture
