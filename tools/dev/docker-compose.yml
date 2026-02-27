@@ -2,15 +2,16 @@ services:
   dev:
     working_dir: /app
     build:
-        context: ../..
+        context: .
+        args:
+            BUILD_ARG: dev
         dockerfile: Dockerfile
     container_name: dev
     dns: 8.8.8.8
     ports:
-        - "4000:4000"
         - "80:4000"
     expose:
-        - "4000"
         - "80"
     volumes:
       - $DIR:/app
+

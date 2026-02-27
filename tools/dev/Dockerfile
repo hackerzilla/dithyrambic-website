@@ -7,13 +7,11 @@ RUN apt update && \
   libhttp-request-params-perl libparse-http-useragent-perl \
   libcapture-tiny-perl libnet-dns-perl libnet-domain-tld-perl \
   libemail-valid-perl libtext-template-perl \
-  apache2 gettext-base
-
-COPY ./build /app/build
+  apache2 gettext-base \
+  inotify-tools rsync && \
+  mkdir /var/run/apache2
 
 WORKDIR /app/build
-
-RUN chown -R www-data:www-data /app/build && chmod u+w /app/build/logs &&  mkdir /var/run/apache2
 
 EXPOSE 4000
 

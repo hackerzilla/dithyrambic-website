@@ -27,7 +27,7 @@ For development, we perform the same tasks as for a production build, except
 that they perform in a different manner.
 
 ```
-PORT=80 ./please run-build
+PORT=80 ./please run-uild
 ```
 
 This builds the entire set of sites and the web server configuration, and 
@@ -47,4 +47,23 @@ copy any changed file to the build directory.
 PORT=80 ./please run-dev-image
 ```
 
+inotifywait -m -e modify,create,delete,move --exclude \.kate-swp -r /app/source && rsync -a /app/source/ /app/build
 
+rsync -anvc --delete --exclude='*.kate-swp'  /app/source/ /app/build
+
+
+inotifywait -m -e modify,create,delete,move --exclude \.kate-swp -r /app/source ; rsync -avc --delete --exclude='*.kate-swp'  /app/source/ /app/build
+
+
+
+Example of formatted output (csv), piping to grep
+
+inotifywait -m -e modify,create,delete,move --exclude \.kate-swp -r --format '%;e, "%w", "%f"' /app/source | grep '.css'
+
+
+need a bash loop in order to run a command:
+
+while inotifywait -e modify,create,delete,move --exclude \.kate-swp -r /app/source
+do
+    rsync -avc --delete --exclude='*.kate-swp'  /app/source/ /app/build
+done
