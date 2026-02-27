@@ -123,7 +123,7 @@ function build-config {
     ensure-host-env
 
     DATA="{\
-      \"HOST_DITHYRAMBIC_SITE\": \"${HOST_DITHYRAMBIC_SITE:-dithyrambic.com}\", \
+      \"HOST_DITHYRAMBIC_SITE\": \"${HOST_DITHYRAMBIC_SITE:-dithyrambic.game}\", \
       \"SERVER_PORT\": \"${SERVER_PORT:-4000}\" \
       }"
     perl-render ${SOURCE_DIR}/config/apache2.conf ${BUILD_DIR}/config/apache2.conf "${DATA}"
@@ -163,7 +163,6 @@ function copy-deployment-files {
     ensure-host-env
 
     shell-command cp ${SOURCE_DIR}/deploy/entrypoint.sh ${BUILD_DIR}/deploy
-    shell-command cp ${TOOLS_DIR}/perl/render.pl ${BUILD_DIR}/deploy
     shell-command cp ${SOURCE_DIR}/config/mime.conf ${BUILD_DIR}/config
 
     echo "**********************************"
@@ -201,6 +200,7 @@ function bash-build {
 function build-deploy-image {
   ensure-host-env
   docker build \
+    --build-arg BUILD_TYPE="${BUILD_TYPE:-prod}" \
     -t jj:prod .
 }
 
@@ -231,23 +231,10 @@ function shell-into-deploy-image {
 #
 ################################################################################
 
-function watch-dev-image {
-  ensure-host-env
-  DIR=$PWD docker compose -f tools/dev/docker-compose.yml \
-    run \
-    --rm \
-    --entrypoint /app/please \
-    dev watch-sites
-}
-
-function watch-sites {
-  ensure-docker-env
-  while inotifywait -e modify,create,delete,move --exclude \.kate-swp -r /app/source; do
-    rsync -avc --delete --exclude='*.kate-swp'  /app/source/ /app/build
-  done
-}
-
-function run-dev-image {
+#
+# Builds the dev image, if required, and runs the entrypoint.
+#
+function run-dev {
   ensure-host-env
   SERVER_PORT=4000 PORT=80 run-build
   DIR="${PWD}" docker compose -f tools/dev/docker-compose.yml \
@@ -258,7 +245,41 @@ function run-dev-image {
     dev
 }
 
-function shell-dev-image {
+#
+# Runs another dev container, but rather than run the web server via
+# the entrypoint, we run a please script to start the source file watcher
+# (See function below)
+#
+function watch-dev {
+  ensure-host-env
+  DIR=$PWD docker compose -f tools/dev/docker-compose.yml \
+    run \
+    --rm \
+    --entrypoint /app/please \
+    dev watch-source
+}
+
+#
+# Watches the source directory and copies any changed files into the build
+# directory
+#
+# NOTE: this will need to change if we are compiling any templates, etc.
+#
+function watch-source {
+  ensure-docker-env
+  while inotifywait -e modify,create,delete,move --exclude \.kate-swp -r /app/source; do
+    rsync -avc --delete --exclude='*.kate-swp'  /app/source/ /app/build
+  done
+}
+
+#
+# Start a bash shell inside a new dev container.
+#
+# Useful for debugging, poking around the container.
+# Note that unlike the "shell into" script below, this one starts a new
+# container.
+#
+function shell-dev {
   ensure-host-env
   SERVER_PORT=4000 PORT=80 run-build
   DIR="${PWD}" docker compose -f tools/dev/docker-compose.yml \
@@ -271,7 +292,10 @@ function shell-dev-image {
     dev
 }
 
-function shell-into-dev-container {
+#
+# Start a bash shell inside the running dev container.
+#
+function shell-into-dev {
   ensure-host-env
   DIR="$PWD" docker compose -f tools/dev/docker-compose.yml exec dev bash
 }

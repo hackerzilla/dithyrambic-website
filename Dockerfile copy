@@ -7,23 +7,13 @@ RUN apt update && \
   libhttp-request-params-perl libparse-http-useragent-perl \
   libcapture-tiny-perl libnet-dns-perl libnet-domain-tld-perl \
   libemail-valid-perl libtext-template-perl \
-  apache2 gettext-base && \
-  mkdir /var/run/apache2
-
-ARG BUILD_TYPE=prod
-
-RUN if [ "$BUILD_TYPE" = "dev" ]; then \
-      echo 'DEV BUILD'; \
-      apt install -y inotify-tools rsync; \
-    else \
-      echo 'PROD BUILD'; \
-    fi
+  apache2 gettext-base
 
 COPY ./build /app/build
 
 WORKDIR /app/build
 
-RUN chown -R www-data:www-data /app/build && chmod u+w /app/build/logs
+RUN chown -R www-data:www-data /app/build && chmod u+w /app/build/logs &&  mkdir /var/run/apache2
 
 EXPOSE 4000
 
