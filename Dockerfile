@@ -1,20 +1,14 @@
-FROM debian:trixie
+FROM alpine:3.23.3
 
-RUN apt update && \
-  apt upgrade -y && \
-  apt install -y libnet-ssleay-perl libparse-distname-perl \
-  liblog-log4perl-perl libcgi-tiny-perl libconfig-tiny-perl \
-  libhttp-request-params-perl libparse-http-useragent-perl \
-  libcapture-tiny-perl libnet-dns-perl libnet-domain-tld-perl \
-  libemail-valid-perl libtext-template-perl \
-  apache2 gettext-base && \
-  mkdir /var/run/apache2
+RUN apk update && \
+  apk upgrade  && \
+  apk add apache2 gettext bash
 
 ARG BUILD_TYPE=prod
 
 RUN if [ "$BUILD_TYPE" = "dev" ]; then \
       echo 'DEV BUILD'; \
-      apt install -y inotify-tools rsync; \
+      apk add inotify-tools rsync; \
     else \
       echo 'PROD BUILD'; \
     fi
@@ -23,7 +17,7 @@ COPY ./build /app/build
 
 WORKDIR /app/build
 
-RUN chown -R www-data:www-data /app/build && chmod u+w /app/build/logs
+RUN chown -R apache:apache /app/build && chmod u+w /app/build/logs
 
 EXPOSE 4000
 

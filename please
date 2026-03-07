@@ -9,8 +9,8 @@ SOURCE_DIR=/app/source
 PROD_DIR=/app
 SITES_DIR=/app/source/sites
 TOOLS_DIR=/app/tools
-HTTPD_USER=www-data
-HTTPD_GROUP=www-data
+HTTPD_USER=apache
+HTTPD_GROUP=apache
 
 #
 # PRIVATE
@@ -48,7 +48,7 @@ function ensure-host-env {
 # Build all sites and config files, prepare the filesystem, and wrap it all
 # up in a Debian docker image!
 #
-function run-build {
+function build-sites {
   ensure-host-env
 
   clean-build-filesystem
@@ -97,7 +97,7 @@ function prepare-build-filesystem {
   ensure-host-env
 
   # dithyrambic site
-  shell-command mkdir -p "${BUILD_DIR}/sites/dithyrambic_game/htdocs"
+  shell-command mkdir -p "${BUILD_DIR}/sites/dithyrambic_games/htdocs"
   shell-command mkdir -p "${BUILD_DIR}/deploy"
   shell-command mkdir -p "${BUILD_DIR}/config"
   shell-command mkdir -p "${BUILD_DIR}/logs"
@@ -117,7 +117,7 @@ function build-config {
     ensure-host-env
 
     DATA="{\
-      \"HOST_DITHYRAMBIC_SITE\": \"${HOST_DITHYRAMBIC_SITE:-dithyrambic.game}\", \
+      \"HOST_DITHYRAMBIC_SITE\": \"${HOST_DITHYRAMBIC_SITE:-dithyrambic.games}\", \
       \"SERVER_PORT\": \"${SERVER_PORT:-4000}\" \
       }"
     perl-render ${SOURCE_DIR}/config/apache2.conf ${BUILD_DIR}/config/apache2.conf "${DATA}"
@@ -136,7 +136,9 @@ function build-dithyrambic-site {
     ensure-host-env
 
     # The site is currently fully static, so we just copy everything.
-    shell-command rsync -a "${SOURCE_DIR}/sites/dithyrambic_game/htdocs/" "${BUILD_DIR}/sites/dithyrambic_game/htdocs"
+    shell-command rsync -a \
+      "${SOURCE_DIR}/sites/dithyrambic_games/htdocs/" \
+      "${BUILD_DIR}/sites/dithyrambic_games/htdocs"
 
     echo "************************************"
     echo "** Done building dithyrambic site. *"
@@ -205,11 +207,16 @@ function shell-deploy-image {
 
 function run-deploy-image {
   ensure-host-env
+
+  echo "Running deploy image"
+  echo "  SERVER_PORT: ${SERVER_PORT:-4000}"
+  echo "  CONTAINER_PORT: ${CONTAINER_PORT:-80}:4000"
   docker run \
     --name jj \
     -e SERVER_PORT=${SERVER_PORT:-4000} \
     -p ${CONTAINER_PORT:-80}:4000 \
     --rm \
+    -it \
     jj:prod
 }
 
@@ -219,25 +226,11 @@ function shell-into-deploy-image {
 }
 
 
-
 ################################################################################
 #
 # Development tools
 #
 ################################################################################
-
-#
-# Builds the dev image, if required, and runs the entrypoint.
-#
-# function run-dev {
-#   ensure-host-env
-#   DIR="${PWD}" docker compose -f tools/dev/docker-compose.yml \
-#     run \
-#     --rm \
-#     --build \
-#     -p 80:4000 \
-#     dev
-# }
 
 function run-dev-image {
   ensure-host-env
@@ -324,9 +317,7 @@ function run-perl {
 function shell-command {
   ensure-host-env
 
-  echo ""
   echo "> shell-command: $@ "
-  echo ""
 
   DIR=$PWD docker compose \
   -f tools/perl/docker-compose.yml \

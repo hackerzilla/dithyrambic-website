@@ -35,19 +35,19 @@ You'll need to open a terminal window with this repo as the current directory. W
 First we build the sites with the `run-build` please task.
 
 ```
-./please run-build
+./please build-sites
 ```
 
 First of all, a *please* task is a function defined in the *please* script located in the top directory of the repo. The *please* script is a bash script used to create short scripts to automate tasks we use for building and testing; it is [discussed in more detail in the documentation](docs/please.md).
 
-What does the `run-build` task do?
+What does the `build-sites` task do?
 
 - Creates a build directory `build`, removing any previous contents. This is directory that will be used to contain everything we need for running the web sites.
 - Copies the *dithrambic* site into the build directory
 - Compiles the web server configuration files `apache2.conf and mime.conf`
 - Sets permissions on files and directories appropriate for the web server to access them
 
-At the end of this, the build site contains a directory `build/sites/dithrambic_con` containing a web site ready to be served, an apache configuration to allow apache to serve it, and a script to launch the site.
+At the end of this, the build site contains a directory `build/sites/dithrambic_games` containing a web site ready to be served, an apache configuration to allow apache to serve it, and a script to launch the site.
 
 After running this task, feel free to explore that directory.
 
@@ -88,7 +88,7 @@ Of course, you may use your favorite editor.
 Ensure a line like the following exists in `/etc/hosts`.
 
 ```
-127.0.0.1 dithyrambic.game
+127.0.0.1 dithyrambic.games
 ```
 
 ### View Site
@@ -96,7 +96,7 @@ Ensure a line like the following exists in `/etc/hosts`.
 To view the site, take your browser to 
 
 ```
-http://dithyrambic.game
+http://dithyrambic.games
 ```
 
 Note the scheme is http not https.
@@ -122,7 +122,7 @@ We build and run the site almost just the same as we do for production.
 So, first we build everything:
 
 ```
-./please run-build
+./please build-sites
 ```
 
 ### Build Image
@@ -164,7 +164,7 @@ As described above, we need to ensure there is a local alias for any site to be 
 To view the site, take your browser to 
 
 ```
-http://dithyrambic.game
+http://dithyrambic.games
 ```
 
 Note the scheme is http not https.
