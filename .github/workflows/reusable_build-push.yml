@@ -28,7 +28,7 @@ jobs:
 
             - name: Build all sites
               id: build-sites
-              run: ./please run-build
+              run: ./please build-sites
               env:
                   BUILD_TYPE: ${{ inputs.build_type }}
 

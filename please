@@ -279,7 +279,7 @@ function watch-source {
 #
 function shell-dev {
   ensure-host-env
-  SERVER_PORT=4000 PORT=80 run-build
+  SERVER_PORT=4000 PORT=80 build-sites
   DIR="${PWD}" docker compose -f tools/dev/docker-compose.yml \
     run \
     --rm \
