@@ -22,7 +22,7 @@ The build is parameterized with the help of the following build variables. Each 
 | Variable       | Local Production | Development | Production |
 | -------------- | ---------------- | ----------- | ---------- |
 | INTERNAL_PORT  | 4000             | 4000        | 4000       |
-| CONTAINER_PORT | 4000             | 80          | 4000       |
+| CONTAINER_PORT | 80               | 80          | 4000       |
 
 The `INTERNAL_PORT` variable is used to define the port upon which the Apache2 http server listens.
 
@@ -99,7 +99,7 @@ To view the site, take your browser to
 http://dithyrambic.games
 ```
 
-Note the scheme is http not https.
+Note the scheme is `http` not `https`.
 
 ## Development
 
@@ -140,7 +140,7 @@ When `BUILD_TYPE` is set to "dev", the docker image will include additional tool
 The dev build and run task uses the please task `run-dev`.
 
 ```
-./please run-dev
+./please run-dev-image
 ```
 
 Then it builds a dev image and runs it as a the container while mounting the local build directory into the container. 
@@ -174,6 +174,8 @@ Note the scheme is http not https.
 To avoid such a rebuild every time we change files and wish to preview them
 on the running site, we need to run a filesystem watcher. The watcher will
 copy any changed file to the build directory.
+
+First open a fresh terminal window in the repo directory.
 
 ```
 ./please watch-dev
