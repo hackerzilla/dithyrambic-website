@@ -9,27 +9,35 @@ body {
   max-width: 40rem;
   margin: auto;
 }
+
 p {
 }
+
 a {
     color: #73d02f;
 }
+
 a:visited {
     color: #73d02f;
 }
+
 a:hover {
     color: #d8dd22;
 }
+
 a:active {
     color: #eab315;
 }
+
 ::selection {
     background-color: #eab315;
     color: grey;
 }
+
 img {
   
 }
+
 .navbar {
     padding: 5px 5px 5px 5px;
     border: .2rem solid black;
@@ -40,6 +48,7 @@ img {
     font-size: 2rem;
     line-height: 1rem;
 }
+
 .text-things {
     display: flex;
     justify-content: center;
@@ -49,19 +58,24 @@ img {
     line-height: 1rem;
     transform: scaleY(1.67);
 }
+
 .logo {
     width: 4rem;
     height: auto;
 }
+
 .landing-page{
     text-align: center;
 }
+
 .landing-page p {
     text-indent: 0rem;
 }
+
 .image-gallery {
     text-align: center;
 }
+
 .gallery-image {
     max-width: 40rem;
     text-align: center;
