@@ -266,7 +266,7 @@ function watch-dev {
 function watch-source {
   ensure-docker-env
   while inotifywait -e modify,create,delete,move --exclude \.kate-swp -r /app/source/sites; do
-    rsync -avc --delete --exclude='*.kate-swp'  /app/source/sites /app/build/sites
+    rsync -avc --delete --exclude='*.kate-swp'  /app/source/sites /app/build/
   done
 }
 
