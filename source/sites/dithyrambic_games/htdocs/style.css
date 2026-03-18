@@ -47,6 +47,7 @@ img {
     gap: 1rem;
     font-size: 2rem;
     line-height: 1rem;
+    font-family: 'Times', serif;
 }
 
 .text-things {
@@ -62,6 +63,8 @@ img {
 .logo {
     width: 4rem;
     height: auto;
+    filter: drop-shadow(0 0 8px #FFFFFF)
+            drop-shadow(0 0 20px #FFFFFF);
 }
 
 .landing-page{
@@ -96,4 +99,42 @@ img {
 h1 {
     text-align: left;
     padding-left: 0%
+}
+.portfolio {
+    color: #39FF14;
+    font-family: 'JetBrains Mono', monospace;
+    background-color: #000;
+    text-shadow:
+        0 0 4px #39FF14AA,
+        0 0 11px #39FF14AA,
+        0 0 19px #39FF14AA,
+        0 0 40px #0fa00fAA;
+}
+
+.portfolio a {
+    color: #FFBF00;
+    text-shadow:
+        0 0 4px #FFBF00AA,
+        0 0 11px #FFBF00AA,
+        0 0 19px #FFBF00AA,
+        0 0 40px #FFBF00AA; 
+}
+
+.portfolio a:hover{
+    text-shadow:
+        0 0 4px #d8dd22AA,
+        0 0 11px #d8dd22AA,
+        0 0 19px #d8dd22AA,
+        0 0 40px #d8dd22AA;
+}
+.portfolio a:active{
+    text-shadow:
+        0 0 4px #eab315AA,
+        0 0 11px #eab315AA,
+        0 0 19px #eab315AA,
+        0 0 40px #eab315AA;
+}
+
+.portfolio .navbar {
+    /* border: .2rem solid #39FF14 ; */
 }
