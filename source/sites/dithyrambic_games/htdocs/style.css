@@ -101,7 +101,9 @@ h1 {
     padding-left: 0%
 }
 .portfolio {
-    color: #39FF14;
+    /* color: #39FF14; super saturated */
+    /* color: #a8ff98; very unsaturated */ 
+    color: #83ff6e; /* in the middle, more readable than pure green, more character than white */
     font-family: 'JetBrains Mono', monospace;
     background-color: #000;
     text-shadow:
@@ -112,7 +114,8 @@ h1 {
 }
 
 .portfolio a {
-    color: #FFBF00;
+    /* color: #FFBF00; */
+    color: #ffd65a;
     text-shadow:
         0 0 4px #FFBF00AA,
         0 0 11px #FFBF00AA,
@@ -150,9 +153,9 @@ h1 {
     repeating-linear-gradient(
     to bottom,
     transparent 0px,
-    transparent 3px,
-    rgba(0, 0, 0, 0.15) 3px,
-    rgba(0, 0, 0, 0.15) 4px
+    transparent 4px,
+    rgba(0, 0, 0, 0.15) 4px,
+    rgba(0, 0, 0, 0.15) 5px
   ),
     repeating-linear-gradient(
       to right,
