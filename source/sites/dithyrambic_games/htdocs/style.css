@@ -1,9 +1,15 @@
 body {
+    margin: 0;
+    padding: 0;
+}
+
+.main-content {
   padding-left: 15%;
   padding-right: 15% ;
-  padding-top: 1rem;
+  /* padding-top: 1rem; */
+  padding-top: 0;
   padding-bottom: 1rem;
-  background-color: #c77ffc;
+  /* background-color: #c77ffc; */
   justify-content: center;
   align-items: center;
   max-width: 40rem;
@@ -178,4 +184,19 @@ h1 {
     );
   pointer-events: none;
   z-index: 9999;
+}
+
+.title-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 0.5rem 1rem;
+    background-color: #1a1a1a;
+    border-bottom: 1px solid #333;
+    text-shadow: none;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    color: #bbb;
 }
