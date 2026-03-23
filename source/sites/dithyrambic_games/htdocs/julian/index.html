@@ -2,8 +2,10 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
         <link rel="stylesheet" href="/style.css">
     </head>
+
     <body class="portfolio">
         
         <!--Terminal title bar-->
@@ -11,316 +13,426 @@
             ~/developers/programmers/julian-pearson-rickenbach.portfolio
         </div>
 
-        <div class="main-content">
-            <pre style="font-family: monospace;">
+        <div class="page-layout">
+            <!-- Tree sidebar navigation -->
+            <nav class="tree-sidebar">
+                <div class="tree-root">.</div>
+                <span class="tree-line">├── <a href="#projects">Projects</a></span>
+                <div class="tree-group" data-parent="projects">
+                    <span class="tree-line sub">│   ├── <a href="#zombulacrum">Zombulacrum</a></span>
+                    <span class="tree-line sub">│   ├── <a href="#helo">helo</a></span>
+                    <span class="tree-line sub">│   ├── <a href="#mecha-smash">Mecha Smash</a></span>
+                    <span class="tree-line sub">│   ├── <a href="#flockforce">FlockForce</a></span>
+                    <span class="tree-line sub">│   ├── <a href="#inoculum">Inoculum</a></span>
+                    <span class="tree-line sub">│   ├── <a href="#nova">Nova</a></span>
+                    <span class="tree-line sub">│   ├── <a href="#fishes">Life Goes On</a></span>
+                    <span class="tree-line sub">│   ├── <a href="#algorhythmic">Algorhythmic</a></span>
+                    <span class="tree-line sub">│   └── <a href="#game-of-life">Game of Life</a></span>
+                </div>
+                <span class="tree-line">├── <a href="#languages">Languages</a></span>
+                <span class="tree-line">├── <a href="#skills">Skills</a></span>
+                <span class="tree-line">├── <a href="#tools">Dev Tools</a></span>
+                <span class="tree-line">├── <a href="#about">About Me</a></span>
+                <span class="tree-line">└── <a href="#contact">Contact Me</a></span>
+            </nav>
+            <div class="main-content">
+                <section class="page-section" id="projects">
+                <pre style="font-family: monospace;">
     ____               _           __      
    / __ \_________    (_)__  _____/ /______
   / /_/ / ___/ __ \  / / _ \/ ___/ __/ ___/
  / ____/ /  / /_/ / / /  __/ /__/ /_(__  ) 
 /_/   /_/   \____/_/ /\___/\___/\__/____/  
                 /___/                      
-            </pre>
+                </pre>
 
 
-            <h2><i>Zombulacrum</i></h2>
-            <h3>Zombie FPS - Multiplayer Survival Horror - In Active Development</h3>
-            <p>Tech Stack: Godot Engine 4.6+, Blender</p>
-            <p>Team Size: Solo</p>
-            <p>Role: Creator</p>
-            <a href="">
-                Technical Demo Footage
-            </a>
-            <br>
-            <a href="">
-                Dev log YouTube playlist
-            </a>
-            <p>
-                <i>Zombulacrum</i> is a project that I've been working off-and-on for 
-                about 2 years now. What started as a top down zombie RTS has morphed 
-                into an exploration of the kind of game I truly want to play. I've 
-                always looked fondly on my childhood memories of playing 
-                <i>Call of Duty: Black Ops Zombies</i> with friends. At the start 
-                the zombies were horrifying. The world felt atmospheric, empty and 
-                we were absolutely stranded there alone and with only ourselves to depend 
-                on for survival. Something about this repeated experience really stuck with me
-                and caused my obsession with making something to replicate and expand upon 
-                those feelings. 
-                <br><br>
-                Right now <i>Zombulacrum</i> is still in the pre-alpha stages, but the idea is 
-                fairly fleshed out. Take a look at the tech demo footage and stay tuned into 
-                my bluesky and youtube accounts for more updates.
-            </p>
+                <section class="project-section" id="zombulacrum">
+                    <h2><i>Zombulacrum</i></h2>
+                    <h3>Zombie FPS - Multiplayer Survival Horror - In Active Development</h3>
+                    <p>Tech Stack: Godot Engine 4.6+, Blender</p>
+                    <p>Team Size: Solo</p>
+                    <p>Role: Creator</p>
+                    <a href="">
+                        Technical Demo Footage
+                    </a>
+                    <br>
+                    <a href="">
+                        Dev log YouTube playlist
+                    </a>
+                    <p>
+                        <i>Zombulacrum</i> is a project that I've been working off-and-on for 
+                        about 2 years now. What started as a top down zombie RTS has morphed 
+                        into an exploration of the kind of game I truly want to play. I've 
+                        always looked fondly on my childhood memories of playing 
+                        <i>Call of Duty: Black Ops Zombies</i> with friends. At the start 
+                        the zombies were horrifying. The world felt atmospheric, empty and 
+                        we were absolutely stranded there alone and with only ourselves to depend 
+                        on for survival. Something about this repeated experience really stuck with me
+                        and caused my obsession with making something to replicate and expand upon 
+                        those feelings. 
+                        <br><br>
+                        Right now <i>Zombulacrum</i> is still in the pre-alpha stages, but the idea is 
+                        fairly fleshed out. Take a look at the tech demo footage and stay tuned into 
+                        my bluesky and youtube accounts for more updates.
+                    </p>
+                </section>
 
 
-            <h2><i>helo</i></h2>
-            <h3>Helicopter co-op Kingdom-like</h3>
-            <p>Tech Stack: Godot Engine 4.6+, Blender</p>
-            <p>Team Size: 2</p>
-            <p>Role: Co-creator, Programmer</p>
-            <a href="">
-                Demo Footage
-            </a>
-            <p>
-                <i>helo</i> is a game I'm collaborating on with my good friend Josh.
-                Born from a love of games where we would fly helicopters together in 
-                tightly knit co-op gameplay--like <i>Battlefield 3</i>--we are making 
-                a game that's also inspired by <i>Kingdom: 2 Crowns</i> with our own 
-                take on it. You fly a helicopter around, recruit mercenary troops, 
-                assign troop roles, build out your base, vie for resources and expand 
-                your private miliary company's operational territory. The game is meant 
-                to be lighthearted co-op fun that also points out and constrasts to the 
-                grim reality of PMCs in the third-world. Look out for our game releasing 
-                Steam sometime this year!
-            </p>
-
-
-            <h2><i>Mecha Smash</i></h2>
-            <h3>Platform Fighter with Customizable Mechs</h3>
-            <p>Tech Stack: Unity Engine, Procreate</p>
-            <p>Team Size: 5</p>
-            <a href="https://hackerzilla.itch.io/mecha-smash">itch.io game page</a>
-            <br>
-            <a href="https://docs.google.com/presentation/d/1Z_aNEV_wXEtTF6-ry2-c85T2hvunxZxMoUvzL81pzus/edit?usp=sharing">
-                Original Game Pitch Slide Deck
-            </a>
-            <p>
-                <i>Mecha Smash</i> was my most ambitious project to-date. 
-                It started as a game pitch for the final project of the UC Berkeley 
-                Game Design and Development DeCal. It got enough votes by classmates 
-                who were interested in working on it. This is where my project experience 
-                build skills in ideation, pitching, leadership, 
-                programming, and presentation, really came in handy. Over two months 
-                we made a fun couch-competitive platform fighting game inspired by 
-                the <i>Super Smash Bros.</i> series created by Masahiro Sakurai. 
-                The original spin on the concept is that instead of having a cast of characters 
-                for players to choose from, they start with a mech frame and select parts 
-                for head, torso, arms and legs which in turn determine the mech's 
-                moveset--their abilities--in an interface similar to that for customizing 
-                your kart in <i>Mario Kart</i>.
-                I'm proud to say that the game came out pretty good and the team 
-                continues to work on a new version to this day. 
-                <br><br>
-                My personal contribution was the original pitch and idea, a good chunk 
-                of the programming--including merging pull requests and fixing git conflicts.
-                As the project manager I strived to replicate Jake's model of lead-by-example 
-                that I was exposed to earlier and so I took it on me to make sure progress was 
-                constantly being made. I also learned from this experience that delegating 
-                meaningful work on a team is very difficult, and I still am constantly developing 
-                this skill. 
-                I also drew the pixel art for the mechs and their constituent parts.
-                In addition, I setup and animated the 2D mech skeletons using Unity's 2D skeleton 
-                system, including inverse kinematics.
-                It truly was a group project, and I continually sought out input from my 
-                super creative teammates, who gladly gave it. Through our combined creativity
-                the project turned out pretty awesome. Stay tuned for updates!
-            </p>
-
-
-            <h2><i>FlockForce</i></h2>
-            <h3>Compute Shader Boids Simulation</h3>
-            <p>Teach Stack: Godot Engine, GLSL Compute Shaders</p>
-            <p>Team Size: 4</p>
-            <a href="https://hackerzilla.github.io/FlockForce/">Project Paper Report</a>
-            <br>
-            <a href="https://github.com/hackerzilla/FlockForce">https://github.com/hackerzilla/FlockForce</a>
-            <p>
-                This was my final project for CS 184: Computer Graphics at UC Berkeley. 
-                As a team we implemented GPU compute shader accelerated boids algorithm 
-                which roughly 10x'ed the number of boids we could achieve at a >=60 frames 
-                per second on a few modern laptops. For this project we used Godot Engine which 
-                provides a sufficient interface to implement compute shaders in GLSL. 
+                <section class="project-section" id="helo">
+                    <h2><i>helo</i></h2>
+                    <h3>Helicopter co-op Kingdom-like</h3>
+                    <p>Tech Stack: Godot Engine 4.6+, Blender</p>
+                    <p>Team Size: 2</p>
+                    <p>Role: Co-creator, Programmer</p>
+                    <a href="">
+                        Demo Footage
+                    </a>
+                    <p>
+                        <i>helo</i> is a game I'm collaborating on with my good friend Josh.
+                        Born from a love of games where we would fly helicopters together in 
+                        tightly knit co-op gameplay--like <i>Battlefield 3</i>--we are making 
+                        a game that's also inspired by <i>Kingdom: 2 Crowns</i> with our own 
+                        take on it. You fly a helicopter around, recruit mercenary troops, 
+                        assign troop roles, build out your base, vie for resources and expand 
+                        your private miliary company's operational territory. The game is meant 
+                        to be lighthearted co-op fun that also points out and constrasts to the 
+                        grim reality of PMCs in the third-world. Look out for our game releasing 
+                        Steam sometime this year!
+                    </p>
+                </section>
                 
-                My contribution to this project was the intial idea of compute shader boids, in 
-                addition to the expertise in Godot Engine which I had ascertained by this point. 
-                I also provided leadership and fascillitated group work sessions. I wrote much 
-                of the early code, i.e. the initial CPU based naive boids algorithm, but transitioned 
-                to a product manager role and allowed my teammates to lead on the coding front. 
 
-                Surprisingly, when I was reviewing my old projects I found the experience on the
-                <i>Game of Life</i> sim from two years earlier helped on this project, where we 
-                used a ping-pong double buffer when updating the boid velocities. 
-            </p>
-            
-
-            <h2><i>Inoculum</i></h2>
-            <h3>Third Person Action Adventure Game</h3>
-            <p>Tech stack: Unreal Engine 5, Unreal Blueprints, Perforce </p>
-            <p>Team Size: 6</p>
-            <a href="https://ccperalta-my.sharepoint.com/personal/10924894_cc_peralta_edu/_layouts/15/stream.aspx?id=%2Fpersonal%2F10924894%5Fcc%5Fperalta%5Fedu%2FDocuments%2FGame%20Dev%20Stuff%2FJulian%5FInoculum%5FFull%5FPlaythrough%5F1%2Emp4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0&ga=1&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Ebb427650%2D8749%2D4916%2Da0ff%2Df57b2397c9cd">
-                Gameplay Walkthrough Video
-            </a>
-            <br>
-            <p>
-                During my year break from UC Berkeley I took some game development 
-                courses at Berkeley City College, and there I worked on a really 
-                awesome group project. The game is a third person action adventure 
-                where the player can cast spells to fight plague monsters to try and 
-                save their partner. Inoculum was made in Unreal Engine 5 using mostly 
-                handmade models and animations. 
-
-                My contribution to this project was that I implemented the HUD UI as well 
-                as coded some of the gameplay logic like saving progress and loading levels. 
-
-                I learned a lot on this project, including how to navigate joining a group 
-                project that was already in-progress and adapting to the team's conventions 
-                and project structure on the fly. This is also where I learned the value of 
-                leading by example. Our project leader, Jake, was extremely diligant and 
-                hardworking despite also working a full time job. Even though he was 
-                not forceful in assigning me work, his dedication inspired me to work harder.
-                I used this observation in my subsequent projects that I lead. This was also my 
-                first serious project in Unreal Engine, so I was able to learn a lot about it 
-                during this time. 
-            </p>
-
-            
-            <h2><i>Nova</i></h2>
-            <h3>Board Game</h3>
-            <p>Tech Stack: Cardstock, Sharpie Paint Pens</p>
-            <p>Team Size: 5</p>
-            <a href="https://docs.google.com/presentation/d/1lDgiixtbP2ME-Y3prjus9WTmsz5xC3r6Kjh-U3ZwVCQ/edit?usp=sharing">
-                Slide Deck Presentation
-            </a>
-            <p>
-                Nova is a board game that myself and 4 other talented folks created for 
-                the MMAN 40A: Game Design at Berkeley City College under Professor Phillip Campbell.
-                This project was an absolute blast to work on and was a deeply enjoyable 
-                creative experience to collaborate with my teammates on. 
-
-                My contribution to this project was the original idea for a heliocentric 
-                orbital game board which has rings that rotate over the course of the game. 
-                However, I cannot take credit for all the design work. Actually it was a true 
-                pleasure to have my teammates contribute a ton of clever and interesting 
-                mechanics to the game. My other main contribution was that I constructed the physical 
-                board and painted the game board pieces. 
-
-                I learned many lessons while working on this game. I learned the power of in-person 
-                collaboration. It was also my first exposure to the joy of free flowing creative 
-                collaboration. I learned how to let go of my attachment and ownership over my 
-                ideas and to accept the input of others without defensiveness. In other words I 
-                learned how to employ the 
-                <a href="https://en.wikipedia.org/wiki/Yes,_and_...">Yes, and... Rule</a> in 
-                practice. This is another tool that has been indespensible in subsequent projects.
-
-            </p>
-
-
-            <h2><i>Fishes: Life Goes On</i></h2>
-            <h3>3D Animated Student Short Film</h3>
-            <p>Tech Stack: Autodesk Maya, Pixar Renderman</p>
-            <p>Team size: 4</p>
-            <a href="https://www.youtube.com/watch?v=ABsQQj4oZDU">
-                Watch the short film on YouTube.
-            </a>
-            <br>
-            <a href="https://drive.google.com/file/d/1XsfzvPUATWgEVvTQk2NE56sJQuJw2uWM/view?usp=sharing">
-                Watch the orignal pitch animatic.
-            </a>
-            <p>
-                Fishes: Life Goes On was my final animation project for the UC BUGG 
-                Computer Animation DeCal where we learned how to model and animate in 
-                Maya and render using Pixar's Renderman. For this project I made an 
-                animatic and pitched the idea to the class. The class voted on the animatic 
-                we wanted to work on to turn into our final projects. My animatic got voted 
-                enough and so I got to direct this short film. 
-
-                The short film is a brief exploration of the circle of life by showing the births 
-                and deaths of many fishes in many different ways. The film is meant to inspire a 
-                respect for life in all its forms while staying light and playful. 
-
-                This was a massive learning experience for me. It was my first chance to pitch 
-                an idea to anyone ever, and this experience was key in helping me overcome that fear, 
-                which is a skill that has served me well since then. I also gained a respect 
-                for the craft of 3D modelling and animation after experiencing first hand how 
-                difficult and labor intensive these crafts are. 
-            </p>
-
-            <h2><i>Algorhythmic</i></h2>
-            <h3>VR Rhythm Shooter</h3>
-            <p>Tech Stack: Unity Engine, Unity XR Kit, Oculus Quest 3</p>
-            <p>Team Size: 4</p>
-            <a href="https://github.com/camacho-david/xrdecal-project.git ">
-                https://github.com/camacho-david/xrdecal-project.git
-            </a>
-            <br>
-            <a href="https://docs.google.com/presentation/d/1EJX1VprlbkLV14uNvCk0sstvobSRTAbqt2sxOcPO3ng/edit?usp=sharing">
-                Project Presentation Slide Deck
-            </a>
-            <p>
-                Algorhythmic is a VR shooting rhythm game made in the
-                Unity engine.
-                This was the first student group project 
-                that I had the pleasure to work on. 
-                I made it with a group of 3 other students 
-                as the final project for the extended reality DeCal at 
-                UC Berkeley. 
-
-                We came up with the idea based on our collective favorite
-                VR game--Beat Saber--but with a twist: instead of wielding 
-                dual sabers you dual wield two pistols! 
-
-                My contribution to the project was in the original concept 
-                and I also programmed the beat detection algorithm that 
-                analyzed any sound file the user supplied to the program 
-                to identify beats. The timestamps of these beats were used 
-                to spawn visual "beat cubes" that the player needed to shoot
-                close to the timestamp of the beat in the song. 
-
-                The game ended up being surprisingly fun. On this 
-                project I learned how to figure out how to compose an algorithm 
-                (beat detection) from old dense research papers. In addition it 
-                was my first foray into team projects which I learned a lot about 
-                from this experience. 
-            </p>
-
-            <h2><i>Game of Life</i> Simulation</h2>
-            <h3>Interactive Cellular Automata Sandbox</h3>
-            <p>Tech Stack: C++ 13, SDL 2.0, Visual Studio 19</p>
-            <p>Team Size: Solo</p>
-            <a href="https://github.com/hackerzilla/Game-of-Life-Final-Project">
-                https://github.com/hackerzilla/Game-of-Life-Final-Project
-            </a>
-            <br>
-            <a href="https://docs.google.com/presentation/d/1m3FELyPBnycbbBwGtg3gz3foRE5J5FnAzdHFR4Yegk0/edit?usp=sharing">
-                Project Presentation Slide Deck
-            </a>
-            <p>
-                This was the first project that I ever took on 
-                that left me feeling quite proud of the end result. 
-                It was made with C++, SDL 2.0 and the 
-                Visual Studio 17 compiler.
-                What started as the final project for a class 
-                (CIS 25: Data Structures and Algorithms at Laney College)
-                quickly went past the assignment requirements 
-                and took on a life of its own.
-                John Conways Game of Life had always fascinated me 
-                since I had discovered it via some old youtube videos.
-                It was a fitting first project for me. 
-
-                From this I learned about some software patterns that 
-                are pervasive in all desktop applications, like 
-                ping-pong double buffering, windowing, drawing primitives,
-                input handling and file i/o. 
-
-                This was also a chance for me to show my artist's hand 
-                in the work which is most apparent in the hand drawn 
-                button textures and the overall user experience which I 
-                designed to be as intuitive as possible. 
-
-                Overall I'm still proud of this project despite 
-                it's simplicity 
-                and slighty janky build process. 
-                More importantly, I look back fondly 
-                on the time of my life creating this GoL sim.
+                <section class="project-section" id="mecha-smash">
+                    <h2><i>Mecha Smash</i></h2>
+                    <h3>Platform Fighter with Customizable Mechs</h3>
+                    <p>Tech Stack: Unity Engine, Procreate</p>
+                    <p>Team Size: 5</p>
+                    <a href="https://hackerzilla.itch.io/mecha-smash">itch.io game page</a>
+                    <br>
+                    <a href="https://docs.google.com/presentation/d/1Z_aNEV_wXEtTF6-ry2-c85T2hvunxZxMoUvzL81pzus/edit?usp=sharing">
+                        Original Game Pitch Slide Deck
+                    </a>
+                    <p>
+                        <i>Mecha Smash</i> was my most ambitious project to-date. 
+                        It started as a game pitch for the final project of the UC Berkeley 
+                        Game Design and Development DeCal. It got enough votes by classmates 
+                        who were interested in working on it. This is where my project experience 
+                        build skills in ideation, pitching, leadership, 
+                        programming, and presentation, really came in handy. Over two months 
+                        we made a fun couch-competitive platform fighting game inspired by 
+                        the <i>Super Smash Bros.</i> series created by Masahiro Sakurai. 
+                        The original spin on the concept is that instead of having a cast of characters 
+                        for players to choose from, they start with a mech frame and select parts 
+                        for head, torso, arms and legs which in turn determine the mech's 
+                        moveset--their abilities--in an interface similar to that for customizing 
+                        your kart in <i>Mario Kart</i>.
+                        I'm proud to say that the game came out pretty good and the team 
+                        continues to work on a new version to this day. 
+                        <br><br>
+                        My personal contribution was the original pitch and idea, a good chunk 
+                        of the programming--including merging pull requests and fixing git conflicts.
+                        As the project manager I strived to replicate Jake's model of lead-by-example 
+                        that I was exposed to earlier and so I took it on me to make sure progress was 
+                        constantly being made. I also learned from this experience that delegating 
+                        meaningful work on a team is very difficult, and I still am constantly developing 
+                        this skill. 
+                        I also drew the pixel art for the mechs and their constituent parts.
+                        In addition, I setup and animated the 2D mech skeletons using Unity's 2D skeleton 
+                        system, including inverse kinematics.
+                        It truly was a group project, and I continually sought out input from my 
+                        super creative teammates, who gladly gave it. Through our combined creativity
+                        the project turned out pretty awesome. Stay tuned for updates!
+                    </p>
+                </section>
                 
-            </p>
-        </div>
-        <nav class="navbar">
-            <a href="/"> <img src="/logo-white.png" class="logo"> </a>
-            <div class="text-things">
-                <p> Dithyrambic <a class="NavButton" href="/">Games</a></p> 
-                <p>|</p>
-                <a class="NavButton" href="/humans">Humans</a>
-            </div>
-        </nav>
+
+                <section class="project-section" id="flockforce">
+                    <h2><i>FlockForce</i></h2>
+                    <h3>Compute Shader Boids Simulation</h3>
+                    <p>Teach Stack: Godot Engine, GLSL Compute Shaders</p>
+                    <p>Team Size: 4</p>
+                    <a href="https://hackerzilla.github.io/FlockForce/">Project Paper Report</a>
+                    <br>
+                    <a href="https://github.com/hackerzilla/FlockForce">https://github.com/hackerzilla/FlockForce</a>
+                    <p>
+                        This was my final project for CS 184: Computer Graphics at UC Berkeley. 
+                        As a team we implemented GPU compute shader accelerated boids algorithm 
+                        which roughly 10x'ed the number of boids we could achieve at a >=60 frames 
+                        per second on a few modern laptops. For this project we used Godot Engine which 
+                        provides a sufficient interface to implement compute shaders in GLSL. 
+                        
+                        My contribution to this project was the intial idea of compute shader boids, in 
+                        addition to the expertise in Godot Engine which I had ascertained by this point. 
+                        I also provided leadership and fascillitated group work sessions. I wrote much 
+                        of the early code, i.e. the initial CPU based naive boids algorithm, but transitioned 
+                        to a product manager role and allowed my teammates to lead on the coding front. 
+
+                        Surprisingly, when I was reviewing my old projects I found the experience on the
+                        <i>Game of Life</i> sim from two years earlier helped on this project, where we 
+                        used a ping-pong double buffer when updating the boid velocities. 
+                    </p>
+                </section>
+                
+                
+
+                <section class="project-section" id="inoculum">
+                    <h2><i>Inoculum</i></h2>
+                    <h3>Third Person Action Adventure Game</h3>
+                    <p>Tech stack: Unreal Engine 5, Unreal Blueprints, Perforce </p>
+                    <p>Team Size: 6</p>
+                    <a href="https://ccperalta-my.sharepoint.com/personal/10924894_cc_peralta_edu/_layouts/15/stream.aspx?id=%2Fpersonal%2F10924894%5Fcc%5Fperalta%5Fedu%2FDocuments%2FGame%20Dev%20Stuff%2FJulian%5FInoculum%5FFull%5FPlaythrough%5F1%2Emp4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0&ga=1&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Ebb427650%2D8749%2D4916%2Da0ff%2Df57b2397c9cd">
+                        Gameplay Walkthrough Video
+                    </a>
+                    <br>
+                    <p>
+                        During my year break from UC Berkeley I took some game development 
+                        courses at Berkeley City College, and there I worked on a really 
+                        awesome group project. The game is a third person action adventure 
+                        where the player can cast spells to fight plague monsters to try and 
+                        save their partner. Inoculum was made in Unreal Engine 5 using mostly 
+                        handmade models and animations. 
+
+                        My contribution to this project was that I implemented the HUD UI as well 
+                        as coded some of the gameplay logic like saving progress and loading levels. 
+
+                        I learned a lot on this project, including how to navigate joining a group 
+                        project that was already in-progress and adapting to the team's conventions 
+                        and project structure on the fly. This is also where I learned the value of 
+                        leading by example. Our project leader, Jake, was extremely diligant and 
+                        hardworking despite also working a full time job. Even though he was 
+                        not forceful in assigning me work, his dedication inspired me to work harder.
+                        I used this observation in my subsequent projects that I lead. This was also my 
+                        first serious project in Unreal Engine, so I was able to learn a lot about it 
+                        during this time. 
+                    </p>
+                </section>
+                
+
+                <section class="project-section" id="nova">
+                    <h2><i>Nova</i></h2>
+                    <h3>Board Game</h3>
+                    <p>Tech Stack: Cardstock, Sharpie Paint Pens</p>
+                    <p>Team Size: 5</p>
+                    <a href="https://docs.google.com/presentation/d/1lDgiixtbP2ME-Y3prjus9WTmsz5xC3r6Kjh-U3ZwVCQ/edit?usp=sharing">
+                        Slide Deck Presentation
+                    </a>
+                    <p>
+                        Nova is a board game that myself and 4 other talented folks created for 
+                        the MMAN 40A: Game Design at Berkeley City College under Professor Phillip Campbell.
+                        This project was an absolute blast to work on and was a deeply enjoyable 
+                        creative experience to collaborate with my teammates on. 
+
+                        My contribution to this project was the original idea for a heliocentric 
+                        orbital game board which has rings that rotate over the course of the game. 
+                        However, I cannot take credit for all the design work. Actually it was a true 
+                        pleasure to have my teammates contribute a ton of clever and interesting 
+                        mechanics to the game. My other main contribution was that I constructed the physical 
+                        board and painted the game board pieces. 
+
+                        I learned many lessons while working on this game. I learned the power of in-person 
+                        collaboration. It was also my first exposure to the joy of free flowing creative 
+                        collaboration. I learned how to let go of my attachment and ownership over my 
+                        ideas and to accept the input of others without defensiveness. In other words I 
+                        learned how to employ the 
+                        <a href="https://en.wikipedia.org/wiki/Yes,_and_...">Yes, and... Rule</a> in 
+                        practice. This is another tool that has been indespensible in subsequent projects.
+
+                    </p>
+                </section> 
+                
+
+
+                <section class="project-section" id="fishes">
+                    <h2><i>Fishes: Life Goes On</i></h2>
+                    <h3>3D Animated Student Short Film</h3>
+                    <p>Tech Stack: Autodesk Maya, Pixar Renderman</p>
+                    <p>Team size: 4</p>
+                    <a href="https://www.youtube.com/watch?v=ABsQQj4oZDU">
+                        Watch the short film on YouTube.
+                    </a>
+                    <br>
+                    <a href="https://drive.google.com/file/d/1XsfzvPUATWgEVvTQk2NE56sJQuJw2uWM/view?usp=sharing">
+                        Watch the orignal pitch animatic.
+                    </a>
+                    <p>
+                        Fishes: Life Goes On was my final animation project for the UC BUGG 
+                        Computer Animation DeCal where we learned how to model and animate in 
+                        Maya and render using Pixar's Renderman. For this project I made an 
+                        animatic and pitched the idea to the class. The class voted on the animatic 
+                        we wanted to work on to turn into our final projects. My animatic got voted 
+                        enough and so I got to direct this short film. 
+
+                        The short film is a brief exploration of the circle of life by showing the births 
+                        and deaths of many fishes in many different ways. The film is meant to inspire a 
+                        respect for life in all its forms while staying light and playful. 
+
+                        This was a massive learning experience for me. It was my first chance to pitch 
+                        an idea to anyone ever, and this experience was key in helping me overcome that fear, 
+                        which is a skill that has served me well since then. I also gained a respect 
+                        for the craft of 3D modelling and animation after experiencing first hand how 
+                        difficult and labor intensive these crafts are. 
+                    </p>
+                </section>
+                
+
+                <section class="project-section" id="algorhythmic">
+                    <h2><i>Algorhythmic</i></h2>
+                    <h3>VR Rhythm Shooter</h3>
+                    <p>Tech Stack: Unity Engine, Unity XR Kit, Oculus Quest 3</p>
+                    <p>Team Size: 4</p>
+                    <a href="https://github.com/camacho-david/xrdecal-project.git ">
+                        https://github.com/camacho-david/xrdecal-project.git
+                    </a>
+                    <br>
+                    <a href="https://docs.google.com/presentation/d/1EJX1VprlbkLV14uNvCk0sstvobSRTAbqt2sxOcPO3ng/edit?usp=sharing">
+                        Project Presentation Slide Deck
+                    </a>
+                    <p>
+                        Algorhythmic is a VR shooting rhythm game made in the
+                        Unity engine.
+                        This was the first student group project 
+                        that I had the pleasure to work on. 
+                        I made it with a group of 3 other students 
+                        as the final project for the extended reality DeCal at 
+                        UC Berkeley. 
+
+                        We came up with the idea based on our collective favorite
+                        VR game--Beat Saber--but with a twist: instead of wielding 
+                        dual sabers you dual wield two pistols! 
+
+                        My contribution to the project was in the original concept 
+                        and I also programmed the beat detection algorithm that 
+                        analyzed any sound file the user supplied to the program 
+                        to identify beats. The timestamps of these beats were used 
+                        to spawn visual "beat cubes" that the player needed to shoot
+                        close to the timestamp of the beat in the song. 
+
+                        The game ended up being surprisingly fun. On this 
+                        project I learned how to figure out how to compose an algorithm 
+                        (beat detection) from old dense research papers. In addition it 
+                        was my first foray into team projects which I learned a lot about 
+                        from this experience. 
+                    </p>
+                </section>
+                
+
+                <section class="project-section" id="game-of-life">
+                    <h2><i>Game of Life</i> Simulation</h2>
+                    <h3>Interactive Cellular Automata Sandbox</h3>
+                    <p>Tech Stack: C++ 13, SDL 2.0, Visual Studio 19</p>
+                    <p>Team Size: Solo</p>
+                    <a href="https://github.com/hackerzilla/Game-of-Life-Final-Project">
+                        https://github.com/hackerzilla/Game-of-Life-Final-Project
+                    </a>
+                    <br>
+                    <a href="https://docs.google.com/presentation/d/1m3FELyPBnycbbBwGtg3gz3foRE5J5FnAzdHFR4Yegk0/edit?usp=sharing">
+                        Project Presentation Slide Deck
+                    </a>
+                    <p>
+                        This was the first project that I ever took on 
+                        that left me feeling quite proud of the end result. 
+                        It was made with C++, SDL 2.0 and the 
+                        Visual Studio 17 compiler.
+                        What started as the final project for a class 
+                        (CIS 25: Data Structures and Algorithms at Laney College)
+                        quickly went past the assignment requirements 
+                        and took on a life of its own.
+                        John Conways Game of Life had always fascinated me 
+                        since I had discovered it via some old youtube videos.
+                        It was a fitting first project for me. 
+
+                        From this I learned about some software patterns that 
+                        are pervasive in all desktop applications, like 
+                        ping-pong double buffering, windowing, drawing primitives,
+                        input handling and file i/o. 
+
+                        This was also a chance for me to show my artist's hand 
+                        in the work which is most apparent in the hand drawn 
+                        button textures and the overall user experience which I 
+                        designed to be as intuitive as possible. 
+
+                        Overall I'm still proud of this project despite 
+                        it's simplicity 
+                        and slighty janky build process. 
+                        More importantly, I look back fondly 
+                        on the time of my life creating this GoL sim.
+                        
+                    </p>
+                </section>
+                
+                </section>
+            </div> <!-- end .main-content-->
+        </div> <!-- end .page-layout-->
+    <script>
+        // ── IntersectionObserver: track active sections ──
+        const allNavLinks = document.querySelectorAll('.tree-sidebar a');
+        const allTreeGroups = document.querySelectorAll('.tree-sidebar .tree-group');
+
+        function clearAllStates() {
+            allNavLinks.forEach(link => link.classList.remove('active'));
+            allTreeGroups.forEach(group => group.classList.remove('visible'));
+        }
+
+        function activateLink(hash) {
+            document.querySelectorAll(`a[href="#${hash}"]`).forEach(link => {
+                link.classList.add('active');
+            });
+        }
+
+        const projectObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    clearAllStates();
+                    activateLink('projects');
+                    allTreeGroups.forEach(g => g.classList.add('visible'));
+                    activateLink(id);
+                }
+            });
+        }, {
+            rootMargin: '-10% 0px -70% 0px',
+            threshold: 0
+        });
+
+        document.querySelectorAll('.project-section').forEach(s => projectObserver.observe(s));
+
+        const pageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    clearAllStates();
+                    activateLink(id);
+                    if (id === 'projects') {
+                        allTreeGroups.forEach(g => g.classList.add('visible'));
+                            const firstProject = document.querySelector('.project-section');
+                            if (firstProject) activateLink(firstProject.id);
+                    }
+                }
+            });
+        }, {
+            rootMargin: '-10% 0px -70% 0px',
+            threshold: 0
+        });
+
+        // ── Bottom-of-page fix: activate last section when scrolled to bottom ──
+        window.addEventListener('scroll', () => {
+            const scrolledToBottom = 
+                (window.innerHeight + window.scrollY) >= (document.body.scrollHeight - 50);
+            
+            if (scrolledToBottom) {
+                // Find the last project section
+                const projectSections = document.querySelectorAll('.project-section');
+                const lastSection = projectSections[projectSections.length - 1];
+                
+                clearAllStates();
+                activateLink('projects');
+                allTreeGroups.forEach(g => g.classList.add('visible'));
+                activateLink(lastSection.id);
+            }
+        });
+
+        document.querySelectorAll('.page-section').forEach(s => pageObserver.observe(s));
+    </script>
     </body>
 </html>

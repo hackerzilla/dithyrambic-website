@@ -3,17 +3,16 @@ body {
     padding: 0;
 }
 
+/* ── Page layout: sidebar + centered content ── */
+.page-layout {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+}
+
 .main-content {
-  padding-left: 15%;
-  padding-right: 15% ;
-  /* padding-top: 1rem; */
-  padding-top: 0;
-  padding-bottom: 1rem;
-  /* background-color: #c77ffc; */
-  justify-content: center;
-  align-items: center;
+  grid-column: 2;
+  padding: 0 2rem 1rem 2rem;
   max-width: 40rem;
-  margin: auto;
 }
 
 p {
@@ -199,4 +198,95 @@ h1 {
     font-size: 0.9rem;
     letter-spacing: 0.02em;
     color: #bbb;
+}
+
+/* ── Tree sidebar ── */
+.tree-sidebar {
+    grid-column: 1;
+    justify-self: end;
+    position: sticky;
+    top: 2rem;
+    align-self: start;
+    padding: 1.5rem 1.5rem 1.5rem 1rem;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    text-shadow: none;
+    border-right: 1px solid #333;
+    white-space: nowrap;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+}
+
+.tree-sidebar .tree-root {
+    color: #888;
+    margin-bottom: 0.25rem;
+}
+
+.tree-sidebar .tree-line {
+    display: block;
+    color: #555;
+}
+
+.tree-sidebar .tree-line a {
+    color: #83ff6e;
+    text-decoration: none;
+    text-shadow:
+        0 0 4px #39FF14AA,
+        0 0 11px #39FF14AA,
+        0 0 19px #39FF14AA,
+        0 0 40px #0fa00fAA;
+
+    position: relative;
+    transition: color 0.15s, text-shadow 0.15s;
+}
+
+.tree-sidebar .tree-line a:hover {
+    color: #ffd65a;
+    text-shadow:
+        0 0 4px #d8dd22AA,
+        0 0 11px #d8dd22AA,
+        0 0 19px #d8dd22AA,
+        0 0 40px #d8dd22AA;
+    /* text-shadow: 0 0 6px #FFBF00AA; */
+}
+
+.tree-sidebar .tree-line a:hover.active {
+    color: #ffd65a;
+    text-shadow:
+        0 0 4px #d8dd22AA,
+        0 0 11px #d8dd22AA,
+        0 0 19px #d8dd22AA,
+        0 0 40px #d8dd22AA;
+    /* text-shadow: 0 0 6px #FFBF00AA; */
+}
+
+.tree-sidebar .tree-line a.active {
+    color: #83ff6e;
+    text-shadow:
+        0 0 4px #39FF14AA,
+        0 0 11px #39FF14AA,
+        0 0 19px #39FF14AA,
+        0 0 40px #0fa00fAA;
+}
+
+.tree-sidebar .tree-line a.active::after {
+    content: '<';
+    position: absolute;
+    margin-left: 0.3rem;
+    top: -3px;
+}
+
+/* ── Section anchors: offset for sticky header ── */
+.project-section,
+.page-section {
+    scroll-margin-top: 3rem;
+}
+
+/* ── Tree group: collapsible project list ── */
+.tree-group {
+    display: none;
+}
+
+.tree-group.visible {
+    display: block;
 }
