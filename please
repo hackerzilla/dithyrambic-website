@@ -55,7 +55,7 @@ function build-sites {
 
   prepare-build-filesystem
 
-  build-config
+  # build-config
 
   build-dithyrambic-site
 
@@ -108,25 +108,6 @@ function prepare-build-filesystem {
   echo ""
 }
 
-function build-config {
-    echo ""
-    echo "******************************"
-    echo "** build-config begin...     *"
-    echo "******************************"
-
-    ensure-host-env
-
-    DATA="{\
-      \"HOST_DITHYRAMBIC_SITE\": \"${HOST_DITHYRAMBIC_SITE:-dithyrambic.games}\", \
-      \"SERVER_PORT\": \"${SERVER_PORT:-4000}\" \
-      }"
-    perl-render ${SOURCE_DIR}/config/apache2.conf ${BUILD_DIR}/config/apache2.conf "${DATA}"
-
-    echo "******************************"
-    echo "* build-config Done          *"
-    echo "******************************"
-}
-
 function build-dithyrambic-site {
     echo ""
     echo "**********************************"
@@ -160,6 +141,7 @@ function copy-deployment-files {
 
     shell-command cp ${SOURCE_DIR}/deploy/entrypoint.sh ${BUILD_DIR}/deploy
     shell-command cp ${SOURCE_DIR}/config/mime.conf ${BUILD_DIR}/config
+    shell-command cp ${SOURCE_DIR}/config/apache2.conf ${BUILD_DIR}/config
 
     echo "**********************************"
     echo "* copying deployment files done. *"
@@ -209,11 +191,9 @@ function run-deploy-image {
   ensure-host-env
 
   echo "Running deploy image"
-  echo "  SERVER_PORT: ${SERVER_PORT:-4000}"
   echo "  CONTAINER_PORT: ${CONTAINER_PORT:-80}:4000"
   docker run \
     --name jj \
-    -e SERVER_PORT=${SERVER_PORT:-4000} \
     -p ${CONTAINER_PORT:-80}:4000 \
     --rm \
     -it \
@@ -236,7 +216,6 @@ function run-dev-image {
   ensure-host-env
   docker run \
     --name jj-dev \
-    -e SERVER_PORT=${SERVER_PORT:-4000} \
     -p ${CONTAINER_PORT:-80}:4000 \
     -v "${PWD}:/app" \
     --rm \
@@ -281,7 +260,6 @@ function shell-dev-image {
   ensure-host-env
   docker run \
     --name jj-dev \
-    -e SERVER_PORT=${SERVER_PORT:-4000} \
     -p ${CONTAINER_PORT:-80}:4000 \
     -v "${PWD}:/app" \
     -it \
