@@ -55,8 +55,6 @@ function build-sites {
 
   prepare-build-filesystem
 
-  # build-config
-
   build-dithyrambic-site
 
   copy-deployment-files
