@@ -287,11 +287,7 @@ h1 {
     scroll-margin-top: 3rem;
 }
 
-/* ── Tree group: collapsible project list ── */
+/* ── Tree group: always visible ── */
 .tree-group {
-    display: none;
-}
-
-.tree-group.visible {
     display: block;
 }

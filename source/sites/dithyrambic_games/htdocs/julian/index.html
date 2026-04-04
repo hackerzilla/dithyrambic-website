@@ -463,13 +463,11 @@
             </div> <!-- end .main-content-->
         </div> <!-- end .page-layout-->
     <script>
-        // ── IntersectionObserver: track active sections ──
+        // ── Scroll-driven active section tracking ──
         const allNavLinks = document.querySelectorAll('.tree-sidebar a');
-        const allTreeGroups = document.querySelectorAll('.tree-sidebar .tree-group');
 
         function clearAllStates() {
             allNavLinks.forEach(link => link.classList.remove('active'));
-            allTreeGroups.forEach(group => group.classList.remove('visible'));
         }
 
         function activateLink(hash) {
@@ -478,59 +476,47 @@
             });
         }
 
-        const projectObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const id = entry.target.id;
-                    clearAllStates();
-                    activateLink('projects');
-                    allTreeGroups.forEach(g => g.classList.add('visible'));
-                    activateLink(id);
-                }
-            });
-        }, {
-            rootMargin: '-10% 0px -70% 0px',
-            threshold: 0
-        });
-
-        document.querySelectorAll('.project-section').forEach(s => projectObserver.observe(s));
-
-        const pageObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const id = entry.target.id;
-                    clearAllStates();
-                    activateLink(id);
-                    if (id === 'projects') {
-                        allTreeGroups.forEach(g => g.classList.add('visible'));
-                            const firstProject = document.querySelector('.project-section');
-                            if (firstProject) activateLink(firstProject.id);
-                    }
-                }
-            });
-        }, {
-            rootMargin: '-10% 0px -70% 0px',
-            threshold: 0
-        });
-
-        // ── Bottom-of-page fix: activate last section when scrolled to bottom ──
-        window.addEventListener('scroll', () => {
-            const scrolledToBottom = 
+        function updateActiveSection() {
+            const threshold = window.innerHeight * 0.3;
+            const atBottom =
                 (window.innerHeight + window.scrollY) >= (document.body.scrollHeight - 50);
-            
-            if (scrolledToBottom) {
-                // Find the last project section
-                const projectSections = document.querySelectorAll('.project-section');
-                const lastSection = projectSections[projectSections.length - 1];
-                
-                clearAllStates();
-                activateLink('projects');
-                allTreeGroups.forEach(g => g.classList.add('visible'));
-                activateLink(lastSection.id);
-            }
-        });
 
-        document.querySelectorAll('.page-section').forEach(s => pageObserver.observe(s));
+            // When at the bottom, activate Skills if it's on screen
+            if (atBottom) {
+                const skillsRect = document.getElementById('skills')?.getBoundingClientRect();
+                if (skillsRect && skillsRect.top < window.innerHeight) {
+                    clearAllStates();
+                    activateLink('skills');
+                    return;
+                }
+            }
+
+            // Find the last section whose top has passed the threshold
+            const sections = [
+                ...document.querySelectorAll('.project-section'),
+                document.getElementById('skills')
+            ].filter(Boolean);
+
+            let active = null;
+            for (const section of sections) {
+                if (section.getBoundingClientRect().top <= threshold) {
+                    active = section;
+                }
+            }
+
+            clearAllStates();
+            if (active) {
+                if (active.id === 'skills') {
+                    activateLink('skills');
+                } else {
+                    activateLink('projects');
+                    activateLink(active.id);
+                }
+            }
+        }
+
+        window.addEventListener('scroll', updateActiveSection, { passive: true });
+        updateActiveSection();
     </script>
     </body>
 </html>
