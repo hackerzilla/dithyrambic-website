@@ -96,6 +96,11 @@ img {
     text-align: center;
 }
 
+iframe {
+    display: block;
+    margin: auto;
+}
+
 .gallery-image {
     max-width: 40rem;
     text-align: center;
