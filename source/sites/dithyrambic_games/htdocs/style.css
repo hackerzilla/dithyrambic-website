@@ -94,11 +94,12 @@ img {
 
 .image-gallery {
     text-align: center;
+    margin: 3rem 0;
 }
 
 iframe {
     display: block;
-    margin: auto;
+    margin: 3rem auto;
 }
 
 .gallery-image {
@@ -285,6 +286,10 @@ h1 {
 .project-section,
 .page-section {
     scroll-margin-top: 3rem;
+}
+
+.project-section {
+    margin-bottom: 6rem;
 }
 
 /* ── Tree group: always visible ── */
