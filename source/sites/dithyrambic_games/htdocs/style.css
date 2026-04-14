@@ -125,15 +125,23 @@ h1 {
 }
 .portfolio {
     /* color: #39FF14; /* super saturated */
-    /* color: #a8ff98; very unsaturated */ 
+    /* color: #a8ff98; very unsaturated */
     color: #83ff6e; /* in the middle, more readable than pure green, more character than white */
     font-family: 'JetBrains Mono', monospace;
     background-color: #000;
     text-shadow:
-        0 0 4px #39FF14AA,
-        0 0 11px #39FF14AA,
-        0 0 19px #39FF14AA,
-        0 0 40px #0fa00fAA;
+        0 0 3px #39FF14DD,
+        0 0 10px #39FF1499,
+        0 0 30px #39FF1433;
+}
+
+.portfolio .page-section > pre {
+    text-shadow:
+        0 0 4px #39FF14,
+        0 0 12px #39FF14,
+        0 0 24px #39FF14,
+        0 0 48px #39FF14DD,
+        0 0 80px #0fa00f;
 }
 
 .portfolio a {
@@ -172,21 +180,12 @@ h1 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: 
-    /* repeating-linear-gradient(
-    to bottom,
-    transparent 0px,
-    transparent 4px,
-    rgba(0, 0, 0, 0.15) 4px,
-    rgba(0, 0, 0, 0.15) 6px
-  ), */
-    repeating-linear-gradient(
-      to right,
-      transparent 0px,
-      transparent 3px,
-      rgba(0, 0, 0, 0.15) 3px,
-      rgba(0, 0, 0, 0.15) 4px
-    );
+  background:
+    /* Horizontal scanlines: 1px dark + 1px transparent, tiled every 2px */
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    /* RGB subpixel: 3px-wide R/G/B tint columns */
+    linear-gradient(90deg, rgba(255, 0, 0, 0.08), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size: 100% 2px, 3px 100%;
   pointer-events: none;
   z-index: 9999;
 }
@@ -237,10 +236,8 @@ h1 {
     color: #83ff6e;
     text-decoration: none;
     text-shadow:
-        0 0 4px #39FF14AA,
-        0 0 11px #39FF14AA,
-        0 0 19px #39FF14AA,
-        0 0 40px #0fa00fAA;
+        0 0 3px #39FF14DD,
+        0 0 10px #39FF1499;
 
     position: relative;
     transition: color 0.15s, text-shadow 0.15s;
@@ -269,10 +266,8 @@ h1 {
 .tree-sidebar .tree-line a.active {
     color: #83ff6e;
     text-shadow:
-        0 0 4px #39FF14AA,
-        0 0 11px #39FF14AA,
-        0 0 19px #39FF14AA,
-        0 0 40px #0fa00fAA;
+        0 0 3px #39FF14DD,
+        0 0 10px #39FF1499;
 }
 
 .tree-sidebar .tree-line a.active::after {
