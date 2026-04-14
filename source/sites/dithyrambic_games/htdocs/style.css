@@ -15,9 +15,6 @@ body {
   max-width: 40rem;
 }
 
-p {
-}
-
 a {
     color: #73d02f;
 }
@@ -49,10 +46,6 @@ a:active {
         0 0 11px black,
         0 0 19px black,
         0 0 40px black;
-}
-
-img {
-  
 }
 
 .navbar {
@@ -135,13 +128,22 @@ h1 {
         0 0 30px #39FF1433;
 }
 
-.portfolio .page-section > pre {
+.portfolio .page-section > pre:first-of-type {
     text-shadow:
         0 0 4px #39FF14,
         0 0 12px #39FF14,
         0 0 24px #39FF14,
         0 0 48px #39FF14DD,
         0 0 80px #0fa00f;
+}
+
+.contact-block {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+#contact {
+    margin-top: 6rem;
 }
 
 .portfolio a {
@@ -167,10 +169,6 @@ h1 {
         0 0 11px #eab315AA,
         0 0 19px #eab315AA,
         0 0 40px #eab315AA;
-}
-
-.portfolio .navbar {
-    /* border: .2rem solid #39FF14 ; */
 }
 
 .portfolio::after {
@@ -244,16 +242,6 @@ h1 {
 }
 
 .tree-sidebar .tree-line a:hover {
-    color: #ffd65a;
-    text-shadow:
-        0 0 4px #d8dd22AA,
-        0 0 11px #d8dd22AA,
-        0 0 19px #d8dd22AA,
-        0 0 40px #d8dd22AA;
-    /* text-shadow: 0 0 6px #FFBF00AA; */
-}
-
-.tree-sidebar .tree-line a:hover.active {
     color: #ffd65a;
     text-shadow:
         0 0 4px #d8dd22AA,
