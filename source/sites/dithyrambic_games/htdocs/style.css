@@ -303,21 +303,29 @@ h1 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2.5rem;
-    align-items: center;
+    align-items: start;
     margin: 2rem 0;
 }
-.project-row .project-media { grid-column: 1; }
-.project-row .project-body  { grid-column: 2; }
-.project-row.flip .project-media { grid-column: 2; }
-.project-row.flip .project-body  { grid-column: 1; }
+.project-row .project-media { grid-column: 1; grid-row: 1; }
+.project-row .project-body  { grid-column: 2; grid-row: 1; }
+.project-row.flip .project-media { grid-column: 2; grid-row: 1; }
+.project-row.flip .project-body  { grid-column: 1; grid-row: 1; }
 
 .project-media img,
-.project-media video {
+.project-media video,
+.project-media iframe {
     width: 100%;
-    height: auto;
     display: block;
     border: .7rem solid rgb(12, 14, 16);
     box-sizing: border-box;
+}
+.project-media img,
+.project-media video {
+    height: auto;
+}
+.project-media iframe {
+    aspect-ratio: 16 / 9;
+    height: auto;
 }
 
 .project-body {
@@ -351,7 +359,7 @@ h1 {
     margin: 0;
 }
 .project-meta .k {
-    color: #5a9c3d;
+    color: #83ff6e;
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
@@ -370,6 +378,34 @@ h1 {
     border: 1px solid #5a9c3d;
     font-size: 0.8rem;
     letter-spacing: 0.03em;
+}
+
+/* ── Skills list ── */
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.4rem;
+    padding: 0;
+    margin: 0.75rem 0 1.5rem 0;
+    list-style: none;
+}
+.skill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.95rem;
+}
+.skill-logo {
+    display: inline-block;
+    width: 1.1em;
+    height: 1.1em;
+    background-color: currentColor;
+    -webkit-mask: var(--logo) center / contain no-repeat;
+    mask: var(--logo) center / contain no-repeat;
+    flex-shrink: 0;
+    filter:
+        drop-shadow(0 0 3px #39FF14DD)
+        drop-shadow(0 0 8px #39FF1499);
 }
 
 /* ── Responsive: stack on narrow screens ── */

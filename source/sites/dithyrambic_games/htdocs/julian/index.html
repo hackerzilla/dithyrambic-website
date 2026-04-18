@@ -165,47 +165,35 @@
                 <section class="project-section" id="flockforce">
                     <h2><i>FlockForce</i></h2>
                     <h3>Compute Shader Boids Simulation</h3>
-                    <p>Tech Stack: Godot Engine, GLSL Compute Shaders</p>
-                    <p>Team Size: 4</p>
-                    <a href="https://hackerzilla.github.io/FlockForce/">Project Paper Report</a>
-                    <br>
-                    <a href="https://github.com/hackerzilla/FlockForce">https://github.com/hackerzilla/FlockForce</a>
-                    <div class="image-gallery">
-                        <video class="gallery-image" autoplay loop muted playsinline preload="metadata">
-                            <source src="/images/flock_force_demo.mp4" type="video/mp4">
-                            FlockForce demo.
-                        </video>
-                    </div>
-                    <p>
-                        This was my final project for CS 184: Computer Graphics at UC Berkeley.
-                        As a team we implemented GPU compute shader accelerated boids algorithm
-                        which roughly 10x'ed the number of boids we could achieve at a >=60 frames
-                        per second on a few modern laptops. For this project we used Godot Engine which
-                        provides a sufficient interface to implement compute shaders in GLSL.
 
-                        My contribution to this project was the intial idea of compute shader boids, in
-                        addition to the expertise in Godot Engine which I had ascertained by this point.
-                        I also provided leadership and facilitated group work sessions. I wrote much
-                        of the early code, i.e. the initial CPU based naive boids algorithm, but transitioned
-                        to a product manager role and allowed my teammates to lead on the coding front.
-
-                        Surprisingly, when I was reviewing my old projects I found the experience on the
-                        <i>Game of Life</i> sim from two years earlier helped on this project, where we
-                        used a ping-pong double buffer when updating the boid velocities.
-                    </p>
-                    <div class="image-gallery">
-                        <img src="/images/flock_force_process_diagram.png" loading="lazy" class="gallery-image" alt="FlockForce process diagram.">
+                    <div class="project-row flip">
+                        <div class="project-media">
+                            <video autoplay loop muted playsinline preload="metadata">
+                                <source src="/images/flock_force_demo.mp4" type="video/mp4">
+                                FlockForce demo.
+                            </video>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-meta">
+                                <span class="k">tech</span><span class="v">Godot, GLSL Compute Shaders</span>
+                                <span class="k">team</span><span class="v">4</span>
+                                <span class="k">role</span><span class="v">Concept, Programmer, Team Lead</span>
+                            </div>
+                            <div class="project-tags">
+                                <span class="tag">godot</span>
+                                <span class="tag">compute-shaders</span>
+                                <span class="tag">gpu</span>
+                            </div>
+                            <p>
+                                Compute-shader boids simulation built for UC Berkeley's CS 184: Computer Graphics. GPU acceleration got ~10x more boids at 60fps than a naive CPU implementation.
+                            </p>
+                            <p>
+                                <a href="https://hackerzilla.github.io/FlockForce/">Paper</a>
+                                <br>
+                                <a href="https://github.com/hackerzilla/FlockForce">GitHub</a>
+                            </p>
+                        </div>
                     </div>
-                    <iframe
-                        loading="lazy"
-                        width="560"
-                        height="315"
-                        src="https://www.youtube.com/embed/hzVPKI0P2Vg"
-                        title="FlockForce demo"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen>
-                    </iframe>
                 </section>
                 
                 
@@ -213,88 +201,58 @@
                 <section class="project-section" id="inoculum">
                     <h2><i>Inoculum</i></h2>
                     <h3>Third Person Action Adventure Game</h3>
-                    <p>Tech stack: Unreal Engine 5, Unreal Blueprints, Perforce </p>
-                    <p>Team Size: 6</p>
-                    <a href="https://ccperalta-my.sharepoint.com/personal/10924894_cc_peralta_edu/_layouts/15/stream.aspx?id=%2Fpersonal%2F10924894%5Fcc%5Fperalta%5Fedu%2FDocuments%2FGame%20Dev%20Stuff%2FJulian%5FInoculum%5FFull%5FPlaythrough%5F1%2Emp4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0&ga=1&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Ebb427650%2D8749%2D4916%2Da0ff%2Df57b2397c9cd">
-                        Gameplay Walkthrough Video
-                    </a>
-                    <br>
-                    <div class="image-gallery">
-                        <img src="/images/inoculum_screenshot.webp" loading="lazy" class="gallery-image" alt="Inoculum screenshot.">
+
+                    <div class="project-row">
+                        <div class="project-media">
+                            <img src="/images/inoculum_screenshot.webp" loading="lazy" alt="Inoculum screenshot.">
+                        </div>
+                        <div class="project-body">
+                            <div class="project-meta">
+                                <span class="k">tech</span><span class="v">Unreal 5, Blueprints, Perforce</span>
+                                <span class="k">team</span><span class="v">6</span>
+                                <span class="k">role</span><span class="v">HUD UI, Gameplay Programmer</span>
+                            </div>
+                            <div class="project-tags">
+                                <span class="tag">unreal</span>
+                                <span class="tag">action-adventure</span>
+                                <span class="tag">3d</span>
+                            </div>
+                            <p>
+                                Third-person action-adventure built in Unreal 5 at Berkeley City College. The player casts spells to fight plague monsters and save their partner.
+                            </p>
+                            <p>
+                                <a href="https://ccperalta-my.sharepoint.com/personal/10924894_cc_peralta_edu/_layouts/15/stream.aspx?id=%2Fpersonal%2F10924894%5Fcc%5Fperalta%5Fedu%2FDocuments%2FGame%20Dev%20Stuff%2FJulian%5FInoculum%5FFull%5FPlaythrough%5F1%2Emp4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0&ga=1&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Ebb427650%2D8749%2D4916%2Da0ff%2Df57b2397c9cd">Gameplay Walkthrough</a>
+                            </p>
+                        </div>
                     </div>
-                    <p>
-                        During my year break from UC Berkeley I took some game development 
-                        courses at Berkeley City College, and there I worked on a really 
-                        awesome group project. The game is a third person action adventure 
-                        where the player can cast spells to fight plague monsters to try and 
-                        save their partner. Inoculum was made in Unreal Engine 5 using mostly 
-                        handmade models and animations. 
-
-                        My contribution to this project was that I implemented the HUD UI as well 
-                        as coded some of the gameplay logic like saving progress and loading levels. 
-
-                        I learned a lot on this project, including how to navigate joining a group 
-                        project that was already in-progress and adapting to the team's conventions 
-                        and project structure on the fly. This is also where I learned the value of 
-                        leading by example. Our project leader, Jake, was extremely diligent and
-                        hardworking despite also working a full time job. Even though he was 
-                        not forceful in assigning me work, his dedication inspired me to work harder.
-                        I used this observation in my subsequent projects that I lead. This was also my 
-                        first serious project in Unreal Engine, so I was able to learn a lot about it
-                        during this time.
-                    </p>
-                    <iframe
-                        loading="lazy"
-                        width="560"
-                        height="315"
-                        src="https://www.youtube.com/embed/sz_hiC40C0Q"
-                        title="Inoculum Full Playthrough"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen>
-                    </iframe>
                 </section>
                 
 
                 <section class="project-section" id="nova">
                     <h2><i>Nova</i></h2>
                     <h3>Board Game</h3>
-                    <p>Tech Stack: Cardstock, Sharpie Paint Pens</p>
-                    <p>Team Size: 5</p>
-                    <a href="https://docs.google.com/presentation/d/1lDgiixtbP2ME-Y3prjus9WTmsz5xC3r6Kjh-U3ZwVCQ/edit?usp=sharing">
-                        Slide Deck Presentation
-                    </a>
-                    <div class="image-gallery">
-                        <img src="/images/nova_scenario_1.webp" loading="lazy" class="gallery-image" alt="Nova board game scenario 1.">
-                        <img src="/images/nova_irl.jpg" loading="lazy" class="gallery-image" alt="Nova board game in real life.">
-                    </div>
-                    <p>
-                        Nova is a board game that myself and 4 other talented folks created for 
-                        the MMAN 40A: Game Design at Berkeley City College under Professor Phillip Campbell.
-                        This project was an absolute blast to work on and was a deeply enjoyable 
-                        creative experience to collaborate with my teammates on. 
 
-                        My contribution to this project was the original idea for a heliocentric 
-                        orbital game board which has rings that rotate over the course of the game. 
-                        However, I cannot take credit for all the design work. Actually it was a true 
-                        pleasure to have my teammates contribute a ton of clever and interesting 
-                        mechanics to the game. My other main contribution was that I constructed the physical 
-                        board and painted the game board pieces. 
-
-                        I learned many lessons while working on this game. I learned the power of in-person 
-                        collaboration. It was also my first exposure to the joy of free flowing creative 
-                        collaboration. I learned how to let go of my attachment and ownership over my 
-                        ideas and to accept the input of others without defensiveness. In other words I 
-                        learned how to employ the 
-                        <a href="https://en.wikipedia.org/wiki/Yes,_and_...">Yes, and... Rule</a> in 
-                        practice. This is another tool that has been indispensable in subsequent projects.
-
-                    </p>
-                    <div class="image-gallery">
-                        <video class="gallery-image" autoplay loop muted playsinline preload="metadata">
-                            <source src="/images/board_construction_plan.mp4" type="video/mp4">
-                            Board construction plan.
-                        </video>
+                    <div class="project-row flip">
+                        <div class="project-media">
+                            <img src="/images/nova_scenario_1.webp" loading="lazy" alt="Nova board game scenario 1.">
+                        </div>
+                        <div class="project-body">
+                            <div class="project-meta">
+                                <span class="k">tech</span><span class="v">Cardstock, Sharpie Paint Pens</span>
+                                <span class="k">team</span><span class="v">5</span>
+                                <span class="k">role</span><span class="v">Concept, Construction, Artist</span>
+                            </div>
+                            <div class="project-tags">
+                                <span class="tag">tabletop</span>
+                                <span class="tag">physical</span>
+                            </div>
+                            <p>
+                                Heliocentric board game with ring tracks that rotate over the course of play. Made for a game design class at Berkeley City College.
+                            </p>
+                            <p>
+                                <a href="https://docs.google.com/presentation/d/1lDgiixtbP2ME-Y3prjus9WTmsz5xC3r6Kjh-U3ZwVCQ/edit?usp=sharing">Slide Deck</a>
+                            </p>
+                        </div>
                     </div>
                 </section>
                 
@@ -303,95 +261,65 @@
                 <section class="project-section" id="fishes">
                     <h2><i>Fishes: Life Goes On</i></h2>
                     <h3>3D Animated Student Short Film</h3>
-                    <p>Tech Stack: Autodesk Maya, Pixar Renderman</p>
-                    <p>Team size: 4</p>
-                    <iframe
-                        loading="lazy"
-                        width="560"
-                        height="315"
-                        src="https://www.youtube.com/embed/ABsQQj4oZDU"
-                        title="Fishes: Life Goes On"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen>
-                    </iframe>
-                    <p>
-                        Fishes: Life Goes On was my final animation project for the UC BUGG 
-                        Computer Animation DeCal where we learned how to model and animate in 
-                        Maya and render using Pixar's Renderman. For this project I made an 
-                        animatic and pitched the idea to the class. The class voted on the animatic 
-                        we wanted to work on to turn into our final projects. My animatic got voted 
-                        enough and so I got to direct this short film. 
 
-                        The short film is a brief exploration of the circle of life by showing the births 
-                        and deaths of many fishes in many different ways. The film is meant to inspire a 
-                        respect for life in all its forms while staying light and playful. 
-
-                        This was a massive learning experience for me. It was my first chance to pitch 
-                        an idea to anyone ever, and this experience was key in helping me overcome that fear, 
-                        which is a skill that has served me well since then. I also gained a respect 
-                        for the craft of 3D modelling and animation after experiencing first hand how 
-                        difficult and labor intensive these crafts are.
-                    </p>
-                    <div class="image-gallery">
-                        <img src="/images/chinook_salmon.jpg" loading="lazy" class="gallery-image" alt="Chinook salmon.">
+                    <div class="project-row">
+                        <div class="project-media">
+                            <iframe
+                                loading="lazy"
+                                src="https://www.youtube.com/embed/ABsQQj4oZDU"
+                                title="Fishes: Life Goes On"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-meta">
+                                <span class="k">tech</span><span class="v">Maya, Renderman</span>
+                                <span class="k">team</span><span class="v">4</span>
+                                <span class="k">role</span><span class="v">Director</span>
+                            </div>
+                            <div class="project-tags">
+                                <span class="tag">3d-animation</span>
+                                <span class="tag">maya</span>
+                                <span class="tag">short-film</span>
+                            </div>
+                            <p>
+                                3D animated short about the circle of life, told through fishes. Made for UC Berkeley's BUGG Computer Animation DeCal. I pitched the concept and directed.
+                            </p>
+                        </div>
                     </div>
-                    <h4>Original Animatic:</h4>
-                    <iframe
-                        loading="lazy"
-                        width="560"
-                        height="315"
-                        src="https://drive.google.com/file/d/1XsfzvPUATWgEVvTQk2NE56sJQuJw2uWM/preview"
-                        title="Fishes: Life Goes On - Original Pitch Animatic"
-                        frameborder="0"
-                        allowfullscreen>
-                    </iframe>
                 </section>
                 
 
                 <section class="project-section" id="algorhythmic">
                     <h2><i>Algorhythmic</i></h2>
                     <h3>VR Rhythm Shooter</h3>
-                    <p>Tech Stack: Unity Engine, Unity XR Kit, Oculus Quest 3</p>
-                    <p>Team Size: 4</p>
-                    <a href="https://github.com/camacho-david/xrdecal-project.git ">
-                        https://github.com/camacho-david/xrdecal-project.git
-                    </a>
-                    <br>
-                    <a href="https://docs.google.com/presentation/d/1EJX1VprlbkLV14uNvCk0sstvobSRTAbqt2sxOcPO3ng/edit?usp=sharing">
-                        Project Presentation Slide Deck
-                    </a>    
-                    <div class="image-gallery">
-                        <img src="/images/algorhythmic2.png" loading="lazy" class="gallery-image" alt="Algorhythmic screenshot 2.">
-                    </div>
-                    <p>
-                        Algorhythmic is a VR shooting rhythm game made in the
-                        Unity engine.
-                        This was the first student group project 
-                        that I had the pleasure to work on. 
-                        I made it with a group of 3 other students 
-                        as the final project for the extended reality DeCal at 
-                        UC Berkeley. 
 
-                        We came up with the idea based on our collective favorite
-                        VR game--Beat Saber--but with a twist: instead of wielding 
-                        dual sabers you dual wield two pistols! 
-
-                        My contribution to the project was in the original concept 
-                        and I also programmed the beat detection algorithm that 
-                        analyzed any sound file the user supplied to the program 
-                        to identify beats. The timestamps of these beats were used 
-                        to spawn visual "beat cubes" that the player needed to shoot
-                        close to the timestamp of the beat in the song. 
-
-                        The game ended up being surprisingly fun. On this 
-                        project I learned how to figure out how to compose an algorithm 
-                        (beat detection) from old dense research papers. In addition it 
-                        was my first foray into team projects which I learned a lot about 
-                        from this experience.
-                    </p>
-                    <div class="image-gallery">
-                        <img src="/images/algorhythmic1.png" loading="lazy" class="gallery-image" alt="Algorhythmic screenshot 1.">
+                    <div class="project-row flip">
+                        <div class="project-media">
+                            <img src="/images/algorhythmic2.png" loading="lazy" alt="Algorhythmic screenshot.">
+                        </div>
+                        <div class="project-body">
+                            <div class="project-meta">
+                                <span class="k">tech</span><span class="v">Unity, Unity XR, Quest 3</span>
+                                <span class="k">team</span><span class="v">4</span>
+                                <span class="k">role</span><span class="v">Concept, Programmer</span>
+                            </div>
+                            <div class="project-tags">
+                                <span class="tag">unity</span>
+                                <span class="tag">vr</span>
+                                <span class="tag">rhythm</span>
+                            </div>
+                            <p>
+                                VR rhythm shooter inspired by <i>Beat Saber</i>, but you dual-wield pistols. I wrote the beat-detection algorithm that parses any audio file and spawns timed targets. Built for UC Berkeley's XR DeCal.
+                            </p>
+                            <p>
+                                <a href="https://github.com/camacho-david/xrdecal-project">GitHub</a>
+                                <br>
+                                <a href="https://docs.google.com/presentation/d/1EJX1VprlbkLV14uNvCk0sstvobSRTAbqt2sxOcPO3ng/edit?usp=sharing">Slide Deck</a>
+                            </p>
+                        </div>
                     </div>
                 </section>
 
@@ -399,47 +327,32 @@
                 <section class="project-section" id="game-of-life">
                     <h2><i>Game of Life</i> Simulation</h2>
                     <h3>Interactive Cellular Automata Sandbox</h3>
-                    <p>Tech Stack: C++14, SDL 2.0, Visual Studio 19, Aseprite</p>
-                    <p>Team Size: Solo</p>
-                    <a href="https://github.com/hackerzilla/Game-of-Life-Final-Project">
-                        https://github.com/hackerzilla/Game-of-Life-Final-Project
-                    </a>
-                    <br>
-                    <a href="https://docs.google.com/presentation/d/1m3FELyPBnycbbBwGtg3gz3foRE5J5FnAzdHFR4Yegk0/edit?usp=sharing">
-                        Project Presentation Slide Deck
-                    </a>
-                   <div class="image-gallery">
-                        <img src="/images/game_of_life.png" loading="lazy" class="gallery-image" alt="Game of Life simulation screenshot.">
+
+                    <div class="project-row">
+                        <div class="project-media">
+                            <img src="/images/game_of_life.png" loading="lazy" alt="Game of Life simulation screenshot.">
+                        </div>
+                        <div class="project-body">
+                            <div class="project-meta">
+                                <span class="k">tech</span><span class="v">C++14, SDL 2.0, Aseprite</span>
+                                <span class="k">team</span><span class="v">Solo</span>
+                                <span class="k">role</span><span class="v">Solo</span>
+                            </div>
+                            <div class="project-tags">
+                                <span class="tag">c++</span>
+                                <span class="tag">sdl</span>
+                                <span class="tag">simulation</span>
+                            </div>
+                            <p>
+                                Interactive Conway's Game of Life sandbox in C++ with hand-drawn UI. Started as a Laney College data structures final and kept growing past the assignment.
+                            </p>
+                            <p>
+                                <a href="https://github.com/hackerzilla/Game-of-Life-Final-Project">GitHub</a>
+                                <br>
+                                <a href="https://docs.google.com/presentation/d/1m3FELyPBnycbbBwGtg3gz3foRE5J5FnAzdHFR4Yegk0/edit?usp=sharing">Slide Deck</a>
+                            </p>
+                        </div>
                     </div>
-                    <p>
-                        This was the first project that I ever took on 
-                        that left me feeling quite proud of the end result. 
-                        It was made with C++, SDL 2.0 and the
-                        Visual Studio 19 compiler.
-                        What started as the final project for a class 
-                        (CIS 25: Data Structures and Algorithms at Laney College)
-                        quickly went past the assignment requirements 
-                        and took on a life of its own.
-                        John Conways Game of Life had always fascinated me 
-                        since I had discovered it via some old youtube videos.
-                        It was a fitting first project for me. 
-
-                        From this I learned about some software patterns that 
-                        are pervasive in all desktop applications, like 
-                        ping-pong double buffering, windowing, drawing primitives,
-                        input handling and file i/o. 
-
-                        This was also a chance for me to show my artist's hand 
-                        in the work which is most apparent in the hand drawn 
-                        button textures and the overall user experience which I 
-                        designed to be as intuitive as possible. 
-
-                        Overall I'm still proud of this project despite
-                        its simplicity
-                        and slightly janky build process.
-                        More importantly, I look back fondly 
-                        on the time of my life creating this GoL sim.
-                    </p>
                 </section>
                 
                 </section> <!-- end projects section-->
@@ -456,23 +369,45 @@
 
                 <section class="skills-section" id="languages">
                     <h2>Languages</h2>
-                    <p>
-                        C, C++, C#, Java, Python, GDScript, GLSL, HLSL, RISC-V, x86_64, HTML, CSS, JavaScript
-                    </p>
+                    <ul class="skills-list">
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/c.svg')"></span>C</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/cplusplus.svg')"></span>C++</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/csharp.svg')"></span>C#</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/openjdk.svg')"></span>Java</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/python.svg')"></span>Python</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/godotengine.svg')"></span>GDScript</li>
+                        <li class="skill">GLSL</li>
+                        <li class="skill">HLSL</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/riscv.svg')"></span>RISC-V</li>
+                        <li class="skill">x86_64</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/html5.svg')"></span>HTML</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/css3.svg')"></span>CSS</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/javascript.svg')"></span>JavaScript</li>
+                    </ul>
                 </section>
 
                 <section class="skills-section" id="devtools">
                     <h2>Development Tools</h2>
-                    <p>
-                        Git, GitHub, Claude Code, Docker, Perforce, PlasticSCM
-                    </p>
+                    <ul class="skills-list">
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/git.svg')"></span>Git</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/github.svg')"></span>GitHub</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/claude.svg')"></span>Claude Code</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/tmux.svg')"></span>tmux</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/docker.svg')"></span>Docker</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/perforce.svg')"></span>Perforce</li>
+                        <li class="skill">PlasticSCM</li>
+                    </ul>
                 </section>
 
                 <section class="skills-section" id="engines">
-                    <h2>Engines, Frameworks & APIs</h2>
-                    <p>
-                        Godot Engine, Unity, Unreal Engine, SDL, OpenGL
-                    </p>
+                    <h2>Engines, Frameworks &amp; APIs</h2>
+                    <ul class="skills-list">
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/godotengine.svg')"></span>Godot Engine</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/unity.svg')"></span>Unity</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/unrealengine.svg')"></span>Unreal Engine</li>
+                        <li class="skill">SDL</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/opengl.svg')"></span>OpenGL</li>
+                    </ul>
                 </section>
 
                 </section> <!-- end skills section -->
