@@ -12,7 +12,7 @@ body {
 .main-content {
   grid-column: 2;
   padding: 0 2rem 1rem 2rem;
-  max-width: 40rem;
+  max-width: 64rem;
 }
 
 a {
@@ -278,4 +278,121 @@ h1 {
 /* ── Tree group: always visible ── */
 .tree-group {
     display: block;
+}
+
+/* ── Bio block ── */
+.bio-block {
+    padding: 3rem 0 2.5rem 0;
+    margin-bottom: 1rem;
+}
+.bio-block h1 {
+    font-family: 'JetBrains Mono', monospace;
+    margin: 0 0 0.35rem 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+.bio-block .tagline {
+    margin: 0;
+    font-size: 1rem;
+    opacity: 0.85;
+}
+
+/* ── Project row layout ── */
+.project-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+    margin: 2rem 0;
+}
+.project-row .project-media { grid-column: 1; }
+.project-row .project-body  { grid-column: 2; }
+.project-row.flip .project-media { grid-column: 2; }
+.project-row.flip .project-body  { grid-column: 1; }
+
+.project-media img,
+.project-media video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: .7rem solid rgb(12, 14, 16);
+    box-sizing: border-box;
+}
+
+.project-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* ── Heavyweight hero slot ── */
+.project-hero {
+    margin: 1.5rem 0 2rem 0;
+}
+.project-hero iframe,
+.project-hero video,
+.project-hero img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    display: block;
+    margin: 0;
+    border: .7rem solid rgb(12, 14, 16);
+    box-sizing: border-box;
+}
+
+/* ── Metadata key-value block ── */
+.project-meta {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.25rem 1.25rem;
+    font-size: 0.9rem;
+    margin: 0;
+}
+.project-meta .k {
+    color: #5a9c3d;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+.project-meta .k::after { content: ':'; }
+
+/* ── Project tags ── */
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0;
+}
+.project-tags .tag {
+    display: inline-block;
+    padding: 0.1rem 0.55rem;
+    border: 1px solid #5a9c3d;
+    font-size: 0.8rem;
+    letter-spacing: 0.03em;
+}
+
+/* ── Responsive: stack on narrow screens ── */
+@media (max-width: 768px) {
+    .page-layout {
+        grid-template-columns: 1fr;
+    }
+    .tree-sidebar {
+        display: none;
+    }
+    .main-content {
+        grid-column: 1;
+        max-width: 100%;
+    }
+    .project-row,
+    .project-row.flip {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .project-row .project-media,
+    .project-row.flip .project-media,
+    .project-row .project-body,
+    .project-row.flip .project-body {
+        grid-column: 1;
+    }
 }
