@@ -7,58 +7,144 @@
         <title>Julian Pearson Rickenbach — Portfolio</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Xanh+Mono:ital@0;1&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Saira:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/style.css">
     </head>
 
     <body class="portfolio">
         
-        <!--Terminal title bar-->
-        <!--
-        <div class = "title-bar">
-            ~/developers/programmers/julian-pearson-rickenbach.portfolio
-        </div>
-        -->
-
+        <header class="site-header">
+            <div class="header-logo">
+                <span class="triskelion-glow">
+                    <span class="triskelion" role="img" aria-label="Triskelion logo"></span>
+                </span>
+            </div>
+            <div class="header-name-row">
+                <h1 class="header-name">Julian Pearson Rickenbach</h1>
+                <nav class="header-contacts" aria-label="Contact links">
+                    <a href="mailto:j.pearbach@yahoo.com" aria-label="Email">[email]</a>
+                    <a href="#" aria-label="Bluesky" data-todo="bluesky-handle">[bsky]</a>
+                    <a href="https://github.com/hackerzilla" aria-label="GitHub">[github]</a>
+                    <a href="#" aria-label="LinkedIn" data-todo="linkedin-url">[linkedin]</a>
+                </nav>
+            </div>
+            <div class="header-subtitle">indie game dev and programmer</div>
+        </header>
 
         <div class="page-layout">
-            <!-- Tree sidebar navigation -->
-            <nav class="tree-sidebar">
-                <div class="tree-root">.</div>
-                <span class="tree-line">├── <a href="#projects">Projects</a></span>
-                <div class="tree-group" data-parent="projects">
-                    <!-- <span class="tree-line sub">│   ├── <a href="#zombulacrum">Zombulacrum</a></span> -->
-                    <!-- <span class="tree-line sub">│   ├── <a href="#helo">helo</a></span> -->
-                    <span class="tree-line sub">│   ├── <a href="#mecha-smash">Mecha Smash</a></span>
-                    <span class="tree-line sub">│   ├── <a href="#flockforce">FlockForce</a></span>
-                    <span class="tree-line sub">│   ├── <a href="#inoculum">Inoculum</a></span>
-                    <span class="tree-line sub">│   ├── <a href="#nova">Nova</a></span>
-                    <span class="tree-line sub">│   ├── <a href="#fishes">Life Goes On</a></span>
-                    <span class="tree-line sub">│   ├── <a href="#algorhythmic">Algorhythmic</a></span>
-                    <span class="tree-line sub">│   └── <a href="#game-of-life">Game of Life</a></span>
-                </div>
-                <span class="tree-line">├── <a href="#skills">Skills</a></span>
-                <div class="tree-group" data-parent="skills">
-                    <span class="tree-line sub">│   ├── <a href="#languages">Languages</a></span>
-                    <span class="tree-line sub">│   ├── <a href="#devtools">Dev Tools</a></span>
-                    <span class="tree-line sub">│   └── <a href="#engines">Engines</a></span>
-                </div>
-                <span class="tree-line">└── <a href="#contact">Contact</a></span>
+            <nav class="sidebar-tabs" aria-label="Sections">
+                <a class="sidebar-tab" href="#bio">Bio</a>
+                <a class="sidebar-tab" href="#education">Education</a>
+                <a class="sidebar-tab" href="#experience">Experience</a>
+                <a class="sidebar-tab" href="#projects">Projects</a>
+                <a class="sidebar-tab" href="#skills">Skills</a>
+                <a class="sidebar-tab" href="#contact">Contact</a>
             </nav>
             <div class="main-content">
-                <section class="bio-block">
-                    <h1>Julian Pearson Rickenbach</h1>
-                    <p class="tagline">indie game dev &amp; programmer</p>
+                <section class="page-section" id="bio">
+                <pre style="font-family: monospace;">
+    dMMMMb  dMP .aMMMb
+   dMP"dMP amr dMP"dMP
+  dMMMMK" dMP dMP dMP
+ dMP.aMF dMP dMP.aMP
+dMMMMP" dMP  VMMMP"
+                </pre>
+
+                <!-- PLACEHOLDER drawn from machine/job_hunt/resume/master.md + library/dossier/julian/profile.md. Revise. -->
+                <p>
+                    I'm a game programmer in Berkeley, California. I
+                    studied EECS at UC Berkeley and have wanted to make
+                    games since I was thirteen. I work mainly in Godot 4
+                    (GDScript) and Unity (C#), and I'm strongest on the
+                    systems side: graphics and shaders, procedural
+                    generation, simulation, optimization, and AI-assisted
+                    workflows. Outside of code I draw on an iPad and a
+                    Wacom, mess around with Foley and synths, and
+                    occasionally write code that writes music.
+                </p>
+                </section>
+
+                <section class="page-section" id="education">
+                <pre style="font-family: monospace;">
+    dMMMMMP dMMMMb  dMP dMP .aMMMb  .aMMMb dMMMMMMP dMP .aMMMb  dMMMMb
+   dMP     dMP VMP dMP dMP dMP"VMP dMP"dMP   dMP   amr dMP"dMP dMP dMP
+  dMMMP   dMP dMP dMP dMP dMP     dMMMMMP   dMP   dMP dMP dMP dMP dMP
+ dMP     dMP.aMP dMP.aMP dMP.aMP dMP dMP   dMP   dMP dMP.aMP dMP dMP
+dMMMMMP dMMMMP"  VMMMP"  VMMMP" dMP dMP   dMP   dMP  VMMMP" dMP dMP
+                </pre>
+
+                <!-- PLACEHOLDER drawn from machine/job_hunt/resume/master.md. Revise. -->
+                <div class="education-entry">
+                    <div class="education-seal">
+                        <img src="/images/logos/berkeley-seal.svg" alt="UC Berkeley seal" class="berkeley-seal">
+                        <p class="seal-caption"><i>fiat lux</i></p>
+                    </div>
+                    <div class="education-body">
+                        <h3>University of California, Berkeley</h3>
+                        <p>B.S. Electrical Engineering and Computer Science - Winter Class of 2025.</p>
+                        <p>Overall GPA: 3.53. Technical GPA: 3.66.</p>
+                    </div>
+                </div>
+
+                <div class="education-entry">
+                    <div class="education-body">
+                        <h3>Berkeley City College (Peralta Community Colleges)</h3>
+                        <p>2019-2022 - Transferred to UC Berkeley.</p>
+                        <p>Overall GPA: 4.0.</p>
+                    </div>
+                </div>
+                </section>
+
+                <section class="page-section" id="experience">
+                <pre style="font-family: monospace;">
+    dMMMMMP dMP dMP dMMMMb  dMMMMMP dMMMMb  dMP dMMMMMP dMMMMb  .aMMMb  dMMMMMP
+   dMP     dMK.dMP dMP.dMP dMP     dMP.dMP amr dMP     dMP dMP dMP"VMP dMP
+  dMMMP   .dMMMK" dMMMMP" dMMMP   dMMMMK" dMP dMMMP   dMP dMP dMP      dMMMP
+ dMP     dMP"AMF dMP     dMP     dMP"AMF dMP dMP     dMP dMP dMP.aMP dMP
+dMMMMMP dMP dMP dMP     dMMMMMP dMP dMP dMP dMMMMMP dMP dMP  VMMMP" dMMMMMP
+                </pre>
+
+                <!-- PLACEHOLDER drawn from machine/job_hunt/resume/master.md. Revise. -->
+                <h3>Mechanical Moonworks - Game Programmer</h3>
+                <p>November 2025 - Present</p>
+                <ul>
+                    <li>Part-time remote programmer on <i>DreadReign</i>, an in-development first-person dungeon-crawler RPG in Unity / C#.</li>
+                    <li>Implementing UI systems including the Dungeon Select Map (campaign and level selection, save-data integration, dynamic node states).</li>
+                    <li>Contributing to RPG systems including ability unlocks, achievements, and career progression.</li>
+                </ul>
+
+                <h3>DataAnnotation - AI Training Contractor</h3>
+                <p>April 2026 - Present</p>
+                <ul>
+                    <li>Remote contractor producing training and evaluation data for frontier AI coding agents.</li>
+                    <li>Adversarial evaluation of frontier coding agents (Claude Opus, Gemini Pro, Codex) against permissively-licensed codebases.</li>
+                    <li>Agentic coding task design: authoring problem statements, eliciting failures from weaker agents, generating verifier test suites.</li>
+                    <li>Rubric and prompt design for LLM-as-judge evaluation pipelines.</li>
+                </ul>
+
+                <h3>NERSC / Lawrence Berkeley National Laboratory - Student Intern</h3>
+                <p>June 2021 - January 2023</p>
+                <ul>
+                    <li>Operations Division. Comprehensive research evaluating NetBox and DC Sunbird Track APIs for data center infrastructure management across 100+ high-performance computing servers.</li>
+                    <li>Delivered company-wide technical presentation to senior leadership on research findings.</li>
+                    <li>Collaborated with operations team to document data center infrastructure using Matterport 3D mapping, enabling remote facility access during COVID-19.</li>
+                </ul>
+
+                <h3>Berkeley City College Electrical Engineering Club - Project Manager, Founding Member</h3>
+                <p>January 2020 - July 2022</p>
+                <ul>
+                    <li>Co-founded and grew STEM club to 70+ active members.</li>
+                    <li>Led hands-on workshops teaching Arduino programming and hardware interfacing.</li>
+                </ul>
                 </section>
 
                 <section class="page-section" id="projects">
                 <pre style="font-family: monospace;">
-    ____               _           __      
-   / __ \_________    (_)__  _____/ /______
-  / /_/ / ___/ __ \  / / _ \/ ___/ __/ ___/
- / ____/ /  / /_/ / / /  __/ /__/ /_(__  ) 
-/_/   /_/   \____/_/ /\___/\___/\__/____/  
-                /___/                      
+    dMMMMb  dMMMMb  .aMMMb dMMMMMP dMMMMMP .aMMMb dMMMMMMP .dMMMb
+   dMP.dMP dMP.dMP dMP"dMP    dMP dMP     dMP"VMP   dMP   dMP" VP
+  dMMMMP" dMMMMK" dMP dMP    dMP dMMMP   dMP       dMP    VMMMb
+ dMP     dMP"AMF dMP.aMPdK .dMP dMP     dMP.aMP   dMP   dP .dMP
+dMP     dMP dMP  VMMMP" VMMMP" dMMMMMP  VMMMP"   dMP    VMMMP"
                 </pre>
 
 
@@ -119,8 +205,7 @@
                 
 
                 <section class="project-section" id="mecha-smash">
-                    <h2><i>Mecha Smash</i></h2>
-                    <h3>Platform Fighter with Customizable Mechs</h3>
+                    <h2><i>Mecha Smash</i> - Platform Fighter with Customizable Mechs</h2>
 
                     <div class="project-row">
                         <div class="project-media">
@@ -162,8 +247,7 @@
                 
 
                 <section class="project-section" id="flockforce">
-                    <h2><i>FlockForce</i></h2>
-                    <h3>Compute Shader Boids Simulation</h3>
+                    <h2><i>FlockForce</i> - Compute Shader Boids Simulation</h2>
 
                     <div class="project-row flip">
                         <div class="project-media">
@@ -198,8 +282,7 @@
                 
 
                 <section class="project-section" id="inoculum">
-                    <h2><i>Inoculum</i></h2>
-                    <h3>Third Person Action Adventure Game</h3>
+                    <h2><i>Inoculum</i> - Third Person Action Adventure Game</h2>
 
                     <div class="project-row">
                         <div class="project-media">
@@ -228,8 +311,7 @@
                 
 
                 <section class="project-section" id="nova">
-                    <h2><i>Nova</i></h2>
-                    <h3>Board Game</h3>
+                    <h2><i>Nova</i> - Board Game</h2>
 
                     <div class="project-row flip">
                         <div class="project-media">
@@ -258,8 +340,7 @@
 
 
                 <section class="project-section" id="fishes">
-                    <h2><i>Fishes: Life Goes On</i></h2>
-                    <h3>3D Animated Student Short Film</h3>
+                    <h2><i>Fishes: Life Goes On</i> - 3D Animated Student Short Film</h2>
 
                     <div class="project-row">
                         <div class="project-media">
@@ -292,8 +373,7 @@
                 
 
                 <section class="project-section" id="algorhythmic">
-                    <h2><i>Algorhythmic</i></h2>
-                    <h3>VR Rhythm Shooter</h3>
+                    <h2><i>Algorhythmic</i> - VR Rhythm Shooter</h2>
 
                     <div class="project-row flip">
                         <div class="project-media">
@@ -324,8 +404,7 @@
 
 
                 <section class="project-section" id="game-of-life">
-                    <h2><i>Game of Life</i> Simulation</h2>
-                    <h3>Interactive Cellular Automata Sandbox</h3>
+                    <h2><i>Game of Life</i> Simulation - Interactive Cellular Automata Sandbox</h2>
 
                     <div class="project-row">
                         <div class="project-media">
@@ -358,12 +437,11 @@
 
                 <section class="page-section" id="skills">
                 <pre style="font-family: monospace;">
-
-   _____ __   _ ____    
-  / ___// /__(_) / /____
-  \__ \/ //_/ / / / ___/
- ___/ / ,< / / / (__  ) 
-/____/_/|_/_/_/_/____/  
+   .dMMMb  dMP dMP dMP dMP     dMP    .dMMMb
+  dMP" VP dMP.dMP amr dMP     dMP    dMP" VP
+  VMMMb  dMMMMK" dMP dMP     dMP     VMMMb
+dP .dMP dMP"AMF dMP dMP     dMP    dP .dMP
+VMMMP" dMP dMP dMP dMMMMMP dMMMMMP VMMMP"
                 </pre>
 
                 <div class="skills-grid">
@@ -415,12 +493,14 @@
 
                 <section class="page-section" id="contact">
                 <pre style="font-family: monospace;">
-   ______            __             __
-  / ____/___  ____  / /_____ ______/ /_
- / /   / __ \/ __ \/ __/ __ `/ ___/ __/
-/ /___/ /_/ / / / / /_/ /_/ / /__/ /_
-\____/\____/_/ /_/\__/\__,_/\___/\__/
+   .aMMMb  .aMMMb  dMMMMb dMMMMMMP .aMMMb  .aMMMb dMMMMMMP
+  dMP"VMP dMP"dMP dMP dMP   dMP   dMP"dMP dMP"VMP   dMP
+ dMP     dMP dMP dMP dMP   dMP   dMMMMMP dMP       dMP
+dMP.aMP dMP.aMP dMP dMP   dMP   dMP dMP dMP.aMP   dMP
+VMMMP"  VMMMP" dMP dMP   dMP   dMP dMP  VMMMP"   dMP
                 </pre>
+
+                <p>Feel free to reach out via any of these social media handles.</p>
 
                 <pre class="contact-block">
 email   : &lt;pending&gt;
@@ -431,65 +511,37 @@ resume  : &lt;pending&gt;
 
                 </section> <!-- end contact section -->
             </div> <!-- end .main-content-->
+
+            <footer class="page-footer">
+                <p>site designed by me :)</p>
+            </footer>
         </div> <!-- end .page-layout-->
     <script>
-        // ── Scroll-driven active section tracking ──
-        const allNavLinks = document.querySelectorAll('.tree-sidebar a');
+        // ── Spatial-overlap active tab tracking ──
+        // A tab is "active" when its corresponding content section overlaps
+        // vertically with the tab in viewport-relative coordinates. Multiple
+        // tabs can be active at once during transitions between sections.
+        const tabs = Array.from(document.querySelectorAll('.sidebar-tab'));
+        const pairs = tabs
+            .map(tab => {
+                const id = tab.getAttribute('href')?.slice(1);
+                const section = id ? document.getElementById(id) : null;
+                return section ? { tab, section } : null;
+            })
+            .filter(Boolean);
 
-        function clearAllStates() {
-            allNavLinks.forEach(link => link.classList.remove('active'));
-        }
-
-        function activateLink(hash) {
-            document.querySelectorAll(`a[href="#${hash}"]`).forEach(link => {
-                link.classList.add('active');
-            });
-        }
-
-        function updateActiveSection() {
-            const threshold = window.innerHeight * 0.3;
-            const atBottom =
-                (window.innerHeight + window.scrollY) >= (document.body.scrollHeight - 50);
-
-            // When at the bottom, activate Contact if it's on screen
-            if (atBottom) {
-                const contactRect = document.getElementById('contact')?.getBoundingClientRect();
-                if (contactRect && contactRect.top < window.innerHeight) {
-                    clearAllStates();
-                    activateLink('contact');
-                    return;
-                }
-            }
-
-            // Find the last section whose top has passed the threshold
-            const sections = [
-                ...document.querySelectorAll('.project-section'),
-                document.getElementById('skills'),
-                document.getElementById('contact')
-            ].filter(Boolean);
-
-            let active = null;
-            for (const section of sections) {
-                if (section.getBoundingClientRect().top <= threshold) {
-                    active = section;
-                }
-            }
-
-            clearAllStates();
-            if (active) {
-                if (active.id === 'skills') {
-                    activateLink('skills');
-                } else if (active.id === 'contact') {
-                    activateLink('contact');
-                } else {
-                    activateLink('projects');
-                    activateLink(active.id);
-                }
+        function updateActiveTabs() {
+            for (const { tab, section } of pairs) {
+                const t = tab.getBoundingClientRect();
+                const s = section.getBoundingClientRect();
+                const overlaps = s.top < t.bottom && s.bottom > t.top;
+                tab.classList.toggle('active', overlaps);
             }
         }
 
-        window.addEventListener('scroll', updateActiveSection, { passive: true });
-        updateActiveSection();
+        window.addEventListener('scroll', updateActiveTabs, { passive: true });
+        window.addEventListener('resize', updateActiveTabs);
+        updateActiveTabs();
     </script>
     </body>
 </html>

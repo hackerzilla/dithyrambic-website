@@ -3,10 +3,33 @@ body {
     padding: 0;
 }
 
+:root {
+    --content-max-width: 64rem;
+    --sidebar-width: 10.5rem;
+    --layout-max-width: calc(var(--content-max-width) + 2 * var(--sidebar-width));
+}
+
 /* ── Page layout: sidebar + centered content ── */
 .page-layout {
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    grid-template-columns: var(--sidebar-width) minmax(0, var(--content-max-width)) var(--sidebar-width);
+    max-width: var(--layout-max-width);
+    margin: 0 auto;
+    position: relative;
+}
+
+.page-layout::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 3rem;
+    right: calc(var(--sidebar-width) / 2 - 0.75rem);
+    width: 1.5rem;
+    background:
+        linear-gradient(rgba(57, 255, 20, 0.3), rgba(57, 255, 20, 0.3)) top center    / 1.5rem 1px no-repeat,
+        linear-gradient(rgba(57, 255, 20, 0.3), rgba(57, 255, 20, 0.3)) bottom center / 1.5rem 1px no-repeat,
+        linear-gradient(rgba(57, 255, 20, 0.3), rgba(57, 255, 20, 0.3)) center        / 1px 100%   no-repeat;
+    pointer-events: none;
 }
 
 .main-content {
@@ -120,7 +143,7 @@ h1 {
     /* color: #39FF14; /* super saturated */
     /* color: #a8ff98; very unsaturated */
     color: #83ff6e; /* in the middle, more readable than pure green, more character than white */
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Chakra Petch', sans-serif;
     background-color: #000;
     text-shadow:
         0 0 3px #39FF14DD,
@@ -135,11 +158,16 @@ h1 {
         0 0 24px #39FF14,
         0 0 48px #39FF14DD,
         0 0 80px #0fa00f;
+    border-bottom: 1px solid rgba(57, 255, 20, 0.25);
+    padding-bottom: 0.4rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.5rem;
 }
 
 .contact-block {
     font-family: inherit;
     font-size: inherit;
+    line-height: 2.5;
 }
 
 #contact {
@@ -187,104 +215,249 @@ h1 {
   z-index: 9999;
 }
 
-.title-bar {
+/* ── Site header (sticky top bar) ── */
+.site-header {
     position: sticky;
     top: 0;
     z-index: 100;
-    padding: 0.5rem 1rem;
-    background-color: #1a1a1a;
-    border-bottom: 1px solid #333;
-    text-shadow: none;
-    text-align: center;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.9rem;
-    letter-spacing: 0.02em;
-    color: #e1e1e1;
+    background: linear-gradient(to bottom, #000 0%, #000 80%, transparent 100%);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 1.25rem;
+    padding: 0.75rem 2rem 0.75rem 5px;
+    align-items: center;
+    max-width: var(--layout-max-width);
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
-/* ── Tree sidebar ── */
-.tree-sidebar {
+.header-logo {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    position: relative;
+    padding: 0.4rem;
+    align-self: center;
+}
+
+.triskelion-glow {
+    display: inline-block;
+    line-height: 0;
+    filter:
+        drop-shadow(0 0 3px rgba(57, 255, 20, 0.5))
+        drop-shadow(0 0 8px rgba(57, 255, 20, 0.5))
+        drop-shadow(0 0 18px rgba(57, 255, 20, 0.35))
+        drop-shadow(0 0 40px rgba(57, 255, 20, 0.2));
+}
+
+.triskelion {
+    display: block;
+    width: 3.5rem;
+    height: 3.5rem;
+    background-color: #83ff6e;
+    -webkit-mask: url('/images/logos/triskele.svg') center / contain no-repeat;
+    mask: url('/images/logos/triskele.svg') center / contain no-repeat;
+}
+
+/* Corner brackets framing the logo, matching .project-section::before */
+.header-logo::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.8;
+    background:
+        linear-gradient(to right,  #39FF14, #39FF14) top left     / 14px 2px no-repeat,
+        linear-gradient(to bottom, #39FF14, #39FF14) top left     / 2px 14px no-repeat,
+        linear-gradient(to right,  #39FF14, #39FF14) top right    / 14px 2px no-repeat,
+        linear-gradient(to bottom, #39FF14, #39FF14) top right    / 2px 14px no-repeat,
+        linear-gradient(to right,  #39FF14, #39FF14) bottom left  / 14px 2px no-repeat,
+        linear-gradient(to bottom, #39FF14, #39FF14) bottom left  / 2px 14px no-repeat,
+        linear-gradient(to right,  #39FF14, #39FF14) bottom right / 14px 2px no-repeat,
+        linear-gradient(to bottom, #39FF14, #39FF14) bottom right / 2px 14px no-repeat;
+    filter:
+        drop-shadow(0 0 3px #39FF14)
+        drop-shadow(0 0 8px rgba(57, 255, 20, 0.7));
+}
+
+.header-name-row {
+    grid-column: 2;
+    grid-row: 1;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0 0 0.5rem 0;
+}
+
+.header-name-row::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: #39FF14;
+    filter:
+        drop-shadow(0 0 2px #39FF14)
+        drop-shadow(0 0 5px #39FF14)
+        drop-shadow(0 0 10px rgba(57, 255, 20, 0.6));
+}
+
+.header-name {
+    margin: 0;
+    font-family: 'Xanh Mono', 'JetBrains Mono', monospace;
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    text-align: left;
+    padding-left: 0;
+}
+
+.header-contacts {
+    display: flex;
+    gap: 0.85rem;
+    font-size: 0.95rem;
+}
+
+.header-contacts a {
+    text-decoration: none;
+}
+
+.header-subtitle {
+    grid-column: 2;
+    grid-row: 2;
+    padding-top: 0.35rem;
+    font-size: 1rem;
+    opacity: 0.85;
+    letter-spacing: 0.02em;
+    font-family: 'JetBrains Mono', monospace;
+    font-style: italic;
+}
+
+/* ── Page footer (padding so Contact can scroll to top of viewport) ── */
+.page-footer {
+    grid-column: 2;
+    height: 60vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 0 0 1.5rem 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    opacity: 0.55;
+}
+
+.page-footer p {
+    margin: 0;
+}
+
+/* ── Sidebar tabs (vertical, Dust-514-inspired) ── */
+.sidebar-tabs {
     grid-column: 1;
     justify-self: end;
     position: sticky;
-    top: 2rem;
+    top: 7rem;
     align-self: start;
-    padding: 1.5rem 1.5rem 1.5rem 1rem;
-    font-size: 0.9rem;
-    line-height: 1.8;
+    width: var(--sidebar-width);
+    padding: 0 0 0 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
     text-shadow: none;
-    border-right: 1px solid #333;
-    white-space: nowrap;
-    max-height: calc(100vh - 2rem);
+    max-height: calc(100vh - 8rem);
     overflow-y: auto;
+    box-sizing: border-box;
 }
 
-.tree-sidebar .tree-root {
-    color: #888;
-    margin-bottom: 0.25rem;
-}
-
-.tree-sidebar .tree-line {
+.sidebar-tab {
     display: block;
-    color: #555;
-}
-
-.tree-sidebar .tree-line a {
-    color: #83ff6e;
+    padding: 0.4rem 1rem;
+    border: 1px solid rgba(57, 255, 20, 0.35);
     text-decoration: none;
-    text-shadow:
-        0 0 3px #39FF14DD,
-        0 0 10px #39FF1499;
-
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    background-color: #000;
+    transition: border-color 0.15s, color 0.15s, box-shadow 0.15s;
     position: relative;
-    transition: color 0.15s, text-shadow 0.15s;
 }
 
-.tree-sidebar .tree-line a:hover {
-    color: #ffd65a;
-    text-shadow:
-        0 0 4px #d8dd22AA,
-        0 0 11px #d8dd22AA,
-        0 0 19px #d8dd22AA,
-        0 0 40px #d8dd22AA;
-    /* text-shadow: 0 0 6px #FFBF00AA; */
+.sidebar-tab:hover {
+    border-color: rgba(57, 255, 20, 0.7);
 }
 
-.tree-sidebar .tree-line a.active {
+.sidebar-tab.active {
+    border-color: #39FF14;
+    border-right: none;
+    box-shadow:
+        inset 0 0 12px rgba(57, 255, 20, 0.12),
+        -2px 0 10px rgba(57, 255, 20, 0.18);
+}
+
+/* Override .portfolio a styling for sidebar tabs (no blue, no big text-shadow) */
+.portfolio .sidebar-tab {
+    color: rgba(131, 255, 110, 0.5);
+    text-shadow: none;
+}
+
+.portfolio .sidebar-tab:hover {
+    color: #a8ff98;
+    text-shadow: none;
+}
+
+.portfolio .sidebar-tab.active {
     color: #83ff6e;
-    text-shadow:
-        0 0 3px #39FF14DD,
-        0 0 10px #39FF1499;
 }
 
-.tree-sidebar .tree-line a.active::after {
-    content: '<';
-    position: absolute;
-    margin-left: 0.3rem;
-    top: -3px;
+.portfolio .sidebar-tab:active {
+    text-shadow: none;
 }
 
 /* ── Section anchors: offset for sticky header ── */
 .project-section,
 .page-section {
-    scroll-margin-top: 3rem;
+    scroll-margin-top: 7rem;
+}
+
+.page-section + .page-section {
+    margin-top: 5rem;
+}
+
+.page-section:not(:last-child) {
+    border-bottom: 1px solid rgba(57, 255, 20, 0.25);
+    padding-bottom: 1rem;
+}
+
+/* Last project-section in #projects: drop its margin-bottom so the section's
+   border-bottom sits tight against the content, not 4rem below it. */
+.page-section > .project-section:last-child {
+    margin-bottom: 0;
+}
+
+.project-section,
+.skills-section,
+.contact-block {
+    position: relative;
+    padding: 2rem;
 }
 
 .project-section {
-    position: relative;
-    padding: 2rem;
-    margin-bottom: 6rem;
+    margin-bottom: 4rem;
     border: 1px solid rgba(57, 255, 20, 0.22);
     box-shadow:
         inset 0 0 18px rgba(57, 255, 20, 0.04),
         0 0 6px rgba(57, 255, 20, 0.12);
 }
 
-.project-section::before {
+.project-section::before,
+.skills-section::before,
+.contact-block::before {
     content: '';
     position: absolute;
     inset: -1px;
     pointer-events: none;
+    opacity: 0.8;
     background:
         linear-gradient(to right,  #39FF14, #39FF14) top left     / 28px 2px no-repeat,
         linear-gradient(to bottom, #39FF14, #39FF14) top left     / 2px 28px no-repeat,
@@ -299,27 +472,53 @@ h1 {
         drop-shadow(0 0 8px rgba(57, 255, 20, 0.7));
 }
 
-/* ── Tree group: always visible ── */
-.tree-group {
+/* ── Saira override for prose body text ── */
+#bio p,
+#contact > p,
+.project-body p,
+#experience ul li {
+    font-family: 'Saira', sans-serif;
+}
+
+/* ── Education entry layout ── */
+.education-entry {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.education-seal {
+    flex: 0 0 auto;
+    text-align: center;
+}
+
+.berkeley-seal {
+    width: 140px;
+    height: auto;
     display: block;
 }
 
-/* ── Bio block ── */
-.bio-block {
-    padding: 3rem 0 2.5rem 0;
-    margin-bottom: 1rem;
+.seal-caption {
+    margin: 0.6rem 0 0 0;
+    font-style: italic;
+    text-align: center;
+    font-size: 1.15rem;
+    letter-spacing: 0.05em;
+    color: #f5c83a;
+    text-shadow:
+        0 0 4px rgba(245, 200, 58, 1),
+        0 0 12px rgba(245, 200, 58, 0.85),
+        0 0 28px rgba(245, 200, 58, 0.55),
+        0 0 60px rgba(234, 179, 21, 0.3);
 }
-.bio-block h1 {
-    font-family: 'JetBrains Mono', monospace;
-    margin: 0 0 0.35rem 0;
-    font-size: 1.8rem;
-    font-weight: 700;
-    letter-spacing: 0.02em;
+
+.education-body {
+    flex: 1 1 auto;
 }
-.bio-block .tagline {
-    margin: 0;
-    font-size: 1rem;
-    opacity: 0.85;
+
+.education-entry + .education-entry {
+    margin-top: 1rem;
 }
 
 /* ── Project row layout ── */
@@ -394,9 +593,13 @@ h1 {
 .project-tags .tag {
     display: inline-block;
     padding: 0.1rem 0.55rem;
-    border: 1px solid #5a9c3d;
+    border: 1px solid #eab315;
+    color: #eab315;
     font-size: 0.8rem;
     letter-spacing: 0.03em;
+    text-shadow:
+        0 0 3px rgba(234, 179, 21, 0.6),
+        0 0 8px rgba(234, 179, 21, 0.35);
 }
 
 /* ── Skills grid: 3 columns side-by-side, collapses on narrow screens ── */
@@ -439,7 +642,7 @@ h1 {
     .page-layout {
         grid-template-columns: 1fr;
     }
-    .tree-sidebar {
+    .sidebar-tabs {
         display: none;
     }
     .main-content {
