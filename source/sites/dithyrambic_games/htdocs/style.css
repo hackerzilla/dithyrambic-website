@@ -239,6 +239,7 @@ h1 {
     position: relative;
     padding: 0.4rem;
     align-self: center;
+    cursor: pointer;
 }
 
 .triskelion-glow {
@@ -258,6 +259,26 @@ h1 {
     background-color: #83ff6e;
     -webkit-mask: url('/images/logos/triskele.svg') center / contain no-repeat;
     mask: url('/images/logos/triskele.svg') center / contain no-repeat;
+    transform-origin: 50% 50%;
+}
+
+@keyframes triskele-spin-slow {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+@keyframes triskele-spin-fast {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(1440deg); }
+}
+
+.header-logo:hover .triskelion {
+    animation: triskele-spin-slow 6s linear infinite;
+}
+
+.triskelion.spinning,
+.header-logo:hover .triskelion.spinning {
+    animation: triskele-spin-fast 2.4s cubic-bezier(0.12, 0.7, 0.25, 1);
 }
 
 /* Corner brackets framing the logo, matching .project-section::before */
@@ -325,10 +346,63 @@ h1 {
     text-decoration: none;
 }
 
-.header-subtitle {
+.header-status {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.95rem;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.status-available {
+    display: inline-flex;
+    align-items: center;
+    color: #83ff6e;
+    letter-spacing: 0.05em;
+}
+
+.status-dot {
+    display: inline-block;
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+    background-color: #39FF14;
+    margin-right: 0.45rem;
+    box-shadow:
+        0 0 4px #39FF14,
+        0 0 8px rgba(57, 255, 20, 0.7);
+    animation: status-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes status-pulse {
+    0%, 100% {
+        box-shadow:
+            0 0 4px #39FF14,
+            0 0 8px rgba(57, 255, 20, 0.7);
+    }
+    50% {
+        box-shadow:
+            0 0 6px #39FF14,
+            0 0 14px rgba(57, 255, 20, 0.9),
+            0 0 22px rgba(57, 255, 20, 0.4);
+    }
+}
+
+.blog-link {
+    text-decoration: none;
+}
+
+.header-subtitle-row {
     grid-column: 2;
     grid-row: 2;
     padding-top: 0.35rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+}
+
+.header-subtitle {
     font-size: 1rem;
     opacity: 0.85;
     letter-spacing: 0.02em;
@@ -539,7 +613,8 @@ h1 {
 
 .mm-seal,
 .bcc-ee-club-seal,
-.nersc-seal {
+.nersc-seal,
+.dataannotation-seal {
     width: 140px;
     height: auto;
     display: block;
@@ -632,12 +707,38 @@ h1 {
 }
 .project-meta .k::after { content: ':'; }
 
+/* ── Project hook line ── */
+.project-hook {
+    margin: 0.25rem 0 1rem 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.05rem;
+    font-style: italic;
+    color: #83ff6e;
+    letter-spacing: 0.02em;
+    text-shadow:
+        0 0 4px rgba(57, 255, 20, 0.45),
+        0 0 12px rgba(57, 255, 20, 0.2);
+}
+
+/* ── Project links (sits inside .project-meta) ── */
+.project-links-v {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+}
+.action-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+}
+
 /* ── Project tags ── */
 .project-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.4rem;
-    margin: 0;
+    margin: 0.6rem 0 0 0;
 }
 .project-tags .tag {
     display: inline-block;
@@ -684,6 +785,67 @@ h1 {
     filter:
         drop-shadow(0 0 3px #39FF14DD)
         drop-shadow(0 0 8px #39FF1499);
+}
+
+/* ── Seal click toast ── */
+.seal-toast {
+    position: fixed;
+    pointer-events: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.95rem;
+    color: #FFB000;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    text-shadow:
+        0 0 4px #FFB000,
+        0 0 10px rgba(255, 176, 0, 0.7),
+        0 0 22px rgba(255, 176, 0, 0.35);
+    z-index: 1000;
+    animation: seal-toast-float 1000ms ease-out forwards;
+}
+
+@keyframes seal-toast-float {
+    0%   { opacity: 0; transform: translate(-50%, calc(-100% - 4px)); }
+    15%  { opacity: 1; }
+    100% { opacity: 0; transform: translate(-50%, calc(-100% - 80px)); }
+}
+
+/* ── Terminal cursor ── */
+.terminal-cursor {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    color: #39FF14;
+    font-size: 1.4rem;
+    line-height: 1;
+    margin: 3rem 0 2rem 0;
+    text-shadow:
+        0 0 4px #39FF14,
+        0 0 10px rgba(57, 255, 20, 0.6),
+        0 0 22px rgba(57, 255, 20, 0.3);
+    animation: cursor-blink 1.06s infinite;
+    user-select: none;
+}
+
+@keyframes cursor-blink {
+    0%, 49%   { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .header-logo:hover .triskelion,
+    .triskelion.spinning,
+    .terminal-cursor,
+    .status-dot {
+        animation: none;
+    }
+    .terminal-cursor { opacity: 1; }
+    .seal-toast { animation: seal-toast-float-static 700ms ease-out forwards; }
+}
+
+@keyframes seal-toast-float-static {
+    0%   { opacity: 0; transform: translate(-50%, calc(-100% - 12px)); }
+    15%  { opacity: 1; }
+    100% { opacity: 0; transform: translate(-50%, calc(-100% - 12px)); }
 }
 
 /* ── Responsive: stack on narrow screens ── */
