@@ -25,11 +25,12 @@
     </head>
 
     <body class="portfolio">
-        
+        <canvas class="dot-grid-bg" aria-hidden="true"></canvas>
+
         <header class="site-header">
             <div class="header-logo">
                 <span class="triskelion-glow">
-                    <span class="triskelion" role="img" aria-label="Triskelion logo"></span>
+                    <span id="triskelion-logo" class="triskelion" role="img" aria-label="Triskelion logo"></span>
                 </span>
             </div>
             <div class="header-name-row">
@@ -37,6 +38,11 @@
                 <div class="header-status">
                     <span class="status-available">
                         <span class="status-dot" aria-hidden="true"></span>available
+                    </span>
+                    <span class="status-location">
+                        <svg class="status-pin" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/>
+                        </svg>Berkeley, CA, USA 
                     </span>
                 </div>
             </div>
@@ -202,60 +208,94 @@ dMP     dMP dMP  VMMMP" VMMMP" dMMMMMP  VMMMP"   dMP    VMMMP"
                 </pre>
 
 
-                <!-- <section class="project-section" id="zombulacrum">
-                    <h2><i>Zombulacrum</i></h2>
-                    <h3>Zombie FPS - Multiplayer Survival Horror - In Active Development</h3>
-                    <p>Tech Stack: Godot Engine 4.6+, Blender</p>
-                    <p>Team Size: Solo</p>
-                    <p>Role: Creator</p>
-                    <a href="">
-                        Technical Demo Footage
-                    </a>
-                    <br>
-                    <a href="">
-                        Dev log YouTube playlist
-                    </a>
-                    <p>
-                        <i>Zombulacrum</i> is a project that I've been working off-and-on for 
-                        about 2 years now. What started as a top down zombie RTS has morphed 
-                        into an exploration of the kind of game I truly want to play. I've 
-                        always looked fondly on my childhood memories of playing 
-                        <i>Call of Duty: Black Ops Zombies</i> with friends. At the start 
-                        the zombies were horrifying. The world felt atmospheric, empty and 
-                        we were absolutely stranded there alone and with only ourselves to depend 
-                        on for survival. Something about this repeated experience really stuck with me
-                        and caused my obsession with making something to replicate and expand upon 
-                        those feelings. 
-                        <br><br>
-                        Right now <i>Zombulacrum</i> is still in the pre-alpha stages, but the idea is 
-                        fairly fleshed out. Take a look at the tech demo footage and stay tuned into 
-                        my bluesky and youtube accounts for more updates.
-                    </p>
+                <section class="project-section" id="zombulacrum">
+                    <h2><i>Zombulacrum</i> - Multiplayer Survival Horror - In Active Development</h2>
+                    <!-- PLACEHOLDER hook line. Revise. -->
+                    <p class="project-hook">Atmospheric co-op zombie survival on a procgen heightmap world, in the spirit of CoD Zombies and L4D.</p>
+
+                    <div class="project-row">
+                        <div class="project-media">
+                            <img src="/images/zombulacrum_gameplay.png" loading="lazy" alt="Zombulacrum gameplay screenshot.">
+                        </div>
+                        <div class="project-body">
+                            <div class="project-meta">
+                                <span class="k">tech</span><span class="v">Godot 4.6+, Blender</span>
+                                <span class="k">team</span><span class="v">Solo</span>
+                                <span class="k">role</span><span class="v">Creator, Programmer, Artist</span>
+                                <span class="k">links</span>
+                                <span class="v project-links-v">
+                                    <a class="action-link" href="#" data-todo="zombulacrum-techdemo-url">[Tech Demo]</a>
+                                    <a class="action-link" href="#" data-todo="zombulacrum-devlog-url">[Devlog]</a>
+                                </span>
+                            </div>
+                            <div class="project-tags">
+                                <span class="tag">godot</span>
+                                <span class="tag">first-person</span>
+                                <span class="tag">multiplayer</span>
+                                <span class="tag">survival-horror</span>
+                                <span class="tag">procgen</span>
+                            </div>
+                            <p>
+                                <i>Zombulacrum</i> is a project that I've been working off-and-on for
+                                about 2 years now. What started as a top down zombie RTS has morphed
+                                into an exploration of the kind of game I truly want to play. I've
+                                always looked fondly on my childhood memories of playing
+                                <i>Call of Duty: Black Ops Zombies</i> with friends. At the start
+                                the zombies were horrifying. The world felt atmospheric, empty and
+                                we were absolutely stranded there alone and with only ourselves to depend
+                                on for survival. Something about this repeated experience really stuck with me
+                                and caused my obsession with making something to replicate and expand upon
+                                those feelings.
+                                <br><br>
+                                Right now <i>Zombulacrum</i> is still in the pre-alpha stages, but the idea is
+                                fairly fleshed out. Take a look at the tech demo footage and stay tuned into
+                                my bluesky and youtube accounts for more updates.
+                            </p>
+                        </div>
+                    </div>
                 </section>
 
 
                 <section class="project-section" id="helo">
-                    <h2><i>helo</i></h2>
-                    <h3>Helicopter co-op Kingdom-like</h3>
-                    <p>Tech Stack: Godot Engine 4.6+, Blender</p>
-                    <p>Team Size: 2</p>
-                    <p>Role: Co-creator, Programmer</p>
-                    <a href="">
-                        Demo Footage
-                    </a>
-                    <p>
-                        <i>helo</i> is a game I'm collaborating on with my good friend Josh.
-                        Born from a love of games where we would fly helicopters together in 
-                        tightly knit co-op gameplay--like <i>Battlefield 3</i>--we are making 
-                        a game that's also inspired by <i>Kingdom: 2 Crowns</i> with our own 
-                        take on it. You fly a helicopter around, recruit mercenary troops, 
-                        assign troop roles, build out your base, vie for resources and expand 
-                        your private miliary company's operational territory. The game is meant 
-                        to be lighthearted co-op fun that also points out and constrasts to the 
-                        grim reality of PMCs in the third-world. Look out for our game releasing 
-                        Steam sometime this year!
-                    </p>
-                </section> -->
+                    <h2><i>helo</i> - Helicopter Co-op Kingdom-like</h2>
+                    <!-- PLACEHOLDER hook line. Revise. -->
+                    <p class="project-hook">Fly choppers with a friend, recruit mercs, vie for territory.</p>
+
+                    <div class="project-row flip">
+                        <div class="project-media">
+                            <img src="/images/helo_screenshot.png" loading="lazy" alt="helo screenshot.">
+                        </div>
+                        <div class="project-body">
+                            <div class="project-meta">
+                                <span class="k">tech</span><span class="v">Godot 4.6+, Blender</span>
+                                <span class="k">team</span><span class="v">2</span>
+                                <span class="k">role</span><span class="v">Co-creator, Programmer</span>
+                                <span class="k">links</span>
+                                <span class="v project-links-v">
+                                    <a class="action-link" href="#" data-todo="helo-demo-footage-url">[Demo Footage]</a>
+                                </span>
+                            </div>
+                            <div class="project-tags">
+                                <span class="tag">godot</span>
+                                <span class="tag">co-op</span>
+                                <span class="tag">2d</span>
+                                <span class="tag">multiplayer</span>
+                            </div>
+                            <p>
+                                <i>helo</i> is a game I'm collaborating on with my good friend Josh.
+                                Born from a love of games where we would fly helicopters together in
+                                tightly knit co-op gameplay--like <i>Battlefield 3</i>--we are making
+                                a game that's also inspired by <i>Kingdom: 2 Crowns</i> with our own
+                                take on it. You fly a helicopter around, recruit mercenary troops,
+                                assign troop roles, build out your base, vie for resources and expand
+                                your private miliary company's operational territory. The game is meant
+                                to be lighthearted co-op fun that also points out and constrasts to the
+                                grim reality of PMCs in the third-world. Look out for our game releasing
+                                Steam sometime this year!
+                            </p>
+                        </div>
+                    </div>
+                </section>
 
 
                 <section class="project-section" id="dreadreign">
@@ -394,16 +434,20 @@ dMP     dMP dMP  VMMMP" VMMMP" dMMMMMP  VMMMP"   dMP    VMMMP"
                     <div class="project-row">
                         <div class="project-media">
                             <img src="/images/inoculum_screenshot.webp" loading="lazy" alt="Inoculum screenshot.">
+                            <iframe
+                                loading="lazy"
+                                src="https://www.youtube.com/embed/sz_hiC40C0Q?start=26"
+                                title="Inoculum full playthrough"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                            </iframe>
                         </div>
                         <div class="project-body">
                             <div class="project-meta">
                                 <span class="k">tech</span><span class="v">Unreal 5, Blueprints, Perforce</span>
                                 <span class="k">team</span><span class="v">6</span>
                                 <span class="k">role</span><span class="v">Programmer</span>
-                                <span class="k">links</span>
-                                <span class="v project-links-v">
-                                    <a class="action-link" href="https://ccperalta-my.sharepoint.com/personal/10924894_cc_peralta_edu/_layouts/15/stream.aspx?id=%2Fpersonal%2F10924894%5Fcc%5Fperalta%5Fedu%2FDocuments%2FGame%20Dev%20Stuff%2FJulian%5FInoculum%5FFull%5FPlaythrough%5F1%2Emp4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0&ga=1&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Ebb427650%2D8749%2D4916%2Da0ff%2Df57b2397c9cd">[Walkthrough]</a>
-                                </span>
                             </div>
                             <div class="project-tags">
                                 <span class="tag">unreal</span>
@@ -425,7 +469,22 @@ dMP     dMP dMP  VMMMP" VMMMP" dMMMMMP  VMMMP"   dMP    VMMMP"
 
                     <div class="project-row flip">
                         <div class="project-media">
-                            <img src="/images/nova_scenario_1.webp" loading="lazy" alt="Nova board game scenario 1.">
+                            <!-- Static fallback for low-motion mode (not yet implemented). Keep in sync with the orbit stack below. -->
+                            <!-- <img src="/images/nova_scenario_1.webp" loading="lazy" alt="Nova board game scenario 1."> -->
+                            <div class="nova-orbit-stack" aria-label="Nova board game with rotating concentric orbital tracks. Hover to animate.">
+                                <!-- Each layer is a full-canvas PNG with content positioned via Procreate.
+                                     Stacking centered = lines up automatically. Z-order = document order. -->
+                                <img class="layer"                  src="/images/nova-pieces/web/background.png"    alt="" loading="lazy">
+                                <img class="layer orbit-4 spin-cw"  src="/images/nova-pieces/web/board-orbit-4.png" alt="" loading="lazy">
+                                <img class="layer orbit-3 spin-ccw" src="/images/nova-pieces/web/board-orbit-3.png" alt="" loading="lazy">
+                                <img class="layer orbit-2 spin-cw"  src="/images/nova-pieces/web/board-orbit-2.png" alt="" loading="lazy">
+                                <img class="layer orbit-1 spin-ccw" src="/images/nova-pieces/web/board-orbit-1.png" alt="" loading="lazy">
+                                <img class="layer"                  src="/images/nova-pieces/web/board-sun.png"     alt="" loading="lazy">
+                                <img class="layer orbit-4 spin-cw"  src="/images/nova-pieces/web/ship-green.png"    alt="" loading="lazy"><!-- on orbit-4 -->
+                                <img class="layer orbit-3 spin-ccw" src="/images/nova-pieces/web/ship-blue.png"     alt="" loading="lazy"><!-- on orbit-3 -->
+                                <img class="layer orbit-3 spin-ccw" src="/images/nova-pieces/web/ship-yellow.png"   alt="" loading="lazy"><!-- on orbit-3 -->
+                                <img class="layer orbit-2 spin-cw"  src="/images/nova-pieces/web/ship-red.png"      alt="" loading="lazy"><!-- on orbit-2 -->
+                            </div>
                         </div>
                         <div class="project-body">
                             <div class="project-meta">
@@ -641,13 +700,81 @@ resume  : &lt;pending&gt;
         </div> <!-- end .page-layout-->
 
     <script>
-        // ── Triskele click spin ──
+        // ── DevTools easter egg ──
+        console.log(
+            '%c   ▀▄▀▄▀▄  hello, dev.  ▄▀▄▀▄▀\n' +
+            '%csource: github.com/hackerzilla\n' +
+            '%clooking for a Godot / Unity / systems programmer? get in touch.\n' +
+            '%cj.pearbach@yahoo.com',
+            'color: #39FF14; font-family: monospace; font-weight: bold; font-size: 14px; text-shadow: 0 0 6px #39FF14;',
+            'color: #83ff6e; font-family: monospace;',
+            'color: #83ff6e; font-family: monospace;',
+            'color: #00AAff; font-family: monospace; text-decoration: underline;'
+        );
+
+        // ── Triskele hover-spin (with friction stop) + click-spin ──
         const triskeleLogo = document.querySelector('.header-logo');
-        const triskele = document.querySelector('.triskelion');
+        // const triskele = document.querySelector('#triskelion');
+        const triskele = document.getElementById('triskelion-logo');
         const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
         if (triskeleLogo && triskele) {
+            const TARGET_RATE = 60;   // deg/sec at full hover speed (matches old 6s/rotation)
+            const ACCEL       = 300;  // deg/sec² ramp-up while hovered
+            const FRICTION    = 50;   // deg/sec² decel after mouseleave (lower = longer coast)
+
+            let hoverActive = false;
+            let clickSpinActive = false;
+            let angle = 0;
+            let rate = 0;
+            let lastT = 0;
+            let rafId = null;
+
+            function tick(t) {
+                if (lastT === 0) lastT = t;
+                const dt = Math.min(0.1, (t - lastT) / 1000);
+                lastT = t;
+
+                if (hoverActive && !clickSpinActive) {
+                    rate = Math.min(TARGET_RATE, rate + ACCEL * dt);
+                } else {
+                    rate = Math.max(0, rate - FRICTION * dt);
+                }
+
+                angle = (angle + rate * dt) % 360;
+                if (!clickSpinActive) {
+                    triskele.style.transform = `rotate(${angle}deg)`;
+                }
+
+                if (hoverActive || rate > 0.01 || clickSpinActive) {
+                    rafId = requestAnimationFrame(tick);
+                } else {
+                    rafId = null;
+                    lastT = 0;
+                }
+            }
+
+            function startLoop() {
+                if (rafId === null) {
+                    lastT = 0;
+                    rafId = requestAnimationFrame(tick);
+                }
+            }
+
+            triskeleLogo.addEventListener('mouseenter', () => {
+                if (reducedMotion.matches) return;
+                hoverActive = true;
+                startLoop();
+            });
+            triskeleLogo.addEventListener('mouseleave', () => {
+                hoverActive = false;
+            });
+
             triskeleLogo.addEventListener('click', () => {
                 if (reducedMotion.matches) return;
+                clickSpinActive = true;
+                angle = 0;
+                rate = 0;
+                triskele.style.transform = '';
                 triskele.classList.remove('spinning');
                 void triskele.offsetWidth;
                 triskele.classList.add('spinning');
@@ -655,6 +782,8 @@ resume  : &lt;pending&gt;
             triskele.addEventListener('animationend', (e) => {
                 if (e.animationName === 'triskele-spin-fast') {
                     triskele.classList.remove('spinning');
+                    clickSpinActive = false;
+                    if (hoverActive) startLoop();
                 }
             });
         }
@@ -686,6 +815,22 @@ resume  : &lt;pending&gt;
         bindSeal('.bcc-ee-club-seal',
             () => bccMessages[Math.floor(Math.random() * bccMessages.length)]);
 
+        // ── Cross-tag highlighting ──
+        (() => {
+            const allTags = document.querySelectorAll('.project-tags .tag');
+            allTags.forEach(t => t.setAttribute('data-tag', t.textContent.trim().toLowerCase()));
+            allTags.forEach(tag => {
+                const name = tag.getAttribute('data-tag');
+                const matches = document.querySelectorAll(`.tag[data-tag="${CSS.escape(name)}"]`);
+                tag.addEventListener('mouseenter', () => {
+                    matches.forEach(t => t.classList.add('cross-highlight'));
+                });
+                tag.addEventListener('mouseleave', () => {
+                    matches.forEach(t => t.classList.remove('cross-highlight'));
+                });
+            });
+        })();
+
         // ── Spatial-overlap active tab tracking ──
         // A tab is "active" when its corresponding content section overlaps
         // vertically with the tab in viewport-relative coordinates. Multiple
@@ -711,6 +856,144 @@ resume  : &lt;pending&gt;
         window.addEventListener('scroll', updateActiveTabs, { passive: true });
         window.addEventListener('resize', updateActiveTabs);
         updateActiveTabs();
+
+        // ── Dot-grid background (bend + brighten near cursor) ──
+        (() => {
+            const canvas = document.querySelector('.dot-grid-bg');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+            // Tunables
+            const GRID        = 32;    // spacing between dots (px)
+            const BASE_R      = 1.1;   // base dot radius
+            const MAX_R       = 1.4;   // max dot radius at cursor center
+            const INFLUENCE   = 140;   // cursor influence radius (px)
+            const MAX_DISP    = 5;     // max displacement away from cursor (px, peaks mid-ring)
+            const BASE_ALPHA  = 0.16;
+            const HOT_ALPHA   = 0.40;
+            const EASE_PER_S  = 4.5;   // influence strength lerp rate (1/s) on leave
+
+            let dpr = 1, w = 0, h = 0;
+            let mouseX = -9999, mouseY = -9999;
+            let influence = 0;        // 0..1, eased from mouseEnter/leave
+            let target    = 0;        // target influence
+            let lastT     = 0;
+            let rafId     = null;
+            let needsRedraw = true;
+
+            function resize() {
+                dpr = window.devicePixelRatio || 1;
+                w = window.innerWidth;
+                h = window.innerHeight;
+                canvas.width  = Math.floor(w * dpr);
+                canvas.height = Math.floor(h * dpr);
+                canvas.style.width  = w + 'px';
+                canvas.style.height = h + 'px';
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                needsRedraw = true;
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, w, h);
+                const cols = Math.ceil(w / GRID) + 1;
+                const rows = Math.ceil(h / GRID) + 1;
+                const inflR = INFLUENCE;
+                const inflRSq = inflR * inflR;
+                const live = influence > 0.001;
+                const mx = mouseX, my = mouseY;
+
+                for (let i = 0; i < cols; i++) {
+                    const baseX = i * GRID;
+                    for (let j = 0; j < rows; j++) {
+                        const baseY = j * GRID;
+                        let x = baseX, y = baseY, r = BASE_R;
+                        let alpha = BASE_ALPHA;
+                        let color = `rgba(57, 255, 20, ${alpha})`;
+
+                        if (live) {
+                            const dx = baseX - mx;
+                            const dy = baseY - my;
+                            const dSq = dx * dx + dy * dy;
+                            if (dSq < inflRSq) {
+                                const d = Math.sqrt(dSq);
+                                const dRatio = d / inflR;                        // 0..1
+                                const tCenter = (1 - dRatio) * (1 - dRatio) * influence; // peaks at center, for brightness + scale
+                                const tRing   = 4 * dRatio * (1 - dRatio) * influence;   // peaks at d=inflR/2, zero at center + edge
+                                const inv = d > 0.0001 ? 1 / d : 0;
+                                const disp = MAX_DISP * tRing;
+                                x = baseX + dx * inv * disp;
+                                y = baseY + dy * inv * disp;
+                                r = BASE_R + (MAX_R - BASE_R) * tCenter;
+                                const a = BASE_ALPHA + (HOT_ALPHA - BASE_ALPHA) * tCenter;
+                                color = `rgba(131, 255, 110, ${a})`;
+                            }
+                        }
+
+                        ctx.fillStyle = color;
+                        ctx.beginPath();
+                        ctx.arc(x, y, r, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                }
+            }
+
+            function tick(now) {
+                if (lastT === 0) lastT = now;
+                const dt = Math.min(0.1, (now - lastT) / 1000);
+                lastT = now;
+
+                // Lerp influence toward target with ease rate
+                if (Math.abs(target - influence) > 0.001) {
+                    const k = 1 - Math.exp(-EASE_PER_S * dt);
+                    influence += (target - influence) * k;
+                    needsRedraw = true;
+                } else if (influence !== target) {
+                    influence = target;
+                    needsRedraw = true;
+                }
+
+                if (needsRedraw) {
+                    draw();
+                    needsRedraw = false;
+                }
+
+                if (influence > 0.001 || target > 0) {
+                    rafId = requestAnimationFrame(tick);
+                } else {
+                    rafId = null;
+                    lastT = 0;
+                }
+            }
+
+            function startLoop() {
+                if (rafId === null) {
+                    lastT = 0;
+                    rafId = requestAnimationFrame(tick);
+                }
+            }
+
+            window.addEventListener('resize', resize, { passive: true });
+            window.addEventListener('pointermove', (e) => {
+                if (reduced.matches) return;
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                target = 1;
+                needsRedraw = true;
+                startLoop();
+            }, { passive: true });
+            document.documentElement.addEventListener('pointerleave', () => {
+                target = 0;
+                startLoop();
+            });
+            window.addEventListener('blur', () => {
+                target = 0;
+                startLoop();
+            });
+
+            resize();
+            draw();
+        })();
     </script>
     </body>
 </html>

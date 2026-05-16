@@ -9,6 +9,16 @@ body {
     --layout-max-width: calc(var(--content-max-width) + 2 * var(--sidebar-width));
 }
 
+/* ── Dot-grid background canvas ── */
+.dot-grid-bg {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
 /* ── Page layout: sidebar + centered content ── */
 .page-layout {
     display: grid;
@@ -16,6 +26,7 @@ body {
     max-width: var(--layout-max-width);
     margin: 0 auto;
     position: relative;
+    z-index: 1;
 }
 
 .page-layout::after {
@@ -245,6 +256,7 @@ h1 {
 .triskelion-glow {
     display: inline-block;
     line-height: 0;
+    transform: translate(3%, 2%); /* visual recentering within corner-bracket frame */
     filter:
         drop-shadow(0 0 3px rgba(57, 255, 20, 0.5))
         drop-shadow(0 0 8px rgba(57, 255, 20, 0.5))
@@ -272,9 +284,7 @@ h1 {
     to   { transform: rotate(1440deg); }
 }
 
-.header-logo:hover .triskelion {
-    animation: triskele-spin-slow 6s linear infinite;
-}
+/* Hover-spin handled in JS for friction-stop on mouseleave */
 
 .triskelion.spinning,
 .header-logo:hover .triskelion.spinning {
@@ -300,6 +310,17 @@ h1 {
     filter:
         drop-shadow(0 0 3px #39FF14)
         drop-shadow(0 0 8px rgba(57, 255, 20, 0.7));
+    transition: top 220ms ease-out, right 220ms ease-out, bottom 220ms ease-out, left 220ms ease-out;
+}
+.header-logo:hover::before {
+    top: -5px;
+    right: -5px;
+    bottom: -5px;
+    left: -5px;
+}
+@media (prefers-reduced-motion: reduce) {
+    .header-logo::before { transition: none; }
+    .header-logo:hover::before { top: 0; right: 0; bottom: 0; left: 0; }
 }
 
 .header-name-row {
@@ -386,6 +407,23 @@ h1 {
             0 0 14px rgba(57, 255, 20, 0.9),
             0 0 22px rgba(57, 255, 20, 0.4);
     }
+}
+
+.status-location {
+    display: inline-flex;
+    align-items: center;
+    color: #83ff6e;
+    letter-spacing: 0.05em;
+}
+
+.status-pin {
+    width: 0.85rem;
+    height: 0.85rem;
+    margin-right: 0.35rem;
+    color: #39FF14;
+    filter:
+        drop-shadow(0 0 3px #39FF14)
+        drop-shadow(0 0 6px rgba(57, 255, 20, 0.6));
 }
 
 .blog-link {
@@ -534,6 +572,49 @@ h1 {
     margin-top: 1.5rem;
 }
 
+/* ── Title glitch on hover ── */
+.project-section > h2:hover {
+    animation: title-glitch 280ms steps(5, end);
+}
+@keyframes title-glitch {
+    0%, 100% {
+        text-shadow:
+            0 0 3px #39FF14DD,
+            0 0 10px #39FF1499,
+            0 0 30px #39FF1433;
+    }
+    20% {
+        text-shadow:
+            -2px 0 0 #ff0040,
+            2px 0 0 #00e6ff,
+            0 0 3px #39FF14DD,
+            0 0 10px #39FF1499;
+    }
+    40% {
+        text-shadow:
+            2px 0 0 #ff0040,
+            -2px 0 0 #00e6ff,
+            0 0 3px #39FF14DD,
+            0 0 10px #39FF1499;
+    }
+    60% {
+        text-shadow:
+            -1px 0 1px #ff0040,
+            1px 0 1px #00e6ff,
+            0 0 3px #39FF14DD;
+    }
+    80% {
+        text-shadow:
+            1px 0 0 #ff0040,
+            -1px 0 0 #00e6ff,
+            0 0 3px #39FF14DD,
+            0 0 10px #39FF1499;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .project-section > h2:hover { animation: none; }
+}
+
 .project-section::before,
 .skills-section::before,
 .contact-block::before,
@@ -557,6 +638,93 @@ h1 {
     filter:
         drop-shadow(0 0 3px #39FF14)
         drop-shadow(0 0 8px rgba(57, 255, 20, 0.7));
+}
+
+.project-section::before,
+.skills-section::before,
+.contact-block::before,
+.bio-block::before,
+.education-entry::before,
+.experience-entry::before {
+    transition: top 220ms ease-out, right 220ms ease-out, bottom 220ms ease-out, left 220ms ease-out;
+}
+.project-section:hover::before,
+.skills-section:hover::before,
+.contact-block:hover::before,
+.bio-block:hover::before,
+.education-entry:hover::before,
+.experience-entry:hover::before {
+    top: -6px;
+    right: -6px;
+    bottom: -6px;
+    left: -6px;
+}
+@media (prefers-reduced-motion: reduce) {
+    .project-section::before,
+    .skills-section::before,
+    .contact-block::before,
+    .bio-block::before,
+    .education-entry::before,
+    .experience-entry::before { transition: none; }
+    .project-section:hover::before,
+    .skills-section:hover::before,
+    .contact-block:hover::before,
+    .bio-block:hover::before,
+    .education-entry:hover::before,
+    .experience-entry:hover::before { top: -1px; right: -1px; bottom: -1px; left: -1px; }
+}
+
+/* ── Static glassy sheen on hovered cards + active sidebar tab ── */
+.project-section::after,
+.skills-section::after,
+.contact-block::after,
+.bio-block::after,
+.education-entry::after,
+.experience-entry::after,
+.sidebar-tab::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        to bottom,
+        rgba(200, 255, 190, 0.09) 0%,
+        rgba(200, 255, 190, 0.035) 28%,
+        transparent 55%,
+        rgba(0, 0, 0, 0.04) 100%
+    );
+    box-shadow: inset 0 1px 0 rgba(220, 255, 220, 0.20);
+    opacity: 0;
+    transition: opacity 220ms ease-out;
+}
+.project-section:hover::after,
+.skills-section:hover::after,
+.contact-block:hover::after,
+.bio-block:hover::after,
+.education-entry:hover::after,
+.experience-entry:hover::after,
+.sidebar-tab.active::after {
+    opacity: 1;
+}
+/* Stronger sheen on sidebar tabs */
+.sidebar-tab::after {
+    background: linear-gradient(
+        to bottom,
+        rgba(200, 255, 190, 0.18) 0%,
+        rgba(200, 255, 190, 0.095) 40%,
+        rgba(200, 255, 190, 0.02) 70%,
+        rgba(0, 0, 0, 0.06) 100%
+    );
+    box-shadow: inset 0 1px 0 rgba(220, 255, 220, 0.55);
+}
+@media (prefers-reduced-motion: reduce) {
+    .project-section::after,
+    .skills-section::after,
+    .contact-block::after,
+    .bio-block::after,
+    .education-entry::after,
+    .experience-entry::after,
+    .sidebar-tab::after { transition: none; }
 }
 
 /* ── Saira override for prose body text ── */
@@ -584,7 +752,6 @@ h1 {
     width: 140px;
     height: auto;
     display: block;
-    filter: brightness(0.65);
 }
 
 .bcc-seal {
@@ -747,9 +914,28 @@ h1 {
     color: #eab315;
     font-size: 0.8rem;
     letter-spacing: 0.03em;
+    cursor: default;
     text-shadow:
         0 0 3px rgba(234, 179, 21, 0.6),
         0 0 8px rgba(234, 179, 21, 0.35);
+    transition:
+        color 180ms ease,
+        border-color 180ms ease,
+        background-color 180ms ease,
+        text-shadow 180ms ease,
+        box-shadow 180ms ease;
+}
+.project-tags .tag.cross-highlight {
+    color: #ffd84a;
+    border-color: #ffd84a;
+    background-color: rgba(234, 179, 21, 0.12);
+    text-shadow:
+        0 0 4px #eab315,
+        0 0 10px rgba(234, 179, 21, 0.85),
+        0 0 18px rgba(234, 179, 21, 0.5);
+    box-shadow:
+        0 0 4px rgba(234, 179, 21, 0.5),
+        0 0 10px rgba(234, 179, 21, 0.3);
 }
 
 /* ── Skills grid: 3 columns side-by-side, collapses on narrow screens ── */
@@ -847,6 +1033,68 @@ h1 {
     15%  { opacity: 1; }
     100% { opacity: 0; transform: translate(-50%, calc(-100% - 12px)); }
 }
+
+/* ── Nova orbital stack (hover-animated rings) ──
+   All layer PNGs share the same canvas dimensions and content is positioned
+   in Procreate (rings centered, ships at their orbital position with pivot
+   built in). Stack them all at the same size = aligned automatically. Each
+   .layer rotates around its own center; ship classes pair speed+direction
+   with the ring they sit on so they appear to travel together. */
+.nova-orbit-stack {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    box-sizing: border-box;
+    outline: 1px solid rgba(57, 255, 20, 0.5);
+    box-shadow: 0 0 6px rgba(57, 255, 20, 0.45);
+    overflow: hidden;
+}
+.nova-orbit-stack .layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    outline: none;
+    box-shadow: none;
+    transform-origin: 50% 50%;
+}
+.nova-orbit-stack .layer[class*="orbit-"] {
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
+    will-change: transform;
+}
+.nova-orbit-stack .spin-cw  { animation-name: nova-spin-cw;  }
+.nova-orbit-stack .spin-ccw { animation-name: nova-spin-ccw; }
+/* Inner orbits rotate faster than outer (Kepler-ish). To tune, change one
+   duration here — class is shared by the ring AND the ship(s) on that ring. */
+.nova-orbit-stack .orbit-1 { animation-duration: 12s; }
+.nova-orbit-stack .orbit-2 { animation-duration: 20s; }
+.nova-orbit-stack .orbit-3 { animation-duration: 32s; }
+.nova-orbit-stack .orbit-4 { animation-duration: 48s; }
+
+/* Hover trigger */
+.project-media:hover .nova-orbit-stack .layer[class*="orbit-"] {
+    animation-play-state: running;
+}
+
+/* Touch (no hover): keep them gently rotating always, slowed 2× */
+@media (hover: none) {
+    .nova-orbit-stack .layer[class*="orbit-"] { animation-play-state: running; }
+    .nova-orbit-stack .orbit-1 { animation-duration: 24s; }
+    .nova-orbit-stack .orbit-2 { animation-duration: 40s; }
+    .nova-orbit-stack .orbit-3 { animation-duration: 64s; }
+    .nova-orbit-stack .orbit-4 { animation-duration: 96s; }
+}
+
+/* Reduced motion: never animate */
+@media (prefers-reduced-motion: reduce) {
+    .nova-orbit-stack .layer { animation: none !important; }
+}
+
+@keyframes nova-spin-cw  { to { transform: rotate( 360deg); } }
+@keyframes nova-spin-ccw { to { transform: rotate(-360deg); } }
 
 /* ── Responsive: stack on narrow screens ── */
 @media (max-width: 768px) {
