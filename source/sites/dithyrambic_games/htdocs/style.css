@@ -180,6 +180,38 @@ h1 {
     font-family: inherit;
     font-size: inherit;
     line-height: 2.5;
+    display: grid;
+    grid-template-columns: max-content max-content 1fr;
+    column-gap: 0.5rem;
+    align-items: center;
+    margin: 0;
+}
+
+.contact-block .contact-icon {
+    display: inline-block;
+    width: 1.1em;
+    height: 1.1em;
+    background-color: currentColor;
+    -webkit-mask: var(--icon) center / contain no-repeat;
+    mask: var(--icon) center / contain no-repeat;
+    align-self: center;
+    filter:
+        drop-shadow(0 0 3px #39FF14DD)
+        drop-shadow(0 0 8px #39FF1499);
+}
+
+.contact-block .contact-label {
+    text-align: left;
+    align-self: center;
+}
+
+.contact-block .contact-label::after {
+    content: ' :';
+}
+
+.contact-block .contact-value {
+    display: flex;
+    flex-direction: column;
 }
 
 #contact {
@@ -806,6 +838,10 @@ h1 {
 }
 
 /* ── Bio expand/collapse ── */
+.bio-block {
+    padding-bottom: 3.2rem;
+}
+
 .bio-block.bio-collapsed {
     max-height: 14em;
     overflow: hidden;
@@ -834,9 +870,12 @@ h1 {
 }
 
 .bio-expand {
-    display: block;
-    margin: 0.8rem auto 0;
-    background: transparent;
+    position: absolute;
+    bottom: 0.8rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    background: rgba(0, 0, 0, 0.55);
     border: 1px solid rgba(57, 255, 20, 0.35);
     cursor: pointer;
     font-family: 'JetBrains Mono', monospace;
@@ -1157,6 +1196,30 @@ h1 {
 /* Hover trigger */
 .project-media:hover .nova-orbit-stack .layer[class*="orbit-"] {
     animation-play-state: running;
+}
+
+.nova-hover-hint {
+    align-self: center;
+    width: max-content;
+    margin: 0.4rem 0 0;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    color: rgba(57, 255, 20, 0.55);
+    transition: color 220ms ease, opacity 220ms ease;
+}
+
+.project-media:hover .nova-hover-hint {
+    opacity: 0;
+}
+
+/* Hide hint on touch (already auto-spinning) and reduced-motion (no animation) */
+@media (hover: none) {
+    .nova-hover-hint { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .nova-hover-hint { display: none; }
 }
 
 /* Touch (no hover): keep them gently rotating always, slowed 2× */
