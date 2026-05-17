@@ -805,6 +805,86 @@ h1 {
     flex: 1 1 auto;
 }
 
+/* ── Bio expand/collapse ── */
+.bio-block.bio-collapsed {
+    max-height: 14em;
+    overflow: hidden;
+    transition: max-height 450ms ease;
+}
+
+.bio-block:not(.bio-collapsed) {
+    max-height: 200em;
+    transition: max-height 600ms ease;
+}
+
+.bio-fade {
+    display: none;
+}
+
+.bio-block.bio-collapsed .bio-fade {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 6em;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #000 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.bio-expand {
+    display: block;
+    margin: 0.8rem auto 0;
+    background: transparent;
+    border: 1px solid rgba(57, 255, 20, 0.35);
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    color: #39FF14;
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-shadow: 0 0 4px rgba(57, 255, 20, 0.55);
+    padding: 0.35rem 0.9rem;
+    transition: color 180ms ease, text-shadow 180ms ease, border-color 180ms ease, background-color 180ms ease;
+}
+
+.bio-expand:hover {
+    color: #83ff6e;
+    border-color: rgba(131, 255, 110, 0.65);
+    background-color: rgba(57, 255, 20, 0.06);
+    text-shadow: 0 0 7px rgba(131, 255, 110, 0.95);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .bio-block.bio-collapsed,
+    .bio-block:not(.bio-collapsed) {
+        transition: none;
+    }
+}
+
+/* ── Coursework lists (multi-column for compactness) ── */
+.coursework-label {
+    margin: 0.6rem 0 0.3rem 0;
+    opacity: 0.85;
+}
+
+.coursework-list {
+    column-count: 2;
+    column-gap: 2rem;
+    margin: 0;
+    padding-left: 1.2rem;
+    list-style-type: disc;
+}
+
+.coursework-list li {
+    break-inside: avoid;
+    margin: 0 0 0.15rem 0;
+}
+
+@media (max-width: 700px) {
+    .coursework-list { column-count: 1; }
+}
+
 
 /* ── Project row layout ── */
 .project-row {

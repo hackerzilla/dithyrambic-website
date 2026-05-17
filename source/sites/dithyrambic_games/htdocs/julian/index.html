@@ -49,7 +49,7 @@
             <div class="header-subtitle-row">
                 <div class="header-subtitle">indie game dev and programmer</div>
                 <nav class="header-contacts" aria-label="Contact links">
-                    <a href="/blog/" class="blog-link">[blog]</a>
+                    <!-- <a href="/blog/" class="blog-link">[blog]</a> -->
                     <a href="mailto:j.pearbach@yahoo.com" aria-label="Email">[email]</a>
                     <a href="https://bsky.app/profile/julian-pr.bsky.social" aria-label="Bluesky">[bsky]</a>
                     <a href="https://github.com/hackerzilla" aria-label="GitHub">[github]</a>
@@ -77,20 +77,25 @@
 dMMMMP" dMP  VMMMP"
                 </pre>
 
-                <!-- PLACEHOLDER drawn from machine/job_hunt/resume/master.md + library/dossier/julian/profile.md. Revise. -->
-                <div class="bio-block">
+                <div class="bio-block bio-collapsed">
                 <p>
-                    I'm a game programmer in Berkeley, California. I
-                    studied EECS at UC Berkeley and have wanted to make
-                    games since I was thirteen. I work mainly in Godot 4
-                    (GDScript) and Unity (C#), and I'm strongest on the
-                    systems side: graphics and shaders, procedural
-                    generation, simulation, optimization, and AI-assisted
-                    workflows. Outside of code I draw on an iPad and a
-                    Wacom, mess around with Foley and synths, and
-                    occasionally write code that writes music.
+                    Hi, my name is Julian and I'm a game programmer from Berkeley, California. I just recently graduated from UC Berkeley where I studied Computer Science. I studied computer science because I've wanted to make video games since I was 13 years old and coding was my preferred way to create. My purpose in life is to create meaningful games that bring joy to the lives of other people. I began my six-year academic journey to meet that end and now that I've graduated and started to get more real game-making experience under my belt I can say it was well worth the effort!
                 </p>
+                <p>
+                    I work mostly with Godot Engine (GDScript/C++) and Unity (C#), but I've also done a project in Unreal Engine 5 using Blueprints. I'm always eager to learn new things and I strive to understand as much as I can about each part of the entire stack from high level software down to low level hardware. My favorite programming language is actually C++! I hope to one day return to programming in C++ more frequently and working closer to the hardware--WowCube, Playdate and Raspberry Pi, I'm looking at you!
+                </p>
+                <p>
+                    I enjoy being a generalist programmer, I love to work on systems, shaders, user interface, physics, AI, optimization, simulation, business logic, gameplay, networking, tools, audio and everything else required to make a game. Over the course of two years working on my own game <i>Zombulacrum</i> in Godot 4 I've learned a lot by doing it all myself. While I can't say that I'm an expert in any one field, I know enough about each component of the game software stack to be able to navigate implementing whatever. And I'm always looking to improve my craft and grow as a programmer.
+                </p>
+                <p>
+                    Outside of being a programmer, I also consider myself and amateur visual artists and fledgling music-maker. I've been a doodler and an impromptu musician since I was a toddler and while I haven't spent as much time honing those crafts as I have with programming, I hope to one day have enough time away from the computer to pursue those forms of expression. Still, I actually do author my own art assets sometimes using digital drawing tablets and record my own sound effects using foley and synths.
+                </p>
+                <p>
+                    On the topic of human growth and expression I want to put my two cents on AI right here. I believe that AI is here to stay but I don't believe in letting the narratives of society skew my perception of the tools. I believe the AI tools and agents are very interesting from a computer scientist's perspective, very useful from an entrepreneur's perspective, and deeply troubling from an artist and craftsperson's perspective. I'm learning these tools like everyone else but I'm approaching with a healthy level of skepticism about the effects on human health and wellbeing. In a nutshell, I'm using them but I wish I didn't have to. And further, I'm very selective about how and when I use it. Coding is somewhat acceptable to me--if not less satisfying compared to hand-coding it all--but using it for artwork directly is where I start to feel icky. Anyways, rant over.
+                </p>
+                <div class="bio-fade" aria-hidden="true"></div>
                 </div>
+                <button class="bio-expand" type="button" aria-expanded="false">[ Read more ▾ ]</button>
                 </section>
 
                 <section class="page-section" id="education">
@@ -112,6 +117,21 @@ dMMMMMP dMMMMP"  VMMMP"  VMMMP" dMP dMP   dMP   dMP  VMMMP" dMP dMP
                         <h3>University of California, Berkeley</h3>
                         <p>B.S. Electrical Engineering and Computer Science - Winter Class of 2022</p>
                         <p>Overall GPA: 3.53 | Technical GPA: 3.66</p>
+                        <p class="coursework-label">Relevant coursework:</p>
+                        <ul class="coursework-list">
+                            <li>Computer Graphics</li>
+                            <li>Artificial Intelligence</li>
+                            <li>Computer Vision</li>
+                            <li>Computer Architecture</li>
+                            <li>Foundations of the Internet</li>
+                            <!-- TODO J: pick one — "Computer Science Theory" OR "Efficient Algorithm and Intractable Problems" -->
+                            <li>Computer Science Theory / Efficient Algorithm and Intractable Problems</li>
+                            <li>Discrete Math, Probability and Combinatorics</li>
+                            <li>Virtual Reality</li>
+                            <li>3D Modelling</li>
+                            <li>Game Design</li>
+                            <li>Intro to Drawing</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -123,6 +143,15 @@ dMMMMMP dMMMMP"  VMMMP"  VMMMP" dMP dMP   dMP   dMP  VMMMP" dMP dMP
                         <h3>Berkeley City College (Peralta Community Colleges)</h3>
                         <p>2019-2022 - Transferred to UC Berkeley</p>
                         <p>Overall GPA: 4.0</p>
+                        <p class="coursework-label">Relevant coursework:</p>
+                        <ul class="coursework-list">
+                            <li>Data Structures and Algorithms</li>
+                            <li>Assembly Language</li>
+                            <li>Object Oriented Programming with C++</li>
+                            <li>Game Development</li>
+                            <li>Game Design</li>
+                            <li>Level Design</li>
+                        </ul>
                     </div>
                 </div>
                 </section>
@@ -176,7 +205,7 @@ dMMMMMP dMP dMP dMP     dMMMMMP dMP dMP dMP dMMMMMP dMP dMP  VMMMP" dMMMMMP
                         <h3>NERSC / Lawrence Berkeley National Laboratory - Student Intern</h3>
                         <p>June 2021 - January 2023</p>
                         <ul>
-                            <li>Operations Division. Comprehensive research evaluating NetBox and DC Sunbird Track APIs for data center infrastructure management across 100+ high-performance computing servers.</li>
+                            <li>Operations Division. Conducted research evaluating NetBox and DC Sunbird Track APIs for data center infrastructure management across 100+ high-performance computing servers.</li>
                             <li>Delivered company-wide technical presentation to senior leadership on research findings.</li>
                             <li>Collaborated with operations team to document data center infrastructure using Matterport 3D mapping, enabling remote facility access during COVID-19.</li>
                         </ul>
@@ -193,6 +222,9 @@ dMMMMMP dMP dMP dMP     dMMMMMP dMP dMP dMP dMMMMMP dMP dMP  VMMMP" dMMMMMP
                         <ul>
                             <li>Co-founded and grew STEM club to 70+ active members.</li>
                             <li>Led hands-on workshops teaching Arduino programming and hardware interfacing.</li>
+                            <li>Helped advocate for student body leading to BCC's first free-to-use 3D printer for students.</li>
+                            <li>Played a pivotal role in guided essay writing workshops.</li>
+                            <li>Tutored engineering students as needed in an informal capacity.</li>
                         </ul>
                     </div>
                 </div>
@@ -243,12 +275,14 @@ dMP     dMP dMP  VMMMP" VMMMP" dMMMMMP  VMMMP"   dMP    VMMMP"
                                 <span class="tag">rpg</span>
                                 <span class="tag">dark-fantasy</span>
                             </div>
-                            <!-- PLACEHOLDER drawn from machine/job_hunt/resume/master.md + projects/projects.md. Revise. -->
                             <p>
-                                <i>DreadReign</i> is a first-person party-based dungeon-crawler RPG in a dark-fantasy setting, drawing on the lineage of <i>Gauntlet</i>, <i>Doom</i>/<i>Quake</i>, and classic dungeon-crawlers like <i>Wizardry</i>, <i>Bard's Tale</i>, and <i>Heretic</i>. I joined Mechanical Moonworks in November 2025 as a part-time remote programmer.
+                                <i>DreadReign</i> is the most recent project that I've had the pleasure to work on. I joined the Mechanical Moonworks team late in development, inheriting a 10+ year old codebase as the main staff programmer. We are in the last year of development and I'm working closely with our lead designer and our lead art director on various systems to see this project through to completion. The game is written in C# in the Unity engine with PlasticSCM (now called Unity Version Control) as the versioning software.
                             </p>
                             <p>
-                                I'm currently focused on interface development and RPG systems: implementing the Dungeon Select Map (campaign and level selection, save-data integration, dynamic node states) and contributing to ability unlocks, achievements, and career progression.
+                                I'm working part time on this project so I still need to work (haha) so don't feel that this in any way disqualifies me from working on other projects! Currently I'm focused on implementing user interfaces and RPG systems. So far I've contributed by debugging, creating a map-style level selection menu, and helped scaffold the design for the RPG systems.
+                            </p>
+                            <p>
+                                The game is an ambitious project inspired by the likes of Gantlet and Doom. It seeks to combine the party based RPG elements of Gauntlet with the fast paced and immersive gameplay of Doom. Keep an eye out for the game's release by Q2 of 2027!
                             </p>
                         </div>
                     </div>
@@ -685,12 +719,12 @@ VMMMP"  VMMMP" dMP dMP   dMP   dMP dMP  VMMMP"   dMP
                 <p><i>Feel free to reach out via any of these social media handles.</i></p>
 
                 <pre class="contact-block">
-email   : <a href="mailto:j.pearbach@yahoo.com">j.pearbach@yahoo.com</a>
-          <a href="mailto:j.pearbach@berkeley.edu">j.pearbach@berkeley.edu</a>
-bluesky : <a href="https://bsky.app/profile/julian-pr.bsky.social">julian-pr.bsky.social</a>
-linkedin: <a href="https://www.linkedin.com/in/julian-pearson-rickenbach">julian-pearson-rickenbach</a>
-github  : <a href="https://github.com/hackerzilla">hackerzilla</a>
-resume  : &lt;pending&gt;
+email    : <a href="mailto:j.pearbach@yahoo.com">j.pearbach@yahoo.com</a>
+           <a href="mailto:j.pearbach@berkeley.edu">j.pearbach@berkeley.edu</a>
+bluesky  : <a href="https://bsky.app/profile/julian-pr.bsky.social">julian-pr.bsky.social</a>
+linkedin : <a href="https://www.linkedin.com/in/julian-pearson-rickenbach">julian-pearson-rickenbach</a>
+github   : <a href="https://github.com/hackerzilla">hackerzilla</a>
+resume   : &lt;pending&gt;
                 </pre>
 
                 </section> <!-- end contact section -->
@@ -997,6 +1031,18 @@ resume  : &lt;pending&gt;
 
             resize();
             draw();
+        })();
+
+        // ── Bio expand/collapse ──
+        (() => {
+            const bioBlock = document.querySelector('.bio-block');
+            const bioBtn = document.querySelector('.bio-expand');
+            if (!bioBlock || !bioBtn) return;
+            bioBtn.addEventListener('click', () => {
+                const collapsed = bioBlock.classList.toggle('bio-collapsed');
+                bioBtn.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+                bioBtn.textContent = collapsed ? '[ Read more ▾ ]' : '[ Read less ▴ ]';
+            });
         })();
     </script>
     </body>
