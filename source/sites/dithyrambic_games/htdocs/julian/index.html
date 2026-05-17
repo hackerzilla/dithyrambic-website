@@ -1,438 +1,1070 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Julian Pearson Rickenbach — indie game dev</title>
+        <meta name="description" content="Indie game programmer in Berkeley. Godot 4, Unity, shaders, procgen, simulation.">
+        <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Julian Pearson Rickenbach — indie game dev">
+        <meta property="og:description" content="Indie game programmer in Berkeley. Godot 4, Unity, shaders, procgen, simulation.">
+        <meta property="og:url" content="https://dithyrambic.games/julian/">
+        <!-- TODO: designed 1200x630 og:image card. SVG fallback below; most platforms prefer raster. -->
+        <meta property="og:image" content="https://dithyrambic.games/images/favicon.svg">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="Julian Pearson Rickenbach — indie game dev">
+        <meta name="twitter:description" content="Indie game programmer in Berkeley. Godot 4, Unity, shaders, procgen, simulation.">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Xanh+Mono:ital@0;1&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Saira:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/style.css">
     </head>
 
     <body class="portfolio">
-        
-        <!--Terminal title bar-->
-        <div class = "title-bar">
-            ~/developers/programmers/julian-pearson-rickenbach.portfolio
-        </div>
+        <canvas class="dot-grid-bg" aria-hidden="true"></canvas>
+
+        <header class="site-header">
+            <div class="header-logo">
+                <span class="triskelion-glow">
+                    <span id="triskelion-logo" class="triskelion" role="img" aria-label="Triskelion logo"></span>
+                </span>
+            </div>
+            <div class="header-name-row">
+                <h1 class="header-name">Julian Pearson Rickenbach</h1>
+                <div class="header-status">
+                    <span class="status-available">
+                        <span class="status-dot" aria-hidden="true"></span>available
+                    </span>
+                    <span class="status-location">
+                        <svg class="status-pin" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/>
+                        </svg>Berkeley, CA, USA 
+                    </span>
+                </div>
+            </div>
+            <div class="header-subtitle-row">
+                <div class="header-subtitle">indie game dev and programmer</div>
+                <nav class="header-contacts" aria-label="Contact links">
+                    <!-- <a href="/blog/" class="blog-link">[blog]</a> -->
+                    <a href="mailto:j.pearbach@yahoo.com" aria-label="Email">[email]</a>
+                    <a href="https://www.linkedin.com/in/julian-pearson-rickenbach" aria-label="LinkedIn">[linkedin]</a>
+                    <a href="https://github.com/hackerzilla" aria-label="GitHub">[github]</a>
+                    <a href="https://bsky.app/profile/julian-pr.bsky.social" aria-label="Bluesky">[bsky]</a>
+                </nav>
+            </div>
+        </header>
 
         <div class="page-layout">
-            <!-- Tree sidebar navigation -->
-            <nav class="tree-sidebar">
-                <div class="tree-root">.</div>
-                <span class="tree-line">├── <a href="#projects">Projects</a></span>
-                <div class="tree-group" data-parent="projects">
-                    <span class="tree-line sub">│   ├── <a href="#zombulacrum">Zombulacrum</a></span>
-                    <span class="tree-line sub">│   ├── <a href="#helo">helo</a></span>
-                    <span class="tree-line sub">│   ├── <a href="#mecha-smash">Mecha Smash</a></span>
-                    <span class="tree-line sub">│   ├── <a href="#flockforce">FlockForce</a></span>
-                    <span class="tree-line sub">│   ├── <a href="#inoculum">Inoculum</a></span>
-                    <span class="tree-line sub">│   ├── <a href="#nova">Nova</a></span>
-                    <span class="tree-line sub">│   ├── <a href="#fishes">Life Goes On</a></span>
-                    <span class="tree-line sub">│   ├── <a href="#algorhythmic">Algorhythmic</a></span>
-                    <span class="tree-line sub">│   └── <a href="#game-of-life">Game of Life</a></span>
-                </div>
-                <span class="tree-line">├── <a href="#languages">Languages</a></span>
-                <span class="tree-line">├── <a href="#skills">Skills</a></span>
-                <span class="tree-line">├── <a href="#tools">Dev Tools</a></span>
-                <span class="tree-line">├── <a href="#about">About Me</a></span>
-                <span class="tree-line">└── <a href="#contact">Contact Me</a></span>
+            <nav class="sidebar-tabs" aria-label="Sections">
+                <a class="sidebar-tab" href="#bio">Bio</a>
+                <a class="sidebar-tab" href="#education">Education</a>
+                <a class="sidebar-tab" href="#experience">Experience</a>
+                <a class="sidebar-tab" href="#projects">Projects</a>
+                <a class="sidebar-tab" href="#skills">Skills</a>
+                <a class="sidebar-tab" href="#contact">Contact</a>
             </nav>
             <div class="main-content">
+                <section class="page-section" id="bio">
+                <pre style="font-family: monospace;">
+    dMMMMb  dMP .aMMMb
+   dMP"dMP amr dMP"dMP
+  dMMMMK" dMP dMP dMP
+ dMP.aMF dMP dMP.aMP
+dMMMMP" dMP  VMMMP"
+                </pre>
+
+                <div class="bio-block bio-collapsed">
+                <p>
+                    Hi, my name is Julian and I'm a game programmer from Berkeley, California. I just recently graduated from UC Berkeley where I studied Computer Science. I studied computer science because I've wanted to make video games since I was 13 years old and coding was my preferred way to create. My purpose in life is to create meaningful games that bring joy to the lives of other people. I began my six-year academic journey to meet that end and now that I've graduated and started to get more real game-making experience under my belt I can say it was well worth the effort!
+                </p>
+                <p>
+                    I work mostly with Godot Engine (GDScript/C++) and Unity (C#), but I've also done a project in Unreal Engine 5 using Blueprints. I'm always eager to learn new things and I strive to understand as much as I can about each part of the entire stack from high level software down to low level hardware. My favorite programming language is actually C++! I hope to one day return to programming in C++ more frequently and working closer to the hardware--WowCube, Playdate and Raspberry Pi, I'm looking at you!
+                </p>
+                <p>
+                    I enjoy being a generalist programmer, I love to work on systems, shaders, user interface, physics, AI, optimization, simulation, business logic, gameplay, networking, tools, audio and everything else required to make a game. Over the course of two years working on my own game <i>Zombulacrum</i> in Godot 4 I've learned a lot by doing it all myself. While I can't say that I'm an expert in any one field, I know enough about each component of the game software stack to be able to navigate implementing whatever. And I'm always looking to improve my craft and grow as a programmer.
+                </p>
+                <p>
+                    Outside of being a programmer, I also consider myself and amateur visual artists and fledgling music-maker. I've been a doodler and an impromptu musician since I was a toddler and while I haven't spent as much time honing those crafts as I have with programming, I hope to one day have enough time away from the computer to pursue those forms of expression. Still, I actually do author my own art assets sometimes using digital drawing tablets and record my own sound effects using foley and synths.
+                </p>
+                <p>
+                    On the topic of human growth and expression I want to put my two cents on AI right here. I believe that AI is here to stay but I don't believe in letting the narratives of society skew my perception of the tools. I believe the AI tools and agents are very interesting from a computer scientist's perspective, very useful from an entrepreneur's perspective, and deeply troubling from an artist and craftsperson's perspective. I'm learning these tools like everyone else but I'm approaching with a healthy level of skepticism about the effects on human health and wellbeing. In a nutshell, I'm using them but I wish I didn't have to. And further, I'm very selective about how and when I use it. Coding is somewhat acceptable to me--if not less satisfying compared to hand-coding it all--but using it for artwork directly is where I start to feel icky. Anyways, rant over.
+                </p>
+                <div class="bio-fade" aria-hidden="true"></div>
+                <button class="bio-expand" type="button" aria-expanded="false">[ Read more ▾ ]</button>
+                </div>
+                </section>
+
+                <section class="page-section" id="education">
+                <pre style="font-family: monospace;">
+    dMMMMMP dMMMMb  dMP dMP .aMMMb  .aMMMb dMMMMMMP dMP .aMMMb  dMMMMb
+   dMP     dMP VMP dMP dMP dMP"VMP dMP"dMP   dMP   amr dMP"dMP dMP dMP
+  dMMMP   dMP dMP dMP dMP dMP     dMMMMMP   dMP   dMP dMP dMP dMP dMP
+ dMP     dMP.aMP dMP.aMP dMP.aMP dMP dMP   dMP   dMP dMP.aMP dMP dMP
+dMMMMMP dMMMMP"  VMMMP"  VMMMP" dMP dMP   dMP   dMP  VMMMP" dMP dMP
+                </pre>
+
+                <!-- PLACEHOLDER drawn from machine/job_hunt/resume/master.md. Revise. -->
+                <div class="education-entry">
+                    <div class="education-seal">
+                        <img src="/images/logos/berkeley-seal.svg" alt="UC Berkeley seal" class="berkeley-seal">
+                        <!-- <p class="seal-caption"><i>fiat lux</i></p> -->
+                    </div>
+                    <div class="education-body">
+                        <h3>University of California, Berkeley</h3>
+                        <p>B.S. Electrical Engineering and Computer Science - Winter Class of 2022</p>
+                        <p>Overall GPA: 3.53 | Technical GPA: 3.66</p>
+                        <p class="coursework-label">Relevant coursework:</p>
+                        <ul class="coursework-list">
+                            <li>Computer Graphics</li>
+                            <li>Artificial Intelligence</li>
+                            <li>Computer Vision</li>
+                            <li>Computer Architecture</li>
+                            <li>Foundations of the Internet</li>
+                            <!-- TODO J: pick one — "Computer Science Theory" OR "Efficient Algorithm and Intractable Problems" -->
+                            <li>Computer Science Theory / Efficient Algorithm and Intractable Problems</li>
+                            <li>Discrete Math, Probability and Combinatorics</li>
+                            <li>Virtual Reality</li>
+                            <li>3D Modelling</li>
+                            <li>Game Design</li>
+                            <li>Intro to Drawing</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="education-entry">
+                    <div class="education-seal">
+                        <img src="/images/logos/bcc-seal.png" alt="Berkeley City College logo" class="bcc-seal">
+                    </div>
+                    <div class="education-body">
+                        <h3>Berkeley City College (Peralta Community Colleges)</h3>
+                        <p>2019-2022 - Transferred to UC Berkeley</p>
+                        <p>Overall GPA: 4.0</p>
+                        <p class="coursework-label">Relevant coursework:</p>
+                        <ul class="coursework-list">
+                            <li>Data Structures and Algorithms</li>
+                            <li>Assembly Language</li>
+                            <li>Object Oriented Programming with C++</li>
+                            <li>Game Development</li>
+                            <li>Game Design</li>
+                            <li>Level Design</li>
+                        </ul>
+                    </div>
+                </div>
+                </section>
+
+                <section class="page-section" id="experience">
+                <pre style="font-family: monospace;">
+    dMMMMMP dMP dMP dMMMMb  dMMMMMP dMMMMb  dMP dMMMMMP dMMMMb  .aMMMb  dMMMMMP
+   dMP     dMK.dMP dMP.dMP dMP     dMP.dMP amr dMP     dMP dMP dMP"VMP dMP
+  dMMMP   .dMMMK" dMMMMP" dMMMP   dMMMMK" dMP dMMMP   dMP dMP dMP      dMMMP
+ dMP     dMP"AMF dMP     dMP     dMP"AMF dMP dMP     dMP dMP dMP.aMP dMP
+dMMMMMP dMP dMP dMP     dMMMMMP dMP dMP dMP dMMMMMP dMP dMP  VMMMP" dMMMMMP
+                </pre>
+
+                <!-- PLACEHOLDER drawn from machine/job_hunt/resume/master.md. Revise. -->
+                <div class="experience-entry">
+                    <div class="experience-seal">
+                        <img src="/images/logos/mechanical-moonworks-logo.png" alt="Mechanical Moonworks logo" class="mm-seal">
+                    </div>
+                    <div class="experience-body">
+                        <h3>Mechanical Moonworks - Game Programmer</h3>
+                        <p>November 2025 - Present</p>
+                        <ul>
+                            <li>Part-time remote programmer on <i>DreadReign</i>, an in-development first-person dungeon-crawler RPG in Unity / C#.</li>
+                            <li>Implementing UI systems including the Dungeon Select Map (campaign and level selection, save-data integration, dynamic node states).</li>
+                            <li>Contributing to RPG systems including ability unlocks, achievements, and career progression.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-entry">
+                    <div class="experience-seal">
+                        <img src="/images/logos/dataannotation-logo.svg" alt="DataAnnotation logo" class="dataannotation-seal">
+                    </div>
+                    <div class="experience-body">
+                        <h3>DataAnnotation - AI Training Contractor</h3>
+                        <p>April 2026 - Present</p>
+                        <ul>
+                            <li>Remote contractor producing training and evaluation data for frontier AI coding agents.</li>
+                            <li>Adversarial evaluation of frontier coding agents (Claude Opus, Gemini Pro, Codex) against permissively-licensed codebases.</li>
+                            <li>Agentic coding task design: authoring problem statements, eliciting failures from weaker agents, generating verifier test suites.</li>
+                            <li>Rubric and prompt design for LLM-as-judge evaluation pipelines.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-entry">
+                    <div class="experience-seal">
+                        <img src="/images/logos/nersc-logo.svg" alt="NERSC logo" class="nersc-seal">
+                    </div>
+                    <div class="experience-body">
+                        <h3>NERSC / Lawrence Berkeley National Laboratory - Student Intern</h3>
+                        <p>June 2021 - January 2023</p>
+                        <ul>
+                            <li>Operations Division. Conducted research evaluating NetBox and DC Sunbird Track APIs for data center infrastructure management across 100+ high-performance computing servers.</li>
+                            <li>Delivered company-wide technical presentation to senior leadership on research findings.</li>
+                            <li>Collaborated with operations team to document data center infrastructure using Matterport 3D mapping, enabling remote facility access during COVID-19.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-entry">
+                    <div class="experience-seal">
+                        <img src="/images/logos/bcc-ee-club-logo.png" alt="Berkeley City College Electrical Engineering Club logo" class="bcc-ee-club-seal">
+                    </div>
+                    <div class="experience-body">
+                        <h3>Berkeley City College Electrical Engineering Club - Project Manager, Founding Member</h3>
+                        <p>January 2020 - July 2022</p>
+                        <ul>
+                            <li>Co-founded and grew STEM club to 70+ active members.</li>
+                            <li>Led hands-on workshops teaching Arduino programming and hardware interfacing.</li>
+                            <li>Helped advocate for student body leading to BCC's first free-to-use 3D printer for students.</li>
+                            <li>Played a pivotal role in guided essay writing workshops.</li>
+                            <li>Tutored engineering students as needed in an informal capacity.</li>
+                        </ul>
+                    </div>
+                </div>
+                </section>
+
                 <section class="page-section" id="projects">
                 <pre style="font-family: monospace;">
-    ____               _           __      
-   / __ \_________    (_)__  _____/ /______
-  / /_/ / ___/ __ \  / / _ \/ ___/ __/ ___/
- / ____/ /  / /_/ / / /  __/ /__/ /_(__  ) 
-/_/   /_/   \____/_/ /\___/\___/\__/____/  
-                /___/                      
+    dMMMMb  dMMMMb  .aMMMb dMMMMMP dMMMMMP .aMMMb dMMMMMMP .dMMMb
+   dMP.dMP dMP.dMP dMP"dMP    dMP dMP     dMP"VMP   dMP   dMP" VP
+  dMMMMP" dMMMMK" dMP dMP    dMP dMMMP   dMP       dMP    VMMMb
+ dMP     dMP"AMF dMP.aMPdK .dMP dMP     dMP.aMP   dMP   dP .dMP
+dMP     dMP dMP  VMMMP" VMMMP" dMMMMMP  VMMMP"   dMP    VMMMP"
                 </pre>
 
 
-                <section class="project-section" id="zombulacrum">
-                    <h2><i>Zombulacrum</i></h2>
-                    <h3>Zombie FPS - Multiplayer Survival Horror - In Active Development</h3>
-                    <p>Tech Stack: Godot Engine 4.6+, Blender</p>
-                    <p>Team Size: Solo</p>
-                    <p>Role: Creator</p>
-                    <a href="">
-                        Technical Demo Footage
-                    </a>
-                    <br>
-                    <a href="">
-                        Dev log YouTube playlist
-                    </a>
-                    <p>
-                        <i>Zombulacrum</i> is a project that I've been working off-and-on for 
-                        about 2 years now. What started as a top down zombie RTS has morphed 
-                        into an exploration of the kind of game I truly want to play. I've 
-                        always looked fondly on my childhood memories of playing 
-                        <i>Call of Duty: Black Ops Zombies</i> with friends. At the start 
-                        the zombies were horrifying. The world felt atmospheric, empty and 
-                        we were absolutely stranded there alone and with only ourselves to depend 
-                        on for survival. Something about this repeated experience really stuck with me
-                        and caused my obsession with making something to replicate and expand upon 
-                        those feelings. 
-                        <br><br>
-                        Right now <i>Zombulacrum</i> is still in the pre-alpha stages, but the idea is 
-                        fairly fleshed out. Take a look at the tech demo footage and stay tuned into 
-                        my bluesky and youtube accounts for more updates.
-                    </p>
+                <section class="project-section" id="dreadreign">
+                    <h2><i>DreadReign</i> - First-Person Party Dungeon-Crawler RPG - In Active Development</h2>
+                    <!-- PLACEHOLDER hook line. Revise. -->
+                    <p class="project-hook">Gauntlet meets Doom in a dark-fantasy party dungeon-crawler.</p>
+
+                    <div class="project-row">
+                        <div class="project-media">
+                            <img src="/images/logos/dreadreign-logo.png" alt="DreadReign logo" class="dreadreign-banner">
+                            <iframe
+                                loading="lazy"
+                                src="https://www.youtube.com/embed/I_fPb9QCliM"
+                                title="DreadReign trailer"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-meta">
+                                <span class="k">tech</span><span class="v">Unity, C#</span>
+                                <span class="k">studio</span><span class="v">Mechanical Moonworks</span>
+                                <span class="k">team</span><span class="v">3</span>
+                                <span class="k">role</span><span class="v">Programmer</span>
+                                <span class="k">links</span>
+                                <span class="v project-links-v">
+                                    <a class="action-link" href="https://www.mechanicalmoonworks.com/" target="_blank" rel="noopener">[Website]</a>
+                                </span>
+                            </div>
+                            <div class="project-tags">
+                                <span class="tag">unity</span>
+                                <span class="tag">first-person</span>
+                                <span class="tag">rpg</span>
+                                <span class="tag">dark-fantasy</span>
+                            </div>
+                            <p>
+                                <i>DreadReign</i> is the most recent project that I've had the pleasure to work on. I joined the Mechanical Moonworks team late in development, inheriting a 10+ year old codebase as the main staff programmer. We are in the last year of development and I'm working closely with our lead designer and our lead art director on various systems to see this project through to completion. The game is written in C# in the Unity engine with PlasticSCM (now called Unity Version Control) as the versioning software.
+                            </p>
+                            <p>
+                                I'm working part time on this project so I still need to work (haha) so don't feel that this in any way disqualifies me from working on other projects! Currently I'm focused on implementing user interfaces and RPG systems. So far I've contributed by debugging, creating a map-style level selection menu, and helped scaffold the design for the RPG systems.
+                            </p>
+                            <p>
+                                The game is an ambitious project inspired by the likes of Gantlet and Doom. It seeks to combine the party based RPG elements of Gauntlet with the fast paced and immersive gameplay of Doom. Keep an eye out for the game's release by Q2 of 2027!
+                            </p>
+                        </div>
+                    </div>
                 </section>
 
 
                 <section class="project-section" id="helo">
-                    <h2><i>helo</i></h2>
-                    <h3>Helicopter co-op Kingdom-like</h3>
-                    <p>Tech Stack: Godot Engine 4.6+, Blender</p>
-                    <p>Team Size: 2</p>
-                    <p>Role: Co-creator, Programmer</p>
-                    <a href="">
-                        Demo Footage
-                    </a>
-                    <p>
-                        <i>helo</i> is a game I'm collaborating on with my good friend Josh.
-                        Born from a love of games where we would fly helicopters together in 
-                        tightly knit co-op gameplay--like <i>Battlefield 3</i>--we are making 
-                        a game that's also inspired by <i>Kingdom: 2 Crowns</i> with our own 
-                        take on it. You fly a helicopter around, recruit mercenary troops, 
-                        assign troop roles, build out your base, vie for resources and expand 
-                        your private miliary company's operational territory. The game is meant 
-                        to be lighthearted co-op fun that also points out and constrasts to the 
-                        grim reality of PMCs in the third-world. Look out for our game releasing 
-                        Steam sometime this year!
-                    </p>
+                    <h2><i>helo</i> - Helicopter Co-op Kingdom-like</h2>
+                    <!-- PLACEHOLDER hook line. Revise. -->
+                    <p class="project-hook">Fly choppers with a friend, recruit mercs, vie for territory.</p>
+
+                    <div class="project-row flip">
+                        <div class="project-media">
+                            <video autoplay loop muted playsinline preload="metadata" disablepictureinpicture>
+                                <source src="/images/helo_demo.mp4" type="video/mp4">
+                                helo demo footage.
+                            </video>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-meta">
+                                <span class="k">tech</span><span class="v">Godot 4.6+, Blender</span>
+                                <span class="k">team</span><span class="v">2</span>
+                                <span class="k">role</span><span class="v">Co-creator, Programmer</span>
+                                <span class="k">links</span>
+                                <span class="v project-links-v">
+                                    <a class="action-link" href="https://helothegame.com/" target="_blank" rel="noopener">[Website]</a>
+                                </span>
+                            </div>
+                            <div class="project-tags">
+                                <span class="tag">godot</span>
+                                <span class="tag">co-op</span>
+                                <span class="tag">2d</span>
+                                <span class="tag">multiplayer</span>
+                            </div>
+                            <p>
+                                <i>helo</i> is a game I'm collaborating on with my good friend Josh.
+                                Born from a love of games where we would fly helicopters together in
+                                tightly knit co-op gameplay--like <i>Battlefield 3</i>--we are making
+                                a game that's also inspired by <i>Kingdom: 2 Crowns</i> with our own
+                                take on it. You fly a helicopter around, recruit mercenary troops,
+                                assign troop roles, build out your base, vie for resources and expand
+                                your private miliary company's operational territory. The game is meant
+                                to be lighthearted co-op fun that also points out and constrasts to the
+                                grim reality of PMCs in the third-world. Look out for our game releasing
+                                Steam sometime this year!
+                            </p>
+                        </div>
+                    </div>
                 </section>
-                
+
+
+                <section class="project-section" id="zombulacrum">
+                    <h2><i>Zombulacrum</i> - Multiplayer Survival Horror - In Active Development</h2>
+                    <!-- PLACEHOLDER hook line. Revise. -->
+                    <p class="project-hook">Atmospheric co-op zombie survival on a procgen heightmap world, in the spirit of CoD Zombies and L4D.</p>
+
+                    <div class="project-row">
+                        <div class="project-media">
+                            <img src="/images/zombulacrum_gameplay.png" loading="lazy" alt="Zombulacrum gameplay screenshot.">
+                        </div>
+                        <div class="project-body">
+                            <div class="project-meta">
+                                <span class="k">tech</span><span class="v">Godot 4.6+, Blender</span>
+                                <span class="k">team</span><span class="v">Solo</span>
+                                <span class="k">role</span><span class="v">Creator, Programmer, Artist</span>
+                                <span class="k">links</span>
+                                <span class="v project-links-v">
+                                    <a class="action-link" href="#" data-todo="zombulacrum-techdemo-url">[Tech Demo]</a>
+                                    <a class="action-link" href="#" data-todo="zombulacrum-devlog-url">[Devlog]</a>
+                                </span>
+                            </div>
+                            <div class="project-tags">
+                                <span class="tag">godot</span>
+                                <span class="tag">first-person</span>
+                                <span class="tag">multiplayer</span>
+                                <span class="tag">survival-horror</span>
+                                <span class="tag">procgen</span>
+                            </div>
+                            <p>
+                                <i>Zombulacrum</i> is a project that I've been working off-and-on for
+                                about 2 years now. What started as a top down zombie RTS has morphed
+                                into an exploration of the kind of game I truly want to play. I've
+                                always looked fondly on my childhood memories of playing
+                                <i>Call of Duty: Black Ops Zombies</i> with friends. At the start
+                                the zombies were horrifying. The world felt atmospheric, empty and
+                                we were absolutely stranded there alone and with only ourselves to depend
+                                on for survival. Something about this repeated experience really stuck with me
+                                and caused my obsession with making something to replicate and expand upon
+                                those feelings.
+                                <br><br>
+                                Right now <i>Zombulacrum</i> is still in the pre-alpha stages, but the idea is
+                                fairly fleshed out. Take a look at the tech demo footage and stay tuned into
+                                my bluesky and youtube accounts for more updates.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
 
                 <section class="project-section" id="mecha-smash">
-                    <h2><i>Mecha Smash</i></h2>
-                    <h3>Platform Fighter with Customizable Mechs</h3>
-                    <p>Tech Stack: Unity Engine, Procreate</p>
-                    <p>Team Size: 5</p>
-                    <a href="https://hackerzilla.itch.io/mecha-smash">itch.io game page</a>
-                    <br>
-                    <a href="https://docs.google.com/presentation/d/1Z_aNEV_wXEtTF6-ry2-c85T2hvunxZxMoUvzL81pzus/edit?usp=sharing">
-                        Original Game Pitch Slide Deck
-                    </a>
-                    <p>
-                        <i>Mecha Smash</i> was my most ambitious project to-date. 
-                        It started as a game pitch for the final project of the UC Berkeley 
-                        Game Design and Development DeCal. It got enough votes by classmates 
-                        who were interested in working on it. This is where my project experience 
-                        build skills in ideation, pitching, leadership, 
-                        programming, and presentation, really came in handy. Over two months 
-                        we made a fun couch-competitive platform fighting game inspired by 
-                        the <i>Super Smash Bros.</i> series created by Masahiro Sakurai. 
-                        The original spin on the concept is that instead of having a cast of characters 
-                        for players to choose from, they start with a mech frame and select parts 
-                        for head, torso, arms and legs which in turn determine the mech's 
-                        moveset--their abilities--in an interface similar to that for customizing 
-                        your kart in <i>Mario Kart</i>.
-                        I'm proud to say that the game came out pretty good and the team 
-                        continues to work on a new version to this day. 
-                        <br><br>
-                        My personal contribution was the original pitch and idea, a good chunk 
-                        of the programming--including merging pull requests and fixing git conflicts.
-                        As the project manager I strived to replicate Jake's model of lead-by-example 
-                        that I was exposed to earlier and so I took it on me to make sure progress was 
-                        constantly being made. I also learned from this experience that delegating 
-                        meaningful work on a team is very difficult, and I still am constantly developing 
-                        this skill. 
-                        I also drew the pixel art for the mechs and their constituent parts.
-                        In addition, I setup and animated the 2D mech skeletons using Unity's 2D skeleton 
-                        system, including inverse kinematics.
-                        It truly was a group project, and I continually sought out input from my 
-                        super creative teammates, who gladly gave it. Through our combined creativity
-                        the project turned out pretty awesome. Stay tuned for updates!
-                    </p>
+                    <h2><i>Mecha Smash</i> - Platform Fighter with Customizable Mechs</h2>
+                    <!-- PLACEHOLDER hook line. Revise. -->
+                    <p class="project-hook">Build a mech like a kart, then Smash Bros with it.</p>
+
+                    <div class="project-row">
+                        <div class="project-media">
+                            <img src="/images/mecha_smash_screenshot_cropped.jpg" loading="lazy" alt="Mecha Smash screenshot.">
+                            <iframe
+                                loading="lazy"
+                                src="https://www.youtube.com/embed/a-d-962-4xw"
+                                title="Mecha Smash gameplay"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-meta">
+                                <span class="k">tech</span><span class="v">Unity, Git, Procreate</span>
+                                <span class="k">team</span><span class="v">5</span>
+                                <span class="k">role</span><span class="v">Lead, Programmer, Pixel Artist</span>
+                                <span class="k">links</span>
+                                <span class="v project-links-v">
+                                    <a class="action-link" href="https://hackerzilla.itch.io/mecha-smash" target="_blank" rel="noopener">[itch.io page]</a>
+                                    <a class="action-link" href="https://docs.google.com/presentation/d/1Z_aNEV_wXEtTF6-ry2-c85T2hvunxZxMoUvzL81pzus/edit?usp=sharing" target="_blank" rel="noopener">[Original Pitch]</a>
+                                </span>
+                            </div>
+                            <div class="project-tags">
+                                <span class="tag">unity</span>
+                                <span class="tag">couch-coop</span>
+                                <span class="tag">pixel-art</span>
+                            </div>
+                            <p>
+                                Couch-competitive platform fighter inspired by <i>Super Smash Bros.</i>, where players build custom mechs by mixing head, torso, arm, and leg parts that determine each mech's moveset, similar to building a kart in <i>Mario Kart</i>. Made over two months.
+                            </p>
+                            <p>
+                                I pitched the original concept, managed the 5-person team, programmed core systems and git workflow, drew the pixel art for the mechs, and rigged and animated their 2D skeletons with IK in Unity.
+                            </p>
+                        </div>
+                    </div>
                 </section>
                 
 
                 <section class="project-section" id="flockforce">
-                    <h2><i>FlockForce</i></h2>
-                    <h3>Compute Shader Boids Simulation</h3>
-                    <p>Teach Stack: Godot Engine, GLSL Compute Shaders</p>
-                    <p>Team Size: 4</p>
-                    <a href="https://hackerzilla.github.io/FlockForce/">Project Paper Report</a>
-                    <br>
-                    <a href="https://github.com/hackerzilla/FlockForce">https://github.com/hackerzilla/FlockForce</a>
-                    <p>
-                        This was my final project for CS 184: Computer Graphics at UC Berkeley. 
-                        As a team we implemented GPU compute shader accelerated boids algorithm 
-                        which roughly 10x'ed the number of boids we could achieve at a >=60 frames 
-                        per second on a few modern laptops. For this project we used Godot Engine which 
-                        provides a sufficient interface to implement compute shaders in GLSL. 
-                        
-                        My contribution to this project was the intial idea of compute shader boids, in 
-                        addition to the expertise in Godot Engine which I had ascertained by this point. 
-                        I also provided leadership and fascillitated group work sessions. I wrote much 
-                        of the early code, i.e. the initial CPU based naive boids algorithm, but transitioned 
-                        to a product manager role and allowed my teammates to lead on the coding front. 
+                    <h2><i>FlockForce</i> - Compute Shader Boids Simulation</h2>
+                    <!-- PLACEHOLDER hook line. Revise. -->
+                    <p class="project-hook">GPU compute shaders — 10× the boids at 60 fps.</p>
 
-                        Surprisingly, when I was reviewing my old projects I found the experience on the
-                        <i>Game of Life</i> sim from two years earlier helped on this project, where we 
-                        used a ping-pong double buffer when updating the boid velocities. 
-                    </p>
+                    <div class="project-row flip">
+                        <div class="project-media">
+                            <video autoplay loop muted playsinline preload="metadata" disablepictureinpicture>
+                                <source src="/images/flock_force_demo_cropped.mp4" type="video/mp4">
+                                FlockForce demo.
+                            </video>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-meta">
+                                <span class="k">tech</span><span class="v">Godot, GLSL Compute Shaders</span>
+                                <span class="k">team</span><span class="v">4</span>
+                                <span class="k">role</span><span class="v">Concept, Programmer, Team Lead</span>
+                                <span class="k">links</span>
+                                <span class="v project-links-v">
+                                    <a class="action-link" href="https://hackerzilla.github.io/FlockForce/">[Paper]</a>
+                                    <a class="action-link" href="https://github.com/hackerzilla/FlockForce">[Source]</a>
+                                </span>
+                            </div>
+                            <div class="project-tags">
+                                <span class="tag">godot</span>
+                                <span class="tag">compute-shaders</span>
+                                <span class="tag">gpu</span>
+                            </div>
+                            <p>
+                                Compute-shader boids simulation built for UC Berkeley's CS 184: Computer Graphics. GPU acceleration got ~10x more boids at 60fps than a naive CPU implementation.
+                            </p>
+                        </div>
+                    </div>
                 </section>
                 
                 
 
                 <section class="project-section" id="inoculum">
-                    <h2><i>Inoculum</i></h2>
-                    <h3>Third Person Action Adventure Game</h3>
-                    <p>Tech stack: Unreal Engine 5, Unreal Blueprints, Perforce </p>
-                    <p>Team Size: 6</p>
-                    <a href="https://ccperalta-my.sharepoint.com/personal/10924894_cc_peralta_edu/_layouts/15/stream.aspx?id=%2Fpersonal%2F10924894%5Fcc%5Fperalta%5Fedu%2FDocuments%2FGame%20Dev%20Stuff%2FJulian%5FInoculum%5FFull%5FPlaythrough%5F1%2Emp4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0&ga=1&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Ebb427650%2D8749%2D4916%2Da0ff%2Df57b2397c9cd">
-                        Gameplay Walkthrough Video
-                    </a>
-                    <br>
-                    <p>
-                        During my year break from UC Berkeley I took some game development 
-                        courses at Berkeley City College, and there I worked on a really 
-                        awesome group project. The game is a third person action adventure 
-                        where the player can cast spells to fight plague monsters to try and 
-                        save their partner. Inoculum was made in Unreal Engine 5 using mostly 
-                        handmade models and animations. 
+                    <h2><i>Inoculum</i> - Third Person Action Adventure Game</h2>
+                    <!-- PLACEHOLDER hook line. Revise. -->
+                    <p class="project-hook">Third-person spell-flinging adventure to save your partner.</p>
 
-                        My contribution to this project was that I implemented the HUD UI as well 
-                        as coded some of the gameplay logic like saving progress and loading levels. 
-
-                        I learned a lot on this project, including how to navigate joining a group 
-                        project that was already in-progress and adapting to the team's conventions 
-                        and project structure on the fly. This is also where I learned the value of 
-                        leading by example. Our project leader, Jake, was extremely diligant and 
-                        hardworking despite also working a full time job. Even though he was 
-                        not forceful in assigning me work, his dedication inspired me to work harder.
-                        I used this observation in my subsequent projects that I lead. This was also my 
-                        first serious project in Unreal Engine, so I was able to learn a lot about it 
-                        during this time. 
-                    </p>
+                    <div class="project-row">
+                        <div class="project-media">
+                            <img src="/images/inoculum_screenshot.webp" loading="lazy" alt="Inoculum screenshot.">
+                            <iframe
+                                loading="lazy"
+                                src="https://www.youtube.com/embed/sz_hiC40C0Q?start=26"
+                                title="Inoculum full playthrough"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-meta">
+                                <span class="k">tech</span><span class="v">Unreal 5, Blueprints, Perforce</span>
+                                <span class="k">team</span><span class="v">6</span>
+                                <span class="k">role</span><span class="v">Programmer</span>
+                            </div>
+                            <div class="project-tags">
+                                <span class="tag">unreal</span>
+                                <span class="tag">action-adventure</span>
+                                <span class="tag">3d</span>
+                            </div>
+                            <p>
+                                Third-person action-adventure built in Unreal 5 at Berkeley City College. The player casts spells to fight plague monsters and save their partner.
+                            </p>
+                        </div>
+                    </div>
                 </section>
                 
 
                 <section class="project-section" id="nova">
-                    <h2><i>Nova</i></h2>
-                    <h3>Board Game</h3>
-                    <p>Tech Stack: Cardstock, Sharpie Paint Pens</p>
-                    <p>Team Size: 5</p>
-                    <a href="https://docs.google.com/presentation/d/1lDgiixtbP2ME-Y3prjus9WTmsz5xC3r6Kjh-U3ZwVCQ/edit?usp=sharing">
-                        Slide Deck Presentation
-                    </a>
-                    <p>
-                        Nova is a board game that myself and 4 other talented folks created for 
-                        the MMAN 40A: Game Design at Berkeley City College under Professor Phillip Campbell.
-                        This project was an absolute blast to work on and was a deeply enjoyable 
-                        creative experience to collaborate with my teammates on. 
+                    <h2><i>Nova</i> - Board Game</h2>
+                    <!-- PLACEHOLDER hook line. Revise. -->
+                    <p class="project-hook">Heliocentric board game with rotating ring tracks.</p>
 
-                        My contribution to this project was the original idea for a heliocentric 
-                        orbital game board which has rings that rotate over the course of the game. 
-                        However, I cannot take credit for all the design work. Actually it was a true 
-                        pleasure to have my teammates contribute a ton of clever and interesting 
-                        mechanics to the game. My other main contribution was that I constructed the physical 
-                        board and painted the game board pieces. 
-
-                        I learned many lessons while working on this game. I learned the power of in-person 
-                        collaboration. It was also my first exposure to the joy of free flowing creative 
-                        collaboration. I learned how to let go of my attachment and ownership over my 
-                        ideas and to accept the input of others without defensiveness. In other words I 
-                        learned how to employ the 
-                        <a href="https://en.wikipedia.org/wiki/Yes,_and_...">Yes, and... Rule</a> in 
-                        practice. This is another tool that has been indespensible in subsequent projects.
-
-                    </p>
-                </section> 
+                    <div class="project-row flip">
+                        <div class="project-media">
+                            <!-- Static fallback for low-motion mode (not yet implemented). Keep in sync with the orbit stack below. -->
+                            <!-- <img src="/images/nova_scenario_1.webp" loading="lazy" alt="Nova board game scenario 1."> -->
+                            <div class="nova-orbit-stack" aria-label="Nova board game with rotating concentric orbital tracks. Hover to animate.">
+                                <!-- Each layer is a full-canvas PNG with content positioned via Procreate.
+                                     Stacking centered = lines up automatically. Z-order = document order. -->
+                                <img class="layer"                  src="/images/nova-pieces/web/background.png"    alt="" loading="lazy">
+                                <img class="layer orbit-4 spin-cw"  src="/images/nova-pieces/web/board-orbit-4.png" alt="" loading="lazy">
+                                <img class="layer orbit-3 spin-ccw" src="/images/nova-pieces/web/board-orbit-3.png" alt="" loading="lazy">
+                                <img class="layer orbit-2 spin-cw"  src="/images/nova-pieces/web/board-orbit-2.png" alt="" loading="lazy">
+                                <img class="layer orbit-1 spin-ccw" src="/images/nova-pieces/web/board-orbit-1.png" alt="" loading="lazy">
+                                <img class="layer"                  src="/images/nova-pieces/web/board-sun.png"     alt="" loading="lazy">
+                                <img class="layer orbit-4 spin-cw"  src="/images/nova-pieces/web/ship-green.png"    alt="" loading="lazy"><!-- on orbit-4 -->
+                                <img class="layer orbit-3 spin-ccw" src="/images/nova-pieces/web/ship-blue.png"     alt="" loading="lazy"><!-- on orbit-3 -->
+                                <img class="layer orbit-3 spin-ccw" src="/images/nova-pieces/web/ship-yellow.png"   alt="" loading="lazy"><!-- on orbit-3 -->
+                                <img class="layer orbit-2 spin-cw"  src="/images/nova-pieces/web/ship-red.png"      alt="" loading="lazy"><!-- on orbit-2 -->
+                            </div>
+                            <p class="nova-hover-hint" aria-hidden="true">hover me! ^</p>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-meta">
+                                <span class="k">tech</span><span class="v">Cardstock, Sharpie Paint Pens</span>
+                                <span class="k">team</span><span class="v">5</span>
+                                <span class="k">role</span><span class="v">Concept, Construction, Artist</span>
+                                <span class="k">links</span>
+                                <span class="v project-links-v">
+                                    <a class="action-link" href="https://docs.google.com/presentation/d/1lDgiixtbP2ME-Y3prjus9WTmsz5xC3r6Kjh-U3ZwVCQ/edit?usp=sharing" target="_blank" rel="noopener">[Presentation Slide Deck]</a>
+                                </span>
+                            </div>
+                            <div class="project-tags">
+                                <span class="tag">tabletop</span>
+                                <span class="tag">physical</span>
+                            </div>
+                            <p>
+                                Heliocentric board game with ring tracks that rotate over the course of play. Made for a game design class at Berkeley City College.
+                            </p>
+                        </div>
+                    </div>
+                </section>
                 
 
 
                 <section class="project-section" id="fishes">
-                    <h2><i>Fishes: Life Goes On</i></h2>
-                    <h3>3D Animated Student Short Film</h3>
-                    <p>Tech Stack: Autodesk Maya, Pixar Renderman</p>
-                    <p>Team size: 4</p>
-                    <a href="https://www.youtube.com/watch?v=ABsQQj4oZDU">
-                        Watch the short film on YouTube.
-                    </a>
-                    <br>
-                    <a href="https://drive.google.com/file/d/1XsfzvPUATWgEVvTQk2NE56sJQuJw2uWM/view?usp=sharing">
-                        Watch the orignal pitch animatic.
-                    </a>
-                    <p>
-                        Fishes: Life Goes On was my final animation project for the UC BUGG 
-                        Computer Animation DeCal where we learned how to model and animate in 
-                        Maya and render using Pixar's Renderman. For this project I made an 
-                        animatic and pitched the idea to the class. The class voted on the animatic 
-                        we wanted to work on to turn into our final projects. My animatic got voted 
-                        enough and so I got to direct this short film. 
+                    <h2><i>Fishes: Life Goes On</i> - 3D Animated Student Short Film</h2>
+                    <!-- PLACEHOLDER hook line. Revise. -->
+                    <p class="project-hook">3D animated short on the circle of life — told through fish.</p>
 
-                        The short film is a brief exploration of the circle of life by showing the births 
-                        and deaths of many fishes in many different ways. The film is meant to inspire a 
-                        respect for life in all its forms while staying light and playful. 
-
-                        This was a massive learning experience for me. It was my first chance to pitch 
-                        an idea to anyone ever, and this experience was key in helping me overcome that fear, 
-                        which is a skill that has served me well since then. I also gained a respect 
-                        for the craft of 3D modelling and animation after experiencing first hand how 
-                        difficult and labor intensive these crafts are. 
-                    </p>
+                    <div class="project-row">
+                        <div class="project-media">
+                            <iframe
+                                loading="lazy"
+                                src="https://www.youtube.com/embed/ABsQQj4oZDU"
+                                title="Fishes: Life Goes On"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-meta">
+                                <span class="k">tech</span><span class="v">Maya, Renderman</span>
+                                <span class="k">team</span><span class="v">4</span>
+                                <span class="k">role</span><span class="v">Director</span>
+                                <span class="k">links</span>
+                                <span class="v project-links-v">
+                                    <a class="action-link" href="https://www.youtube.com/watch?v=ABsQQj4oZDU">[Video]</a>
+                                </span>
+                            </div>
+                            <div class="project-tags">
+                                <span class="tag">3d-animation</span>
+                                <span class="tag">maya</span>
+                                <span class="tag">short-film</span>
+                            </div>
+                            <p>
+                                3D animated short about the circle of life, told through fishes. Made for UC Berkeley's BUGG Computer Animation DeCal. I pitched the concept and directed.
+                            </p>
+                        </div>
+                    </div>
                 </section>
                 
 
                 <section class="project-section" id="algorhythmic">
-                    <h2><i>Algorhythmic</i></h2>
-                    <h3>VR Rhythm Shooter</h3>
-                    <p>Tech Stack: Unity Engine, Unity XR Kit, Oculus Quest 3</p>
-                    <p>Team Size: 4</p>
-                    <a href="https://github.com/camacho-david/xrdecal-project.git ">
-                        https://github.com/camacho-david/xrdecal-project.git
-                    </a>
-                    <br>
-                    <a href="https://docs.google.com/presentation/d/1EJX1VprlbkLV14uNvCk0sstvobSRTAbqt2sxOcPO3ng/edit?usp=sharing">
-                        Project Presentation Slide Deck
-                    </a>
-                    <p>
-                        Algorhythmic is a VR shooting rhythm game made in the
-                        Unity engine.
-                        This was the first student group project 
-                        that I had the pleasure to work on. 
-                        I made it with a group of 3 other students 
-                        as the final project for the extended reality DeCal at 
-                        UC Berkeley. 
+                    <h2><i>Algorhythmic</i> - VR Rhythm Shooter</h2>
+                    <!-- PLACEHOLDER hook line. Revise. -->
+                    <p class="project-hook">VR rhythm shooter — dual-wield pistols, custom beat detection.</p>
 
-                        We came up with the idea based on our collective favorite
-                        VR game--Beat Saber--but with a twist: instead of wielding 
-                        dual sabers you dual wield two pistols! 
-
-                        My contribution to the project was in the original concept 
-                        and I also programmed the beat detection algorithm that 
-                        analyzed any sound file the user supplied to the program 
-                        to identify beats. The timestamps of these beats were used 
-                        to spawn visual "beat cubes" that the player needed to shoot
-                        close to the timestamp of the beat in the song. 
-
-                        The game ended up being surprisingly fun. On this 
-                        project I learned how to figure out how to compose an algorithm 
-                        (beat detection) from old dense research papers. In addition it 
-                        was my first foray into team projects which I learned a lot about 
-                        from this experience. 
-                    </p>
+                    <div class="project-row flip">
+                        <div class="project-media">
+                            <img src="/images/algorhythmic2.png" loading="lazy" alt="Algorhythmic screenshot.">
+                        </div>
+                        <div class="project-body">
+                            <div class="project-meta">
+                                <span class="k">tech</span><span class="v">Unity, Unity XR, Quest 3</span>
+                                <span class="k">team</span><span class="v">4</span>
+                                <span class="k">role</span><span class="v">Concept, Programmer</span>
+                                <span class="k">links</span>
+                                <span class="v project-links-v">
+                                    <a class="action-link" href="https://github.com/camacho-david/xrdecal-project" target="_blank" rel="noopener">[Source]</a>
+                                    <a class="action-link" href="https://docs.google.com/presentation/d/1EJX1VprlbkLV14uNvCk0sstvobSRTAbqt2sxOcPO3ng/edit?usp=sharing" target="_blank" rel="noopener">[Presentation]</a>
+                                </span>
+                            </div>
+                            <div class="project-tags">
+                                <span class="tag">unity</span>
+                                <span class="tag">vr</span>
+                                <span class="tag">rhythm</span>
+                            </div>
+                            <p>
+                                VR rhythm shooter inspired by <i>Beat Saber</i>, but you dual-wield pistols. I wrote the beat-detection algorithm that parses any audio file and spawns timed targets. Built for UC Berkeley's XR DeCal.
+                            </p>
+                        </div>
+                    </div>
                 </section>
-                
+
 
                 <section class="project-section" id="game-of-life">
-                    <h2><i>Game of Life</i> Simulation</h2>
-                    <h3>Interactive Cellular Automata Sandbox</h3>
-                    <p>Tech Stack: C++ 13, SDL 2.0, Visual Studio 19</p>
-                    <p>Team Size: Solo</p>
-                    <a href="https://github.com/hackerzilla/Game-of-Life-Final-Project">
-                        https://github.com/hackerzilla/Game-of-Life-Final-Project
-                    </a>
-                    <br>
-                    <a href="https://docs.google.com/presentation/d/1m3FELyPBnycbbBwGtg3gz3foRE5J5FnAzdHFR4Yegk0/edit?usp=sharing">
-                        Project Presentation Slide Deck
-                    </a>
-                    <p>
-                        This was the first project that I ever took on 
-                        that left me feeling quite proud of the end result. 
-                        It was made with C++, SDL 2.0 and the 
-                        Visual Studio 17 compiler.
-                        What started as the final project for a class 
-                        (CIS 25: Data Structures and Algorithms at Laney College)
-                        quickly went past the assignment requirements 
-                        and took on a life of its own.
-                        John Conways Game of Life had always fascinated me 
-                        since I had discovered it via some old youtube videos.
-                        It was a fitting first project for me. 
+                    <h2><i>Game of Life</i> Simulation - Interactive Cellular Automata Sandbox</h2>
+                    <!-- PLACEHOLDER hook line. Revise. -->
+                    <p class="project-hook">Conway's Game of Life sandbox in C++ with hand-drawn UI.</p>
 
-                        From this I learned about some software patterns that 
-                        are pervasive in all desktop applications, like 
-                        ping-pong double buffering, windowing, drawing primitives,
-                        input handling and file i/o. 
-
-                        This was also a chance for me to show my artist's hand 
-                        in the work which is most apparent in the hand drawn 
-                        button textures and the overall user experience which I 
-                        designed to be as intuitive as possible. 
-
-                        Overall I'm still proud of this project despite 
-                        it's simplicity 
-                        and slighty janky build process. 
-                        More importantly, I look back fondly 
-                        on the time of my life creating this GoL sim.
-                        
-                    </p>
+                    <div class="project-row">
+                        <div class="project-media">
+                            <video autoplay loop muted playsinline preload="metadata" disablepictureinpicture>
+                                <source src="/images/game_of_life_demo.mp4" type="video/mp4">
+                                Game of Life demo.
+                            </video>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-meta">
+                                <span class="k">tech</span><span class="v">C++14, SDL 2.0, Aseprite</span>
+                                <span class="k">team</span><span class="v">Solo</span>
+                                <span class="k">role</span><span class="v">Solo</span>
+                                <span class="k">links</span>
+                                <span class="v project-links-v">
+                                    <a class="action-link" href="https://github.com/hackerzilla/Game-of-Life-Final-Project" target="_blank" rel="noopener">[Source]</a>
+                                    <a class="action-link" href="https://docs.google.com/presentation/d/1m3FELyPBnycbbBwGtg3gz3foRE5J5FnAzdHFR4Yegk0/edit?usp=sharing" target="_blank" rel="noopener">[Presentation]</a>
+                                </span>
+                            </div>
+                            <div class="project-tags">
+                                <span class="tag">c++</span>
+                                <span class="tag">sdl</span>
+                                <span class="tag">simulation</span>
+                            </div>
+                            <p>
+                                Interactive Conway's Game of Life sandbox in C++ with hand-drawn UI. Started as a Laney College data structures final and kept growing past the assignment.
+                            </p>
+                        </div>
+                    </div>
                 </section>
                 
+                </section> <!-- end projects section-->
+
+                <section class="page-section" id="skills">
+                <pre style="font-family: monospace;">
+   .dMMMb  dMP dMP dMP dMP     dMP    .dMMMb
+  dMP" VP dMP.dMP amr dMP     dMP    dMP" VP
+  VMMMb  dMMMMK" dMP dMP     dMP     VMMMb
+dP .dMP dMP"AMF dMP dMP     dMP    dP .dMP
+VMMMP" dMP dMP dMP dMMMMMP dMMMMMP VMMMP"
+                </pre>
+
+                <div class="skills-grid">
+                <section class="skills-section" id="languages">
+                    <h2>Languages</h2>
+                    <ul class="skills-list">
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/c.svg')"></span>C</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/cplusplus.svg')"></span>C++</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/csharp.svg')"></span>C#</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/openjdk.svg')"></span>Java</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/python.svg')"></span>Python</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/godotengine.svg')"></span>GDScript</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/opengl.svg')"></span>GLSL/HLSL</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/riscv.svg')"></span>RISC-V</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/AMD64_Logo.svg')"></span>x86_64</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/html5.svg')"></span>HTML</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/css3.svg')"></span>CSS</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/javascript.svg')"></span>JavaScript</li>
+                    </ul>
                 </section>
+
+                <section class="skills-section" id="devtools">
+                    <h2>Development Tools</h2>
+                    <ul class="skills-list">
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/git.svg')"></span>Git</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/github.svg')"></span>GitHub</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/claude.svg')"></span>Claude Code</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/tmux.svg')"></span>tmux</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/docker.svg')"></span>Docker</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/perforce.svg')"></span>Perforce</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/plastic-scm.png')"></span>PlasticSCM</li>
+                    </ul>
+                </section>
+
+                <section class="skills-section" id="engines">
+                    <h2>Engines, Frameworks &amp; APIs</h2>
+                    <ul class="skills-list">
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/godotengine.svg')"></span>Godot Engine</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/unity.svg')"></span>Unity</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/unrealengine.svg')"></span>Unreal Engine</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/SDL_logo_b.png')"></span>SDL</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/opengl.svg')"></span>OpenGL</li>
+                    </ul>
+                </section>
+                </div>
+
+                </section> <!-- end skills section -->
+
+                <section class="page-section" id="contact">
+                <pre style="font-family: monospace;">
+   .aMMMb  .aMMMb  dMMMMb dMMMMMMP .aMMMb  .aMMMb dMMMMMMP
+  dMP"VMP dMP"dMP dMP dMP   dMP   dMP"dMP dMP"VMP   dMP
+ dMP     dMP dMP dMP dMP   dMP   dMMMMMP dMP       dMP
+dMP.aMP dMP.aMP dMP dMP   dMP   dMP dMP dMP.aMP   dMP
+VMMMP"  VMMMP" dMP dMP   dMP   dMP dMP  VMMMP"   dMP
+                </pre>
+
+                <p><i>Feel free to reach out via any of these social media handles.</i></p>
+
+                <div class="contact-block">
+                    <span class="contact-icon" style="--icon: url('/images/logos/email.svg')" aria-hidden="true"></span>
+                    <span class="contact-label">email</span>
+                    <div class="contact-value">
+                        <a href="mailto:j.pearbach@yahoo.com">j.pearbach@yahoo.com</a>
+                        <a href="mailto:j.pearbach@berkeley.edu">j.pearbach@berkeley.edu</a>
+                    </div>
+
+                    <span class="contact-icon" style="--icon: url('/images/logos/linkedin.svg')" aria-hidden="true"></span>
+                    <span class="contact-label">linkedin</span>
+                    <div class="contact-value"><a href="https://www.linkedin.com/in/julian-pearson-rickenbach">julian-pearson-rickenbach</a></div>
+
+                    <span class="contact-icon" style="--icon: url('/images/logos/github.svg')" aria-hidden="true"></span>
+                    <span class="contact-label">github</span>
+                    <div class="contact-value"><a href="https://github.com/hackerzilla">hackerzilla</a></div>
+
+                    <span class="contact-icon" style="--icon: url('/images/logos/bluesky.svg')" aria-hidden="true"></span>
+                    <span class="contact-label">bluesky</span>
+                    <div class="contact-value"><a href="https://bsky.app/profile/julian-pr.bsky.social">julian-pr.bsky.social</a></div>
+
+                    <!--
+                    <span class="contact-icon" style="--icon: url('/images/logos/resume.svg')" aria-hidden="true"></span>
+                    <span class="contact-label">resume</span>
+                    <div class="contact-value">&lt;pending&gt;</div>
+                    -->
+                </div>
+
+                </section> <!-- end contact section -->
+
+                <div class="terminal-cursor" aria-hidden="true">▌</div>
             </div> <!-- end .main-content-->
+
+            <footer class="page-footer">
+                <p>site designed by me :)</p>
+            </footer>
         </div> <!-- end .page-layout-->
+
     <script>
-        // ── IntersectionObserver: track active sections ──
-        const allNavLinks = document.querySelectorAll('.tree-sidebar a');
-        const allTreeGroups = document.querySelectorAll('.tree-sidebar .tree-group');
+        // ── DevTools easter egg ──
+        console.log(
+            '%c   ▀▄▀▄▀▄  hello, dev.  ▄▀▄▀▄▀\n' +
+            '%csource: github.com/hackerzilla\n' +
+            '%clooking for a Godot / Unity / systems programmer? get in touch.\n' +
+            '%cj.pearbach@yahoo.com',
+            'color: #39FF14; font-family: monospace; font-weight: bold; font-size: 14px; text-shadow: 0 0 6px #39FF14;',
+            'color: #83ff6e; font-family: monospace;',
+            'color: #83ff6e; font-family: monospace;',
+            'color: #00AAff; font-family: monospace; text-decoration: underline;'
+        );
 
-        function clearAllStates() {
-            allNavLinks.forEach(link => link.classList.remove('active'));
-            allTreeGroups.forEach(group => group.classList.remove('visible'));
-        }
+        // ── Triskele hover-spin (with friction stop) + click-spin ──
+        const triskeleLogo = document.querySelector('.header-logo');
+        // const triskele = document.querySelector('#triskelion');
+        const triskele = document.getElementById('triskelion-logo');
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        if (triskeleLogo && triskele) {
+            const TARGET_RATE = 60;   // deg/sec at full hover speed (matches old 6s/rotation)
+            const ACCEL       = 300;  // deg/sec² ramp-up while hovered
+            const FRICTION    = 50;   // deg/sec² decel after mouseleave (lower = longer coast)
 
-        function activateLink(hash) {
-            document.querySelectorAll(`a[href="#${hash}"]`).forEach(link => {
-                link.classList.add('active');
+            let hoverActive = false;
+            let clickSpinActive = false;
+            let angle = 0;
+            let rate = 0;
+            let lastT = 0;
+            let rafId = null;
+
+            function tick(t) {
+                if (lastT === 0) lastT = t;
+                const dt = Math.min(0.1, (t - lastT) / 1000);
+                lastT = t;
+
+                if (hoverActive && !clickSpinActive) {
+                    rate = Math.min(TARGET_RATE, rate + ACCEL * dt);
+                } else {
+                    rate = Math.max(0, rate - FRICTION * dt);
+                }
+
+                angle = (angle + rate * dt) % 360;
+                if (!clickSpinActive) {
+                    triskele.style.transform = `rotate(${angle}deg)`;
+                }
+
+                if (hoverActive || rate > 0.01 || clickSpinActive) {
+                    rafId = requestAnimationFrame(tick);
+                } else {
+                    rafId = null;
+                    lastT = 0;
+                }
+            }
+
+            function startLoop() {
+                if (rafId === null) {
+                    lastT = 0;
+                    rafId = requestAnimationFrame(tick);
+                }
+            }
+
+            triskeleLogo.addEventListener('mouseenter', () => {
+                if (reducedMotion.matches) return;
+                hoverActive = true;
+                startLoop();
             });
-        }
+            triskeleLogo.addEventListener('mouseleave', () => {
+                hoverActive = false;
+            });
 
-        const projectObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const id = entry.target.id;
-                    clearAllStates();
-                    activateLink('projects');
-                    allTreeGroups.forEach(g => g.classList.add('visible'));
-                    activateLink(id);
+            triskeleLogo.addEventListener('click', () => {
+                if (reducedMotion.matches) return;
+                clickSpinActive = true;
+                angle = 0;
+                rate = 0;
+                triskele.style.transform = '';
+                triskele.classList.remove('spinning');
+                void triskele.offsetWidth;
+                triskele.classList.add('spinning');
+            });
+            triskele.addEventListener('animationend', (e) => {
+                if (e.animationName === 'triskele-spin-fast') {
+                    triskele.classList.remove('spinning');
+                    clickSpinActive = false;
+                    if (hoverActive) startLoop();
                 }
             });
-        }, {
-            rootMargin: '-10% 0px -70% 0px',
-            threshold: 0
-        });
+        }
 
-        document.querySelectorAll('.project-section').forEach(s => projectObserver.observe(s));
+        // ── Seal click toasts ──
+        function spawnSealToast(target, message) {
+            const rect = target.getBoundingClientRect();
+            const toast = document.createElement('div');
+            toast.className = 'seal-toast';
+            toast.setAttribute('aria-hidden', 'true');
+            toast.textContent = message;
+            toast.style.top = `${rect.top}px`;
+            toast.style.left = `${rect.left + rect.width / 2}px`;
+            document.body.appendChild(toast);
+            toast.addEventListener('animationend', () => toast.remove());
+        }
 
-        const pageObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const id = entry.target.id;
-                    clearAllStates();
-                    activateLink(id);
-                    if (id === 'projects') {
-                        allTreeGroups.forEach(g => g.classList.add('visible'));
-                            const firstProject = document.querySelector('.project-section');
-                            if (firstProject) activateLink(firstProject.id);
+        function bindSeal(selector, pick) {
+            const el = document.querySelector(selector);
+            if (!el) return;
+            el.addEventListener('click', () => spawnSealToast(el, pick()));
+        }
+
+        const berkeleyMessages = ['go bears!', 'fiat lux'];
+        bindSeal('.berkeley-seal',
+            () => berkeleyMessages[Math.floor(Math.random() * berkeleyMessages.length)]);
+
+        const bccMessages = ['shout out to Nathan', 'shout out to Ree', 'shout out to Holden'];
+        bindSeal('.bcc-ee-club-seal',
+            () => bccMessages[Math.floor(Math.random() * bccMessages.length)]);
+
+        // ── Cross-tag highlighting ──
+        (() => {
+            const allTags = document.querySelectorAll('.project-tags .tag');
+            allTags.forEach(t => t.setAttribute('data-tag', t.textContent.trim().toLowerCase()));
+            allTags.forEach(tag => {
+                const name = tag.getAttribute('data-tag');
+                const matches = document.querySelectorAll(`.tag[data-tag="${CSS.escape(name)}"]`);
+                tag.addEventListener('mouseenter', () => {
+                    matches.forEach(t => t.classList.add('cross-highlight'));
+                });
+                tag.addEventListener('mouseleave', () => {
+                    matches.forEach(t => t.classList.remove('cross-highlight'));
+                });
+            });
+        })();
+
+        // ── Spatial-overlap active tab tracking ──
+        // A tab is "active" when its corresponding content section overlaps
+        // vertically with the tab in viewport-relative coordinates. Multiple
+        // tabs can be active at once during transitions between sections.
+        const tabs = Array.from(document.querySelectorAll('.sidebar-tab'));
+        const pairs = tabs
+            .map(tab => {
+                const id = tab.getAttribute('href')?.slice(1);
+                const section = id ? document.getElementById(id) : null;
+                return section ? { tab, section } : null;
+            })
+            .filter(Boolean);
+
+        function updateActiveTabs() {
+            for (const { tab, section } of pairs) {
+                const t = tab.getBoundingClientRect();
+                const s = section.getBoundingClientRect();
+                const overlaps = s.top < t.bottom && s.bottom > t.top;
+                tab.classList.toggle('active', overlaps);
+            }
+        }
+
+        window.addEventListener('scroll', updateActiveTabs, { passive: true });
+        window.addEventListener('resize', updateActiveTabs);
+        updateActiveTabs();
+
+        // ── Dot-grid background (bend + brighten near cursor) ──
+        (() => {
+            const canvas = document.querySelector('.dot-grid-bg');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+            // Tunables
+            const GRID        = 32;    // spacing between dots (px)
+            const BASE_R      = 1.1;   // base dot radius
+            const MAX_R       = 1.4;   // max dot radius at cursor center
+            const INFLUENCE   = 140;   // cursor influence radius (px)
+            const MAX_DISP    = 5;     // max displacement away from cursor (px, peaks mid-ring)
+            const BASE_ALPHA  = 0.16;
+            const HOT_ALPHA   = 0.40;
+            const EASE_PER_S  = 4.5;   // influence strength lerp rate (1/s) on leave
+
+            let dpr = 1, w = 0, h = 0;
+            let mouseX = -9999, mouseY = -9999;
+            let influence = 0;        // 0..1, eased from mouseEnter/leave
+            let target    = 0;        // target influence
+            let lastT     = 0;
+            let rafId     = null;
+            let needsRedraw = true;
+
+            function resize() {
+                dpr = window.devicePixelRatio || 1;
+                w = window.innerWidth;
+                h = window.innerHeight;
+                canvas.width  = Math.floor(w * dpr);
+                canvas.height = Math.floor(h * dpr);
+                canvas.style.width  = w + 'px';
+                canvas.style.height = h + 'px';
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                needsRedraw = true;
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, w, h);
+                const cols = Math.ceil(w / GRID) + 1;
+                const rows = Math.ceil(h / GRID) + 1;
+                const inflR = INFLUENCE;
+                const inflRSq = inflR * inflR;
+                const live = influence > 0.001;
+                const mx = mouseX, my = mouseY;
+
+                for (let i = 0; i < cols; i++) {
+                    const baseX = i * GRID;
+                    for (let j = 0; j < rows; j++) {
+                        const baseY = j * GRID;
+                        let x = baseX, y = baseY, r = BASE_R;
+                        let alpha = BASE_ALPHA;
+                        let color = `rgba(57, 255, 20, ${alpha})`;
+
+                        if (live) {
+                            const dx = baseX - mx;
+                            const dy = baseY - my;
+                            const dSq = dx * dx + dy * dy;
+                            if (dSq < inflRSq) {
+                                const d = Math.sqrt(dSq);
+                                const dRatio = d / inflR;                        // 0..1
+                                const tCenter = (1 - dRatio) * (1 - dRatio) * influence; // peaks at center, for brightness + scale
+                                const tRing   = 4 * dRatio * (1 - dRatio) * influence;   // peaks at d=inflR/2, zero at center + edge
+                                const inv = d > 0.0001 ? 1 / d : 0;
+                                const disp = MAX_DISP * tRing;
+                                x = baseX + dx * inv * disp;
+                                y = baseY + dy * inv * disp;
+                                r = BASE_R + (MAX_R - BASE_R) * tCenter;
+                                const a = BASE_ALPHA + (HOT_ALPHA - BASE_ALPHA) * tCenter;
+                                color = `rgba(131, 255, 110, ${a})`;
+                            }
+                        }
+
+                        ctx.fillStyle = color;
+                        ctx.beginPath();
+                        ctx.arc(x, y, r, 0, Math.PI * 2);
+                        ctx.fill();
                     }
                 }
-            });
-        }, {
-            rootMargin: '-10% 0px -70% 0px',
-            threshold: 0
-        });
-
-        // ── Bottom-of-page fix: activate last section when scrolled to bottom ──
-        window.addEventListener('scroll', () => {
-            const scrolledToBottom = 
-                (window.innerHeight + window.scrollY) >= (document.body.scrollHeight - 50);
-            
-            if (scrolledToBottom) {
-                // Find the last project section
-                const projectSections = document.querySelectorAll('.project-section');
-                const lastSection = projectSections[projectSections.length - 1];
-                
-                clearAllStates();
-                activateLink('projects');
-                allTreeGroups.forEach(g => g.classList.add('visible'));
-                activateLink(lastSection.id);
             }
-        });
 
-        document.querySelectorAll('.page-section').forEach(s => pageObserver.observe(s));
+            function tick(now) {
+                if (lastT === 0) lastT = now;
+                const dt = Math.min(0.1, (now - lastT) / 1000);
+                lastT = now;
+
+                // Lerp influence toward target with ease rate
+                if (Math.abs(target - influence) > 0.001) {
+                    const k = 1 - Math.exp(-EASE_PER_S * dt);
+                    influence += (target - influence) * k;
+                    needsRedraw = true;
+                } else if (influence !== target) {
+                    influence = target;
+                    needsRedraw = true;
+                }
+
+                if (needsRedraw) {
+                    draw();
+                    needsRedraw = false;
+                }
+
+                if (influence > 0.001 || target > 0) {
+                    rafId = requestAnimationFrame(tick);
+                } else {
+                    rafId = null;
+                    lastT = 0;
+                }
+            }
+
+            function startLoop() {
+                if (rafId === null) {
+                    lastT = 0;
+                    rafId = requestAnimationFrame(tick);
+                }
+            }
+
+            window.addEventListener('resize', resize, { passive: true });
+            window.addEventListener('pointermove', (e) => {
+                if (reduced.matches) return;
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                target = 1;
+                needsRedraw = true;
+                startLoop();
+            }, { passive: true });
+            document.documentElement.addEventListener('pointerleave', () => {
+                target = 0;
+                startLoop();
+            });
+            window.addEventListener('blur', () => {
+                target = 0;
+                startLoop();
+            });
+
+            resize();
+            draw();
+        })();
+
+        // ── Bio expand/collapse ──
+        (() => {
+            const bioBlock = document.querySelector('.bio-block');
+            const bioBtn = document.querySelector('.bio-expand');
+            if (!bioBlock || !bioBtn) return;
+            bioBtn.addEventListener('click', () => {
+                const collapsed = bioBlock.classList.toggle('bio-collapsed');
+                bioBtn.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+                bioBtn.textContent = collapsed ? '[ Read more ▾ ]' : '[ Read less ▴ ]';
+            });
+        })();
     </script>
     </body>
 </html>
