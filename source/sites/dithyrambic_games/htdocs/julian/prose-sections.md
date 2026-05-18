@@ -64,7 +64,8 @@ Relevant Courses:
 ### BEE Club
 
 - Helped advocate for student body leading to BCC's first free-to-use 3D printer for students
-- Played a pivotal role in guided essay writing workshops.
+- Planned a 3D-printed custom-built drone project on a constrained budget.
+- Played a pivotal role in guided essay writing workshops, and helped organize and lead resume and cover letter workshops.
 - Tutored engineering students as needed in an informal capacity.
 
 ## Projects

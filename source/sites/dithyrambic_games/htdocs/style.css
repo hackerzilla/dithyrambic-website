@@ -842,13 +842,26 @@ h1 {
     padding-bottom: 3.2rem;
 }
 
-.bio-block.bio-collapsed {
+/* Lift bio-block's corner brackets above the .bio-fade overlay (z-index: 2)
+   so bottom corners stay visible in collapsed state. Also extend the corner
+   glow with a wider, softer halo so the inward bloom reads clearly against
+   the dark fade gradient (otherwise the bright-green-to-black transition
+   looks harsh on this section's smaller compact footprint). */
+.bio-block::before {
+    z-index: 3;
+    filter:
+        drop-shadow(0 0 3px #39FF14)
+        drop-shadow(0 0 8px rgba(57, 255, 20, 0.7))
+        drop-shadow(0 0 22px rgba(57, 255, 20, 0.3));
+}
+
+.bio-block.bio-collapsed .bio-content {
     max-height: 14em;
     overflow: hidden;
     transition: max-height 450ms ease;
 }
 
-.bio-block:not(.bio-collapsed) {
+.bio-block:not(.bio-collapsed) .bio-content {
     max-height: 200em;
     transition: max-height 600ms ease;
 }
@@ -895,8 +908,8 @@ h1 {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .bio-block.bio-collapsed,
-    .bio-block:not(.bio-collapsed) {
+    .bio-block.bio-collapsed .bio-content,
+    .bio-block:not(.bio-collapsed) .bio-content {
         transition: none;
     }
 }
@@ -938,6 +951,33 @@ h1 {
 .project-row.flip .project-media { grid-column: 2; grid-row: 1; }
 .project-row.flip .project-body  { grid-column: 1; grid-row: 1; }
 
+/* ── Wrap variant: media floats to one side, body text flows beside AND
+   underneath it. Use when the body is taller than the media and the column
+   under the media would otherwise be empty. Opt-in per row via class. ── */
+.project-row.project-row--wrap {
+    display: block;
+}
+.project-row.project-row--wrap::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.project-row.project-row--wrap .project-media {
+    float: left;
+    width: calc(50% - 1.25rem);
+    margin: 0 2.5rem 1.5rem 0;
+}
+.project-row.project-row--wrap.flip .project-media {
+    float: right;
+    margin: 0 0 1.5rem 2.5rem;
+}
+.project-row.project-row--wrap .project-body {
+    display: block;
+}
+.project-row.project-row--wrap .project-body > * + * {
+    margin-top: 1rem;
+}
+
 .project-media img,
 .project-media video,
 .project-media iframe {
@@ -970,6 +1010,18 @@ h1 {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+}
+
+.media-caption {
+    margin: -0.5rem 0 0 0;
+    align-self: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    font-style: italic;
+    text-align: center;
+    color: #83ff6e;
+    opacity: 0.65;
+    letter-spacing: 0.05em;
 }
 
 /* ── DreadReign banner (wordmark inside project-media; no outline/glow frame) ── */
@@ -1261,5 +1313,11 @@ h1 {
     .project-row .project-body,
     .project-row.flip .project-body {
         grid-column: 1;
+    }
+    .project-row.project-row--wrap .project-media,
+    .project-row.project-row--wrap.flip .project-media {
+        float: none;
+        width: 100%;
+        margin: 0 0 1.5rem 0;
     }
 }
