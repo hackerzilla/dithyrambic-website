@@ -3,6 +3,16 @@
 
 ## Bio
 
+Hi, my name is Julian and I'm a game programmer from Berkeley, California. I just graduated from UC Berkeley with a degree in Computer Science. I took the long way there--six years start to finish, with detours through community college and a stint at a game development art school--but the unconventional route taught me to set my own standards of rigor when the existing challenge wasn't enough. I've wanted to make games since I was 13. The reason hasn't really changed: games gave me a place to think, to feel, and to keep going during some of the harder stretches of my life. My purpose is to make games that do that for other people too.
+
+I work mostly in Godot Engine (GDScript/C++) and Unity (C#), with one project in Unreal 5 Blueprints. C++ is my favorite language and I'd like to spend more time close to the hardware--WowCube, Playdate, and Raspberry Pi, I'm looking at you! I lean generalist: systems, shaders, UI, physics, AI, optimization, simulation, gameplay, networking, tools, audio--I want to understand the whole stack, not own one corner of it. Two years of solo work on Zombulacrum in Godot 4 has let me do all of it myself. I'm not an expert in any single field, but I know enough about each piece to navigate whatever's in front of me, and I'm always sharpening my craft.
+
+The skill I trust most in myself isn't really a programming skill. It's the habit of testing my own assumptions and updating when they break, and being willing to call something uncertain rather than hold onto a clean-looking conclusion I haven't earned. That habit is what makes the breadth honest instead of shallow. My strength is being comfortable in the midst of uncertainty--that and a tendency towards the gestalt.
+
+Outside the code I'm an amateur visual artist and a fledgling music-maker. I've been doodling continuously since I was a toddler and I make my own art assets and sound effects when a project calls for it. I'd like more time away from the keyboard to pursue those forms of expression someday.
+
+A word on AI: it's here to stay, but I don't want the cultural narrative dictating my read on the tools. From a computer scientist's perspective AI is genuinely interesting. From an entrepreneur's perspective, useful. From an artist and craftsperson's perspective, deeply troubling. I'm learning the tools like everyone else, but with a healthy skepticism about the effects on human health and wellbeing. In short, I'm using them but I wish I didn't have to, and I'm selective about how. Coding is somewhat acceptable--less satisfying than hand-coding, but okay. Using AI to make artwork directly is where I start to feel icky. Rant over. We'll see where things go from here, I'm sure we're all in for one hell of a ride.
+
 ## Education
 
 ## Experience
