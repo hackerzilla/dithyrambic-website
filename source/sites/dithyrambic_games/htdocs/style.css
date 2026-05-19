@@ -1133,8 +1133,8 @@ h1 {
 }
 .skill-logo {
     display: inline-block;
-    width: 1.1em;
-    height: 1.1em;
+    width: 1.7em;
+    height: 1.7em;
     background-color: currentColor;
     -webkit-mask: var(--logo) center / contain no-repeat;
     mask: var(--logo) center / contain no-repeat;
