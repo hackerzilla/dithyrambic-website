@@ -213,7 +213,7 @@ dMP     dMP dMP  VMMMP" VMMMP" dMMMMMP  VMMMP"   dMP    VMMMP"
 
 
                 <section class="project-section" id="dreadreign">
-                    <h2><i>DreadReign</i> - First-Person Party Dungeon-Crawler RPG</h2>
+                    <h2><i>DreadReign</i> - First-Person Shooter Party Dungeon-Crawler</h2>
                     <!-- PLACEHOLDER hook line. Revise. -->
                     <p class="project-hook">Gauntlet meets Doom in a dark-fantasy party dungeon-crawler.</p>
 
@@ -743,7 +743,7 @@ VMMMP"  VMMMP" dMP dMP   dMP   dMP dMP  VMMMP"   dMP
 
                 </section> <!-- end contact section -->
 
-                <div class="terminal-cursor" aria-hidden="true">▌</div>
+                <div class="terminal-line" aria-hidden="true"><span class="terminal-text"></span><span class="terminal-cursor">▌</span></div>
             </div> <!-- end .main-content-->
 
             <div id="bottom-buffer" aria-hidden="true"></div>
@@ -1082,6 +1082,157 @@ VMMMP"  VMMMP" dMP dMP   dMP   dMP dMP  VMMMP"   dMP
             adjust();
             window.addEventListener('load', adjust);
             window.addEventListener('resize', adjust);
+        })();
+
+        // ── Terminal-cursor easter egg ──
+        // Edit MESSAGES + DEFAULTS below to add or tune messages.
+        // A message is either { text: "…" } or { segments: [{ text, typeSpeed }, …] }.
+        // Any DEFAULTS field can be overridden per-message.
+        // Triggers once the cursor is in viewport AND the user has been idle ≥10s.
+        (function() {
+            const line = document.querySelector('.terminal-line');
+            if (!line) return;
+            const textEl   = line.querySelector('.terminal-text');
+            const cursorEl = line.querySelector('.terminal-cursor');
+            if (!textEl || !cursorEl) return;
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+            // ── DSL: edit me ────────────────────────────────────────────
+            const DEFAULTS = {
+                typeSpeed:   95,    // ms per char while typing
+                deleteSpeed: 50,    // ms per char while deleting
+                linger:      3800,  // ms fully typed before deletion starts
+                pauseBefore: 1800,  // ms blinking idle before this msg starts
+                pauseAfter:  3200,  // ms blinking idle after delete, before next msg
+            };
+
+            const MESSAGES = [
+                { text: "Are you still there?" },
+                { text: "Yep, I'm a programmer." },
+                {
+                    text: "Made with love <3",
+                    typeSpeed: 130,            // slower, deliberate
+                    linger:    5200,
+                },
+                {
+                    text: "You are filled with determination.",
+                    typeSpeed: 115,
+                    linger:    5800,
+                },
+                {
+                    // segments override `text` when you want
+                    // varied per-chunk speed within one message
+                    segments: [
+                        { text: "Hopefully this matters" },
+                        { text: ".",  typeSpeed: 380 },
+                        { text: ".",  typeSpeed: 380 },
+                        { text: ".",  typeSpeed: 460 },
+                    ],
+                    linger: 6500,
+                },
+            ];
+
+            const IDLE_BEFORE_START_MS = 10000;  // user inactivity before egg wakes
+
+            // ── Engine (no editing needed below) ────────────────────────
+            const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+            function expandChars(message) {
+                const segments = message.segments
+                    ? message.segments
+                    : [{ text: message.text }];
+                const msgSpeed = message.typeSpeed ?? DEFAULTS.typeSpeed;
+                const out = [];
+                for (const seg of segments) {
+                    const speed = seg.typeSpeed ?? msgSpeed;
+                    for (const ch of seg.text) out.push({ ch, speed });
+                }
+                return out;
+            }
+
+            function fullText(message) {
+                return message.segments
+                    ? message.segments.map(s => s.text).join('')
+                    : message.text;
+            }
+
+            async function typeMessage(msg) {
+                cursorEl.classList.add('solid');
+                let buf = '';
+                for (const { ch, speed } of expandChars(msg)) {
+                    buf += ch;
+                    textEl.textContent = buf;
+                    await sleep(speed);
+                }
+            }
+
+            async function deleteMessage(msg) {
+                cursorEl.classList.add('solid');
+                const speed = msg.deleteSpeed ?? DEFAULTS.deleteSpeed;
+                let buf = fullText(msg);
+                while (buf.length > 0) {
+                    buf = buf.slice(0, -1);
+                    textEl.textContent = buf;
+                    await sleep(speed);
+                }
+            }
+
+            function shuffledOrder(prevLast) {
+                const order = MESSAGES.map((_, i) => i);
+                for (let i = order.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [order[i], order[j]] = [order[j], order[i]];
+                }
+                if (order.length > 1 && order[0] === prevLast) {
+                    [order[0], order[1]] = [order[1], order[0]];
+                }
+                return order;
+            }
+
+            async function loop() {
+                let prevLast = -1;
+                while (true) {
+                    const order = shuffledOrder(prevLast);
+                    for (const idx of order) {
+                        const msg = MESSAGES[idx];
+                        cursorEl.classList.remove('solid');
+                        await sleep(msg.pauseBefore ?? DEFAULTS.pauseBefore);
+                        await typeMessage(msg);
+                        await sleep(msg.linger ?? DEFAULTS.linger);
+                        await deleteMessage(msg);
+                        cursorEl.classList.remove('solid');
+                        await sleep(msg.pauseAfter ?? DEFAULTS.pauseAfter);
+                    }
+                    prevLast = order[order.length - 1];
+                }
+            }
+
+            // ── Gated start: cursor in viewport AND user idle ───────────
+            let lastActivity = Date.now();
+            let inViewport   = false;
+            let started      = false;
+
+            const bump = () => { lastActivity = Date.now(); };
+            ['scroll', 'mousemove', 'keydown', 'mousedown', 'touchstart', 'wheel']
+                .forEach(evt => window.addEventListener(evt, bump, { passive: true }));
+
+            const io = new IntersectionObserver(entries => {
+                inViewport = entries[0].isIntersecting;
+                tryStart();
+            }, { threshold: 0.1 });
+            io.observe(line);
+
+            function tryStart() {
+                if (started) return;
+                const idle = Date.now() - lastActivity;
+                if (inViewport && idle >= IDLE_BEFORE_START_MS) {
+                    started = true;
+                    io.disconnect();
+                    loop();
+                }
+            }
+
+            setInterval(tryStart, 500);
         })();
     </script>
     </body>

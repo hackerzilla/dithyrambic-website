@@ -848,17 +848,20 @@ h1 {
     padding-bottom: 3.2rem;
 }
 
-/* Lift bio-block's corner brackets above the .bio-fade overlay (z-index: 2)
-   so bottom corners stay visible in collapsed state. Also extend the corner
-   glow with a wider, softer halo so the inward bloom reads clearly against
-   the dark fade gradient (otherwise the bright-green-to-black transition
-   looks harsh on this section's smaller compact footprint). */
 .bio-block::before {
-    z-index: 3;
     filter:
         drop-shadow(0 0 3px #39FF14)
         drop-shadow(0 0 8px rgba(57, 255, 20, 0.7))
         drop-shadow(0 0 22px rgba(57, 255, 20, 0.3));
+}
+
+/* Bottom-anchored fade applied in both states so toggling collapse doesn't
+   snap a mask in/out (mask-image isn't smoothly transitionable). In the
+   collapsed state this masks the cropped text; in the expanded state it
+   gives the bio a soft ending into the page bg. */
+.bio-content {
+    -webkit-mask-image: linear-gradient(to top, transparent 0, #000 5em);
+            mask-image: linear-gradient(to top, transparent 0, #000 5em);
 }
 
 .bio-block.bio-collapsed .bio-content {
@@ -874,18 +877,6 @@ h1 {
 
 .bio-fade {
     display: none;
-}
-
-.bio-block.bio-collapsed .bio-fade {
-    display: block;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 6em;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #000 100%);
-    pointer-events: none;
-    z-index: 2;
 }
 
 .bio-expand {
@@ -1189,20 +1180,32 @@ h1 {
     100% { opacity: 0; transform: translate(-50%, calc(-100% - 80px)); }
 }
 
-/* ── Terminal cursor ── */
-.terminal-cursor {
+/* ── Terminal line + blinking cursor ── */
+.terminal-line {
     display: block;
     font-family: 'JetBrains Mono', monospace;
-    color: #39FF14;
-    font-size: 1.4rem;
+    color: #83ff6e;
+    font-size: 1.33rem;
     line-height: 1;
     margin: 3rem 0 2rem 0;
     text-shadow:
-        0 0 4px #39FF14,
-        0 0 10px rgba(57, 255, 20, 0.6),
-        0 0 22px rgba(57, 255, 20, 0.3);
-    animation: cursor-blink 1.06s infinite;
+        0 0 3px #39FF14DD,
+        0 0 10px #39FF1499,
+        0 0 30px #39FF1433;
     user-select: none;
+}
+
+.terminal-text {
+    white-space: pre;
+}
+
+.terminal-cursor {
+    animation: cursor-blink 1.06s infinite;
+}
+
+.terminal-cursor.solid {
+    animation: none;
+    opacity: 1;
 }
 
 @keyframes cursor-blink {
