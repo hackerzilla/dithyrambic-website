@@ -480,10 +480,10 @@ h1 {
     font-style: italic;
 }
 
-/* ── Page footer (padding so Contact can scroll to top of viewport) ── */
+/* ── Page footer (text sits at very bottom of page; #bottom-buffer above
+   handles the dynamic spacing that makes Contact scroll to top of viewport) ── */
 .page-footer {
     grid-column: 2;
-    height: 60vh;
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -491,6 +491,12 @@ h1 {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.9rem;
     opacity: 0.55;
+}
+
+/* Bottom buffer: dynamic-height spacer that lets #contact scroll to the
+   top of the viewport at max scroll. Height set by JS. */
+#bottom-buffer {
+    grid-column: 2;
 }
 
 .page-footer p {
@@ -892,19 +898,25 @@ h1 {
     border: 1px solid rgba(57, 255, 20, 0.35);
     cursor: pointer;
     font-family: 'JetBrains Mono', monospace;
-    color: #39FF14;
+    color: #83ff6e;
     font-size: 0.95rem;
     letter-spacing: 0.04em;
-    text-shadow: 0 0 4px rgba(57, 255, 20, 0.55);
+    text-shadow:
+        0 0 3px #39FF14DD,
+        0 0 10px #39FF1499,
+        0 0 30px #39FF1433;
     padding: 0.35rem 0.9rem;
     transition: color 180ms ease, text-shadow 180ms ease, border-color 180ms ease, background-color 180ms ease;
 }
 
 .bio-expand:hover {
-    color: #83ff6e;
+    color: #a8ff98;
     border-color: rgba(131, 255, 110, 0.65);
     background-color: rgba(57, 255, 20, 0.06);
-    text-shadow: 0 0 7px rgba(131, 255, 110, 0.95);
+    text-shadow:
+        0 0 4px #83ff6eFF,
+        0 0 12px #83ff6eAA,
+        0 0 36px #83ff6e55;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -965,11 +977,21 @@ h1 {
 .project-row.project-row--wrap .project-media {
     float: left;
     width: calc(50% - 1.25rem);
-    margin: 0 2.5rem 1.5rem 0;
+    margin: 0 2.5rem 1rem 0;
 }
 .project-row.project-row--wrap.flip .project-media {
     float: right;
-    margin: 0 0 1.5rem 2.5rem;
+    margin: 0 0 1rem 2.5rem;
+}
+/* Per-media-type bottom-margin tuning for wrap variant.
+   Video has no player chrome, so under-wrap text needs more breathing room.
+   Iframe (YouTube) has player chin that already adds visual buffer below the
+   real video content, so less margin keeps it balanced with video sections. */
+.project-row.project-row--wrap .project-media:has(video) {
+    margin-bottom: 2rem;
+}
+.project-row.project-row--wrap .project-media:has(iframe) {
+    margin-bottom: 0.25rem;
 }
 .project-row.project-row--wrap .project-body {
     display: block;
@@ -1239,7 +1261,7 @@ h1 {
 .nova-orbit-stack .spin-cw  { animation-name: nova-spin-cw;  }
 .nova-orbit-stack .spin-ccw { animation-name: nova-spin-ccw; }
 /* Inner orbits rotate faster than outer (Kepler-ish). To tune, change one
-   duration here — class is shared by the ring AND the ship(s) on that ring. */
+   duration here - class is shared by the ring AND the ship(s) on that ring. */
 .nova-orbit-stack .orbit-1 { animation-duration: 12s; }
 .nova-orbit-stack .orbit-2 { animation-duration: 20s; }
 .nova-orbit-stack .orbit-3 { animation-duration: 32s; }
@@ -1291,18 +1313,11 @@ h1 {
 @keyframes nova-spin-cw  { to { transform: rotate( 360deg); } }
 @keyframes nova-spin-ccw { to { transform: rotate(-360deg); } }
 
-/* ── Responsive: stack on narrow screens ── */
-@media (max-width: 768px) {
-    .page-layout {
-        grid-template-columns: 1fr;
-    }
-    .sidebar-tabs {
-        display: none;
-    }
-    .main-content {
-        grid-column: 1;
-        max-width: 100%;
-    }
+/* ── Responsive: ~960px (half-1080p, common recruiter narrow case) ──
+   At this width 2-col project-rows squeeze videos too tight, and 3-col skills
+   feel cramped. Stack rows, flip skills grid (rows of subsections, items wrap
+   within), and float experience/education seals so text wraps around them. */
+@media (max-width: 1024px) {
     .project-row,
     .project-row.flip {
         grid-template-columns: 1fr;
@@ -1318,6 +1333,37 @@ h1 {
     .project-row.project-row--wrap.flip .project-media {
         float: none;
         width: 100%;
-        margin: 0 0 1.5rem 0;
+        margin: 0 0 1rem 0;
+    }
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    .skills-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.5rem 1.5rem;
+    }
+    .education-entry,
+    .experience-entry {
+        display: block;
+    }
+    .education-seal,
+    .experience-seal {
+        float: right;
+        margin: 0 0 1rem 1.5rem;
+    }
+}
+
+/* ── Responsive: stack on narrow screens ── */
+@media (max-width: 768px) {
+    .page-layout {
+        grid-template-columns: 1fr;
+    }
+    .sidebar-tabs {
+        display: none;
+    }
+    .main-content {
+        grid-column: 1;
+        max-width: 100%;
     }
 }
