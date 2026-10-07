@@ -67,7 +67,7 @@ a:active {
 
 ::selection {
     /* background-color: #eab315; */
-     background-color: #00AAff;
+     background-color: transparent;
     /* color: #000; */
     color: #FFFFFF;
     /* text-shadow:
@@ -823,6 +823,20 @@ h1 {
     width: 140px;
     height: auto;
     display: block;
+}
+
+/* Placeholder text mark for Physical Intelligence until a logo asset exists. */
+.pi-seal {
+    display: block;
+    width: 140px;
+    font-size: 7rem;
+    line-height: 1;
+    text-align: center;
+    color: #83ff6e;
+    text-shadow:
+        0 0 3px #39FF14DD,
+        0 0 10px #39FF1499,
+        0 0 30px #39FF1433;
 }
 
 .seal-caption {

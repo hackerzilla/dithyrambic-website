@@ -32,7 +32,7 @@ Role split for execution:
 
 ### 1. Global framing & quick passes
 
-- [ ] 1.1 👤 Replace the header subtitle/one-liner with the new positioning thesis (current: "indie game dev and programmer"). Date stamp everything: add/refresh "updated <month> <year>" marker somewhere low-key (footer or header) as part of the anti-rot convention. Header contact links stay.
+- [x] 1.1 👤 Header subtitle/one-liner set to **"indie game dev // robot operator"** (done). Still open from this item: low-key "updated <month> <year>" anti-rot date stamp (blocked on shipping date — do it in §7/§8). Header contact links stay.
 - [ ] 1.2 👤 Full-scroll audit pass: walk the finished page top to bottom as if never seen before. Log every stale date, dead link, placeholder, or broken claim. Fix as items below; anything new discovered gets a checklist addition.
 - [ ] 1.3 🤖 Sweep all visible text for date/number/status claims that contradict reality (months-tenure, "Currently", "In Active Development", "work in progress"). No museum pieces.
 - [x] 1.4 **DECIDED** (gate closed): remove "available" status dot text and all "Part-time, available for other work" language entirely. Replace the "available" label with **"online"** (keeps the little dot icon + text flavor; presence-ping vibe suits the audience). Propagates: DreadReign's "Part-time, available for other work" line is removed (closes 4.4's conflict).
@@ -51,15 +51,15 @@ Voice spec (Julian's stated intentions — non-negotiable, in priority order):
 - **Engineering as art.** The game-dev/art/music side isn't a hobby footnote; it's the same instinct as his engineering. That framing is the throughline.
 
 Checklist:
-- [ ] 2.1 👤 Rewrite bio to the voice spec: competency-forward structure, personality as seasoning. New first line = thesis (game programmer, now robot operator at PI, building toward robot interfaces). Target: 2–3 short paragraphs (down from 5 long ones).
-- [ ] 2.2 👤 Retire the AI-philosophy paragraph entirely (anachronistic, targeted at old audience, harmful in front of an AI-robotics company). Do not reframe — cut. Its replacement slots: enthusiasm for robotics/AI technology + optimism.
-- [ ] 2.3 👤 Personality seasoning (≤1 clause each): art-and-music side with the engineering-as-art framing, playful wit, self-aggrandizement within truth. Drop: "comfortable in uncertainty" self-analysis, any first-job-seeking energy, the "grinding" framing.
-- [ ] 2.4 👤 One honest sentence about being new to robotics — the operator role is his on-ramp, not his origin. Saying it plainly is a feature (humble, self-aware, credible).
-- [ ] 2.5 🤖 Reflow bio to new length; match visual treatment for text-heavy block (see 6.x color/contrast work).
+- [x] 2.1 👤 Rewrite bio to the voice spec: competency-forward structure, personality as seasoning. New first line = thesis (game programmer, now robot operator at PI, building toward robot interfaces). Target: 2–3 short paragraphs (down from 5 long ones). **DONE** (committed).
+- [x] 2.2 👤 Retire the AI-philosophy paragraph entirely. Cut, not reframed; enthusiasm/optimism slots replaced it. **DONE.**
+- [x] 2.3 👤 Personality seasoning: engineering-as-art framing + wit retained; uncertainty self-analysis / first-job-seeking energy / "grinding" cut. **DONE.**
+- [x] 2.4 👤 Honest "came to robotics as a game developer, not a roboticist" line added. **DONE.**
+- [x] 2.5 🤖 Reflow bio + bottom spacer (`padding-bottom: 3rem` on `.bio-content`, committed). Color/contrast still open (6.1). **DONE.**
 
 ### 3. Experience section
 
-- [ ] 3.1 👤 **Add Physical Intelligence — Robot Operator** (≈12 weeks, current, leads the section). Julian authors 2–3 honest bullets: what operators literally do (run, monitor, debug robots; shift lifecycle), anything he built/tooled while there. Copies the job posting's vocabulary only where true (setup → operation → review; shift-length empathy is his differentiator).
+- [x] 3.1 👤 **Physical Intelligence — Robot Operator added** (leads the section; one bullet approved by Julian). Dates in page **July 2026 - Present** (confirmed). Seal is a placeholder π text mark (no PI logo asset yet) — replace when available.
 - [ ] 3.2 🤖 Reorder: PI → Mechanical Moonworks → NERSC. (MMW stays as the current game-dev employment; NERSC as the earlier institutional credibility.)
 - [x] 3.3 **DECIDED — Path B: Keep DataAnnotation** (gate closed). Retitle role to a more SWE-sounding name (proposal: **"SWE AI Trainer"** — confirm final working title in copy), **end date: May 2026** (no longer "Present"), reframe bullets around craft (agentic coding problem design, eval rigor, verifier authoring) as a software-chops signal — market-aware, never apologetic. **BCC EE Club: commented out** (per Path B). NERSC stays visible.
 - [ ] 3.4 🤖 Unify date/status formatting across entries once the final set is chosen. Remove anything marked "Present" that isn't.
@@ -67,7 +67,7 @@ Checklist:
 
 ### 4. Projects section — order: helo → Mecha Smash → DreadReign → Zombulacrum → FlockForce → Inoculum → Nova → Algorhythmic → Game of Life
 
-- [ ] 4.1 🤖 **Reorder the project list** to the order above. (helo leads because it's his freshest self-directed systems work; Mecha Smash second as shipped/shippable + leads evidence; DreadReign third as current paid work.)
+- [x] 4.1 🤖 **Reorder the project list** to the order above. **DONE** (script; verified order helo → mecha-smash → dreadreign → zombulacrum → flockforce → inoculum → nova → fishes(commented) → algorhythmic → game-of-life).
 - [ ] 4.2 **helo (the headliner) — told as one section, named simply** _"helo"_, current state is 3D:
   - [ ] 4.2a 👤 Rewrite prose to tell the 2D → 3D evolution in one arc: what it was, what it is now, what's next. Mention it's the project where he does gameplay/systems/multiplayer/networking/audio (real, current claims).
   - [ ] 4.2b 👤 Update caption from "work in progress" → **"early prototype"** (current 3D state).
@@ -75,10 +75,10 @@ Checklist:
   - [ ] 👤 RECORD helo 3D clip (currently the only open blocker on the helo section). ~10–20s, gameplay, emphasizing UI if possible.
   - [ ] 4.2d 🤖 If the 3D gif is added, wire it into the page with the same video treatment (autoplay/loop/muted), same sizing/ratio handling.
 - [ ] 4.3 **Mecha Smash** — no reordering of internal content; PM-field pass only (see 4.10). Still a strong "pitch + lead + ship" story.
-- [ ] 4.4 **DreadReign** — keep; it's real, current, shipped-to teams. Update any stale hooks. Its "Part-time, available for other work" line conflicts with 1.4 decision — resolve together.
+- [x] 4.4 **DreadReign** — "Part-time, available for other work" line removed (1.4 resolved). Hooks otherwise current; final prose pass still under 4.9. **DONE.**
 - [ ] 4.5 **Zombulacrum — demote & reframe**: from "solo passion project, two years and counting" to **an interesting experiment / work in progress**. 1–2 sentences. Keep the honest 2-year arc but as evidence of long-horizon solo ownership (procgen world, full-stack solo), not as the center of the page. Trim its media if density requires.
-- [ ] 4.6 **Fishes: Life Goes On — comment out** (confirmed). Keep the HTML in-tree (comment block) or note in commit message so it's recoverable.
-- [ ] 4.7 🤖 **Inoculum** — comment out its static screenshot (it has an iframe embed already); same treatment for any project pairing img + iframe/video (DreadReign, Mecha Smash, Inoculum). One image source per project max.
+- [x] 4.6 **Fishes: Life Goes On — commented out** (inner placeholder comment stripped so the outer comment is valid; recover by uncommenting). **DONE.**
+- [x] 4.7 🤖 **Image dedupe** — Mecha Smash screenshot, Inoculum screenshot, **and DreadReign logo banner** all commented out (Mecha/Inoculum have iframes; DreadReign removed per Julian). **DONE.** Layout balance check → 6.2.
 - [ ] 4.8 🤖 **Nova, FlockForce, Algorhythmic, Game of Life** — leave content states as-is pending Julian's audit (1.2); apply PM-field pass only.
 - [ ] 4.9 👤 **Read-Every-Project pass**: read each remaining project's prose for: first-person PM competence (sane scope, honest status, clear role, no overselling), market-aware tone (job-market context where relevant), and freshness. Rewrite any hook marked `PLACEHOLDER … Revise.`
 - [ ] 4.10 🤖 **Meta-field consistency pass**: every project's meta grid (tech / team / role / status / links) must be: truthful, consistent tense, consistent format, no implied "active" where dormant, no missing links where links are claimed. The meta grids are the PM signal — they must be flawless.
@@ -90,6 +90,7 @@ Checklist:
 
 ### 6. Visual / UX polish (light pass only — no redesign)
 
+- [x] 6.0 🤖 Bio bottom spacer (~2 lines, `padding-bottom: 3rem` on `.bio-content`) so the fade mask doesn't crop the last line. **DONE** (committed).
 - [ ] 6.1 🤖 Text-heavy blocks (bio + experience) get color diversity: introduce a subtle second/third text accent for lead-ins, dates, or job titles so dense sections aren't one flat gray. Curated, not rainbow; system already uses green accents.
 - [ ] 6.2 🤖 Verify the removed images (4.7) keep the layout balanced (aspect-ratio / wrap behavior on `.project-row`).
 - [ ] 6.3 🤖 Mobile/responsive check: sidebar stacking, header, terminal line, project rows at phone width.

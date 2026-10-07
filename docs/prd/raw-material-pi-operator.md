@@ -17,6 +17,14 @@ Source: voice transcription from Julian, ~2026. Confirmed by Julian as raw mater
 - "high experimental like high-gain controller" — likely "experimental high-gain controller"; confirm wording.
 - Ask Julian: how much of the yield/efficiency framing (if any) survives into the public bullet; he signalled "probably not all of it."
 
+## APPROVED PUBLIC BULLET (one, per Julian)
+
+Role header: **Physical Intelligence - Robot Operator** · dates in page: **July 2026 - Present**.
+
+- Operate robots on the floor across diverse dexterous motor tasks and evaluate policy performance on real-world tasks.
+
+Notes: yield/efficiency framing held back (per Julian); no robotics claims beyond operator-level. Richer detail (evals, high-gain controllers, gentle grasping, model+SLAM navigation) still lives above for future use, but is not on the page yet.
+
 ## Why this matters (context for distillation)
 
 - Shift-length, full-task filter: collection → evals → research ops reads as exactly the operator empathy the Robot Interfaces role wants ("design for the whole shift").
