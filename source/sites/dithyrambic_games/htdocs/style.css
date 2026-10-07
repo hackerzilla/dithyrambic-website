@@ -862,6 +862,9 @@ h1 {
 .bio-content {
     -webkit-mask-image: linear-gradient(to top, transparent 0, #000 5em);
             mask-image: linear-gradient(to top, transparent 0, #000 5em);
+    /* Bottom spacer (~2 lines) so the fade-out gradient lands on empty space
+       instead of cropping the last line(s) of the bio. */
+    padding-bottom: 3rem;
 }
 
 .bio-block.bio-collapsed .bio-content {
