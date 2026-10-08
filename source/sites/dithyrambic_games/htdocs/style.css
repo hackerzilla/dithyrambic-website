@@ -67,7 +67,7 @@ a:active {
 
 ::selection {
     /* background-color: #eab315; */
-     background-color: #00AAff;
+     background-color: transparent;
     /* color: #000; */
     color: #FFFFFF;
     /* text-shadow:
@@ -825,6 +825,21 @@ h1 {
     display: block;
 }
 
+/* Placeholder text mark for Physical Intelligence until a logo asset exists. */
+.pi-seal {
+    display: block;
+    width: 140px;
+    font-size: 7rem;
+    line-height: 1;
+    text-align: center;
+    font-family: 'Times New Roman', Times, Georgia, serif;
+    color: #83ff6e;
+    text-shadow:
+        0 0 3px #39FF14DD,
+        0 0 10px #39FF1499,
+        0 0 30px #39FF1433;
+}
+
 .seal-caption {
     margin: 0.6rem 0 0 0;
     font-style: italic;
@@ -862,10 +877,13 @@ h1 {
 .bio-content {
     -webkit-mask-image: linear-gradient(to top, transparent 0, #000 5em);
             mask-image: linear-gradient(to top, transparent 0, #000 5em);
+    /* Bottom spacer (~2 lines) so the fade-out gradient lands on empty space
+       instead of cropping the last line(s) of the bio. */
+    padding-bottom: 3rem;
 }
 
 .bio-block.bio-collapsed .bio-content {
-    max-height: 14em;
+    max-height: 9.4em; /* was 14em — shrunk ~33% */
     overflow: hidden;
     transition: max-height 450ms ease;
 }
