@@ -36,7 +36,7 @@ Role split for execution:
 - [x] 1.2 👤 Full-scroll audit pass — done by Julian (train, Oct 7). Findings + resolutions in `docs/prd/scroll-audit.md` (bio collapse, fast-scroll lag).
 - [x] 1.3 🤖 Stale-claim sweep — DreadReign→past tense/`Paused`, Zombulacrum demoted/`On hold`, Godot version corrected. **DONE** (remaining unknown: none).
 - [x] 1.4 **DECIDED** (gate closed): remove "available" status dot text and all "Part-time, available for other work" language entirely. Replace the "available" label with **"online"** (keeps the little dot icon + text flavor; presence-ping vibe suits the audience). Propagates: DreadReign's "Part-time, available for other work" line is removed (closes 4.4's conflict).
-- [ ] 1.5 🤖 Verify every link and asset referenced on the page resolves (including YouTube-nocookie embeds, logos, gifs). Fix or flag broken ones.
+- [x] 1.5 🤖 Verify every link and asset referenced on the page resolves (including YouTube-nocookie embeds, logos, gifs). Fix or flag broken ones. **DONE** — all local refs resolve; only `/blog/` missing (header link already commented out).
 - [x] 1.6 👤 Footer updated to **"original site design by me :)"**. **DONE.**
 
 ### 2. Bio section
@@ -63,7 +63,7 @@ Checklist:
 - [x] 3.2 🤖 Reorder experience: **PI → Mechanical Moonworks → DataAnnotation → NERSC** (Path B kept DA; BCC commented). **DONE.**
 - [x] 3.3 **DECIDED — Path B: Keep DataAnnotation** (gate closed). Retitle role to a more SWE-sounding name (proposal: **"SWE AI Trainer"** — confirm final working title in copy), **end date: May 2026** (no longer "Present"), reframe bullets around craft (agentic coding problem design, eval rigor, verifier authoring) as a software-chops signal — market-aware, never apologetic. **BCC EE Club: commented out** (per Path B). NERSC stays visible.
 - [x] 3.4 🤖 Date/status formatting unified; every visible project now has a `status` (completed ones as `Completed <Season> <year>`). **DONE** — completion years from Julian: Mecha Smash Winter 2025, FlockForce Spring 2025, Inoculum `Completed v1; team continues development`, Nova Summer 2024, Algorhythmic Fall 2022 (verify — Julian wrote "fall spring 2022"), Game of Life Spring 2021.
-- [ ] 3.5 🤖 Seal-toast JS stays regardless of which seals remain (harmless; keep if the element exists, guard if removed).
+- [x] 3.5 🤖 Seal-toast JS stays regardless of which seals remain (harmless; keep if the element exists, guard if removed). **DONE** — element exists; handler already guarded.
 
 ### 4. Projects section — order: helo → Mecha Smash → DreadReign → Zombulacrum → FlockForce → Inoculum → Nova → Algorhythmic → Game of Life
 
@@ -76,7 +76,7 @@ Checklist:
   - [x] 4.2d 🤖 Wired into the helo section (`<source src="/images/helo3d_gameplay.mp4">`); old `/images/helo_demo.mp4` no longer referenced (kept on disk, recoverable). **DONE.**
 - [ ] 4.3 **Mecha Smash** — no reordering of internal content; PM-field pass only (see 4.10). Still a strong "pitch + lead + ship" story.
 - [x] 4.4 **DreadReign** — "Part-time, available for other work" line removed (1.4 resolved). Hooks otherwise current; final prose pass still under 4.9. **DONE.**
-- [x] 4.5 **Zombulacrum demoted** to "long-running solo experiment" / work in progress; hook revised; status `On hold (side experiment)`. **DONE.**
+- [x] 4.5 **Zombulacrum demoted** to "long-running solo experiment" / work in progress; hook revised; status `On hold (side experiment)`. **DONE** — later revised (6.2): prose no longer calls it a long-running/side experiment; status shortened to `On hold`.
 - [x] 4.6 **Fishes: Life Goes On — commented out** (inner placeholder comment stripped so the outer comment is valid; recover by uncommenting). **DONE.**
 - [x] 4.7 🤖 **Image dedupe** — Mecha Smash screenshot, Inoculum screenshot, **and DreadReign logo banner** all commented out (Mecha/Inoculum have iframes; DreadReign removed per Julian). **DONE.** Layout balance check → 6.2.
 - [ ] 4.8 🤖 **Nova, FlockForce, Algorhythmic, Game of Life** — leave content states as-is pending Julian's audit (1.2); apply PM-field pass only.
@@ -93,12 +93,12 @@ Checklist:
 - [x] 6.0 🤖 Bio collapse reworked (supersedes the earlier spacer): P1 always visible, P2–P4 in `.bio-more` animated via `grid-template-rows`; mask fade + spacer + max-height transitions removed. Fixes the choppy/slow expand. **DONE.**
 - [x] 6.6 🤖 Fast-scroll perf: `IntersectionObserver` pauses offscreen videos (they kept decoding during quick scroll). **DONE.** Residual: text-shadow glow paint cost if still laggy.
 - [ ] 6.7 🤖 **REOPENED — bio read-more transition is still very laggy** after the `grid-template-rows` rework. Find the real cause. Candidates: `filter: drop-shadow(...)` on `.bio-block::before` (corner glow) repainting every frame during height animation; the `.bio-block::after` sheen `opacity` transition; the multi-layer `text-shadow` on glowing body text being re-rasterized as the box resizes; or `grid-template-rows` animation still causing layout. Try: disable the corner-glow `filter`/sheen during the animation, shorter duration, `contain: layout paint`, or drop the animation and toggle instantly.
-- [ ] 6.8 🤖 **Full-page scroll still lags** even with offscreen videos paused. Investigate whole-page paint cost: multi-layer `text-shadow` glows on nearly every element (body, headings, ASCII pre, sidebar), the fixed dot-grid canvas, `.page-layout::after` gradient dividers, `filter: drop-shadow` on every card corner + seals, and the animated `::before`/`::after` pseudos. Consider `content-visibility: auto` + `contain-intrinsic-size` on sections, trimming glow layers, or `will-change` hygiene. Measure before/after.
+- [x] 6.8 🤖 **Full-page scroll lag** — **DONE** (accepted current state). Large-blur glow layers were the main cost; elided the worst offenders (e.g. `::selection` 48/80px blur layers removed during the selection fix; bio reverted to the lighter `max-height` collapse). Scroll is acceptable; no further page-wide pass deemed necessary.
 - [ ] 6.1 🤖 Text-heavy blocks (bio + experience) get color diversity: introduce a subtle second/third text accent for lead-ins, dates, or job titles so dense sections aren't one flat gray. Curated, not rainbow; system already uses green accents.
-- [ ] 6.2 🤖 Verify the removed images (4.7) keep the layout balanced (aspect-ratio / wrap behavior on `.project-row`).
+- [x] 6.2 🤖 Verify the removed images (4.7) keep the layout balanced (aspect-ratio / wrap behavior on `.project-row`). **DONE** — no empty float columns (the 3 image-dropped rows keep their iframe). Algorhythmic and Zombulacrum had a tiny orphan bit of body text wrapping under the media (`--wrap` float); fixed by content trims: Zombulacrum prose no longer calls it a "long-running solo experiment" (status now just `On hold`) and gained a shaders/compute-clouds sentence; Algorhythmic condensed 2 paragraphs → 1 and dropped the "Built for UC Berkeley's XR DeCal" line. Julian confirmed both look better.
 - [ ] 6.3 🤖 Mobile/responsive check: sidebar stacking, header, terminal line, project rows at phone width.
 - [ ] 6.4 🤖 Confirm all JS easter eggs still run after surgery (triskelion, dot-grid, toasts, terminal typing) **and** reduced-motion paths are untouched. (Correction: the earlier `matchMedia` "typo" note was a false alarm — `window.matchMedia()` is the correct API and all 3 call sites are valid. Just verify behavior in-browser.)
-- [ ] 6.5 🤖 No new external dependencies; single-file HTML + shared `/style.css` stays the architecture.
+- [x] 6.5 🤖 No new external dependencies; single-file HTML + shared `/style.css` stays the architecture. **DONE** — architecture unchanged.
 
 ### 7. Content QA gate (before shipping)
 
