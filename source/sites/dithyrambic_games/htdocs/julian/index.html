@@ -82,6 +82,7 @@ dMMMMP" dMP  VMMMP"
                 <p>
                     Hi, I'm Julian — indie game developer and robot operator, from Berkeley, CA. I've wanted to make games since I was 13 — it's why I ended up studying EECS at UC Berkeley — and I never really stopped: whether it's a game world or a robot task, I love the same thing. Engineering as a form of art.
                 </p>
+                <div class="bio-more"><div class="bio-more-inner">
                 <p>
                     Operating a robot turns out to be basically a video game that's been given a real-world interface and a considerably more advanced controller.
                 </p>
@@ -91,6 +92,7 @@ dMMMMP" dMP  VMMMP"
                 <p>
                     I work mostly in Godot Engine, and I've built projects in Unity, Unreal Engine, and raw C++ with SDL2. I'd like to spend more time close to the hardware. I lean generalist: systems, shaders, UI, physics, AI, optimization, simulation, gameplay, networking, tools, audio — I want to understand the whole stack. I still code by hand on some projects, but I've adapted to agentic coding tools like pi agent, and I've created custom TypeScript workflows. I also have leadership experience on multiple game projects.
                 </p>
+                </div></div>
                 <!-- BIO P3 (retired 2026): The skill I trust most in myself isn't really a programming skill. ... -->
                 <!-- BIO P4 (retired 2026): Outside the code I'm an amateur visual artist ... -->
                 <!-- BIO P5 (retired 2026): A word on AI: it's here to stay ... -->
@@ -236,8 +238,8 @@ dMP     dMP dMP  VMMMP" VMMMP" dMMMMMP  VMMMP"   dMP    VMMMP"
                     <div class="project-row flip project-row--wrap">
                         <div class="project-media">
                             <video autoplay loop muted playsinline preload="metadata" disablepictureinpicture>
-                                <source src="/images/helo_demo.mp4" type="video/mp4">
-                                helo demo footage.
+                                <source src="/images/helo3d_gameplay.mp4" type="video/mp4">
+                                helo 3D gameplay footage.
                             </video>
                             <p class="media-caption">work in progress</p>
                         </div>
@@ -670,6 +672,7 @@ VMMMP" dMP dMP dMP dMMMMMP dMMMMMP VMMMP"
                         <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/html5.svg')"></span>HTML</li>
                         <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/css3.svg')"></span>CSS</li>
                         <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/javascript.svg')"></span>JavaScript</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/typescript.svg')"></span>TypeScript</li>
                     </ul>
                 </section>
 
@@ -678,6 +681,7 @@ VMMMP" dMP dMP dMP dMMMMMP dMMMMMP VMMMP"
                     <ul class="skills-list">
                         <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/git.svg')"></span>Git</li>
                         <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/github.svg')"></span>GitHub</li>
+                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/pi.svg')"></span>pi</li>
                         <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/claude.svg')"></span>Claude Code</li>
                         <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/tmux.svg')"></span>tmux</li>
                         <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/docker.svg')"></span>Docker</li>
@@ -685,7 +689,6 @@ VMMMP" dMP dMP dMP dMMMMMP dMMMMMP VMMMP"
                         <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/gdb.svg')"></span>GDB</li>
                         <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/vscode.svg')"></span>VSCode</li>
                         <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/obsidian.svg')"></span>Obsidian</li>
-                        <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/trello.svg')"></span>Trello</li>
                         <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/perforce.svg')"></span>Perforce</li>
                         <li class="skill"><span class="skill-logo" style="--logo: url('/images/logos/plastic-scm.png')"></span>PlasticSCM</li>
                     </ul>
@@ -756,7 +759,7 @@ VMMMP"  VMMMP" dMP dMP   dMP   dMP dMP  VMMMP"   dMP
             <div id="bottom-buffer" aria-hidden="true"></div>
 
             <footer class="page-footer">
-                <p>site designed by me :)</p>
+                <p>original site design by me :)</p>
             </footer>
         </div> <!-- end .page-layout-->
 
@@ -1240,6 +1243,24 @@ VMMMP"  VMMMP" dMP dMP   dMP   dMP dMP  VMMMP"   dMP
             }
 
             setInterval(tryStart, 500);
+        })();
+
+        // ── Pause offscreen videos ──
+        // Several autoplaying loops otherwise keep decoding during fast scroll.
+        (() => {
+            const vids = document.querySelectorAll('video');
+            if (!vids.length || !('IntersectionObserver' in window)) return;
+            const io = new IntersectionObserver((entries) => {
+                for (const e of entries) {
+                    const v = e.target;
+                    if (e.isIntersecting) {
+                        v.play().catch(() => {});
+                    } else {
+                        v.pause();
+                    }
+                }
+            }, { rootMargin: '150px' });
+            vids.forEach(v => io.observe(v));
         })();
     </script>
     </body>
