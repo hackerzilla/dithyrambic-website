@@ -870,25 +870,27 @@ h1 {
         drop-shadow(0 0 22px rgba(57, 255, 20, 0.3));
 }
 
-/* Bio expand/collapse: paragraph 1 stays visible; the rest lives inside
-   .bio-more, which animates open/closed via grid-template-rows. Smoother
-   than animating max-height, and there's no cropped text to mask anymore. */
+/* Bottom-anchored fade applied in both states so toggling collapse doesn't
+   snap a mask in/out (mask-image isn't smoothly transitionable). In the
+   collapsed state this masks the cropped text; in the expanded state it
+   gives the bio a soft ending into the page bg. */
 .bio-content {
-    display: block;
+    -webkit-mask-image: linear-gradient(to top, transparent 0, #000 5em);
+            mask-image: linear-gradient(to top, transparent 0, #000 5em);
+    /* Bottom spacer (~2 lines) so the fade-out gradient lands on empty space
+       instead of cropping the last line(s) of the bio. */
+    padding-bottom: 3rem;
 }
 
-.bio-more {
-    display: grid;
-    grid-template-rows: 1fr;
-    transition: grid-template-rows 380ms ease;
-}
-
-.bio-block.bio-collapsed .bio-more {
-    grid-template-rows: 0fr;
-}
-
-.bio-more-inner {
+.bio-block.bio-collapsed .bio-content {
+    max-height: 9.4em; /* was 14em — shrunk ~33% */
     overflow: hidden;
+    transition: max-height 450ms ease;
+}
+
+.bio-block:not(.bio-collapsed) .bio-content {
+    max-height: 200em;
+    transition: max-height 600ms ease;
 }
 
 .bio-fade {
@@ -927,7 +929,8 @@ h1 {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .bio-more {
+    .bio-block.bio-collapsed .bio-content,
+    .bio-block:not(.bio-collapsed) .bio-content {
         transition: none;
     }
 }
